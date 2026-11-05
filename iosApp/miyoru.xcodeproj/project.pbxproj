@@ -1,0 +1,222 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05A809F55D685991B2EAF855 /* shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CED01B15C18C3947463C2AC /* shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53062A3E4DC0873A5E3A08B8 /* shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CED01B15C18C3947463C2AC /* shared.framework */; };
+		DD897AFC278E67C28728B2CE /* MiyoruApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6C2E574563AB6A420D3E9 /* MiyoruApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		49D54225F9A6049B95E57823 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				05A809F55D685991B2EAF855 /* shared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1B35FA61F6C640B587714ED2 /* miyoru.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = miyoru.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CED01B15C18C3947463C2AC /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = ../shared/build/bin/iosSimulatorArm64/debugFramework/shared.framework; sourceTree = "<group>"; };
+		B8E6C2E574563AB6A420D3E9 /* MiyoruApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiyoruApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		553839B2CB141607725698FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53062A3E4DC0873A5E3A08B8 /* shared.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4103E7A4EB1C828BC4D8F49A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CED01B15C18C3947463C2AC /* shared.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4783C733F5CDE4270FF7C728 /* iosApp */ = {
+			isa = PBXGroup;
+			children = (
+				B8E6C2E574563AB6A420D3E9 /* MiyoruApp.swift */,
+			);
+			name = iosApp;
+			path = .;
+			sourceTree = "<group>";
+		};
+		4DAE182693250765227E3BCF = {
+			isa = PBXGroup;
+			children = (
+				4783C733F5CDE4270FF7C728 /* iosApp */,
+				4103E7A4EB1C828BC4D8F49A /* Frameworks */,
+				9F9A0A34DCB0FD8BBDF5323A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9F9A0A34DCB0FD8BBDF5323A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B35FA61F6C640B587714ED2 /* miyoru.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		649CE725ACA6C79037CA8BA6 /* miyoru */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7A97084CE46046170169E4 /* Build configuration list for PBXNativeTarget "miyoru" */;
+			buildPhases = (
+				D805230DD32DD7D0FF3BCD5A /* Sources */,
+				553839B2CB141607725698FB /* Frameworks */,
+				49D54225F9A6049B95E57823 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = miyoru;
+			packageProductDependencies = (
+			);
+			productName = miyoru;
+			productReference = 1B35FA61F6C640B587714ED2 /* miyoru.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9D9611B6FE158BAE295A6C01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					649CE725ACA6C79037CA8BA6 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = E4EBF6F12EC86E4BF81C1C4F /* Build configuration list for PBXProject "miyoru" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4DAE182693250765227E3BCF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9F9A0A34DCB0FD8BBDF5323A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				649CE725ACA6C79037CA8BA6 /* miyoru */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D805230DD32DD7D0FF3BCD5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD897AFC278E67C28728B2CE /* MiyoruApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		582B7B5B2F5E74932A343F8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5D9FEBBCFD14B7F88926247F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		9BDA7E18A34CD1C2EF887B89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"../shared/build/bin/iosSimulatorArm64/debugFramework\"",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.miyoru.miyoru;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A0053F6A725066C70E0E382A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"../shared/build/bin/iosSimulatorArm64/debugFramework\"",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.miyoru.miyoru;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC7A97084CE46046170169E4 /* Build configuration list for PBXNativeTarget "miyoru" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0053F6A725066C70E0E382A /* Debug */,
+				9BDA7E18A34CD1C2EF887B89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E4EBF6F12EC86E4BF81C1C4F /* Build configuration list for PBXProject "miyoru" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				582B7B5B2F5E74932A343F8D /* Debug */,
+				5D9FEBBCFD14B7F88926247F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9D9611B6FE158BAE295A6C01 /* Project object */;
+}

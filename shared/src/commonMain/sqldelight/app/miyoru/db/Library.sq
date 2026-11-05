@@ -1,0 +1,82 @@
+CREATE TABLE FAVORITE (
+  source_id TEXT NOT NULL,
+  media_type TEXT NOT NULL,
+  media_id TEXT NOT NULL,
+  created_at INTEGER NOT NULL,
+  sort_order INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (source_id, media_type, media_id)
+);
+
+CREATE TABLE HISTORY (
+  source_id TEXT NOT NULL,
+  media_type TEXT NOT NULL,
+  media_id TEXT NOT NULL,
+  last_opened_at INTEGER NOT NULL,
+  PRIMARY KEY (source_id, media_type, media_id)
+);
+
+CREATE INDEX history_opened_idx ON HISTORY(last_opened_at DESC);
+
+CREATE TABLE PROGRESS (
+  source_id TEXT NOT NULL,
+  media_type TEXT NOT NULL,
+  media_id TEXT NOT NULL,
+  unit_id TEXT NOT NULL,
+  mode TEXT NOT NULL,
+  position INTEGER NOT NULL,
+  total INTEGER NOT NULL,
+  progress_unit TEXT NOT NULL,
+  completed INTEGER NOT NULL DEFAULT 0,
+  updated_at INTEGER NOT NULL,
+  PRIMARY KEY (source_id, media_type, media_id, unit_id)
+);
+
+selectFavorites:
+SELECT * FROM FAVORITE ORDER BY sort_order DESC, created_at DESC;
+
+selectFavorite:
+SELECT * FROM FAVORITE WHERE source_id = ? AND media_type = ? AND media_id = ?;
+
+insertFavorite:
+INSERT OR REPLACE INTO FAVORITE (source_id, media_type, media_id, created_at, sort_order)
+VALUES (?, ?, ?, ?, ?);
+
+deleteFavorite:
+DELETE FROM FAVORITE WHERE source_id = ? AND media_type = ? AND media_id = ?;
+
+selectRecentHistory:
+SELECT * FROM HISTORY ORDER BY last_opened_at DESC LIMIT ?;
+
+upsertHistory:
+INSERT OR REPLACE INTO HISTORY (source_id, media_type, media_id, last_opened_at)
+VALUES (?, ?, ?, ?);
+
+deleteHistory:
+DELETE FROM HISTORY WHERE source_id = ? AND media_type = ? AND media_id = ?;
+
+clearHistory:
+DELETE FROM HISTORY;
+
+selectProgress:
+SELECT * FROM PROGRESS WHERE source_id = ? AND media_type = ? AND media_id = ? AND unit_id = ?;
+
+upsertProgress:
+INSERT OR REPLACE INTO PROGRESS (
+  source_id, media_type, media_id, unit_id, mode, position, total, progress_unit, completed, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteProgress:
+DELETE FROM PROGRESS WHERE source_id = ? AND media_type = ? AND media_id = ?;
+
+selectFavoriteMedia:
+SELECT m.* FROM MEDIA AS m
+INNER JOIN FAVORITE AS f
+  ON f.source_id = m.source_id AND f.media_type = m.media_type AND f.media_id = m.remote_id
+ORDER BY f.sort_order DESC, f.created_at DESC;
+
+selectHistoryMedia:
+SELECT m.*, h.last_opened_at AS last_opened_at FROM MEDIA AS m
+INNER JOIN HISTORY AS h
+  ON h.source_id = m.source_id AND h.media_type = m.media_type AND h.media_id = m.remote_id
+ORDER BY h.last_opened_at DESC
+LIMIT ?;

@@ -1,0 +1,33 @@
+name: miyoru
+options:
+  bundleIdPrefix: app.miyoru
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  miyoru:
+    type: application
+    platform: iOS
+    sources:
+      - path: .
+        excludes:
+          - project.yml
+          - README.md
+          - Info.plist
+          - miyoru.xcodeproj
+    info:
+      path: Info.plist
+      properties:
+        CFBundleShortVersionString: 0.1.0
+        CFBundleVersion: 1
+        UILaunchStoryboardName: ""
+        CADisableMinimumFrameDurationOnPhone: true
+    dependencies:
+      - framework: ../shared/build/bin/iosSimulatorArm64/debugFramework/shared.framework
+        embed: true
+    settings:
+      base:
+        SWIFT_VERSION: "5.0"
+        CODE_SIGNING_ALLOWED: "NO"
+        DEVELOPMENT_TEAM: ""
+        LD_RUNPATH_SEARCH_PATHS: "@executable_path/Frameworks"
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES

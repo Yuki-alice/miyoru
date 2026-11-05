@@ -1,0 +1,26 @@
+CREATE TABLE CONTENT_UNIT (
+  source_id TEXT NOT NULL,
+  media_type TEXT NOT NULL,
+  media_id TEXT NOT NULL,
+  unit_id TEXT NOT NULL,
+  title TEXT NOT NULL,
+  unit_index INTEGER NOT NULL,
+  published_at INTEGER,
+  fetched_at INTEGER NOT NULL,
+  PRIMARY KEY (source_id, media_type, media_id, unit_id)
+);
+
+CREATE INDEX content_unit_media_idx ON CONTENT_UNIT(source_id, media_type, media_id, unit_index);
+
+selectByMedia:
+SELECT * FROM CONTENT_UNIT
+WHERE source_id = ? AND media_type = ? AND media_id = ?
+ORDER BY unit_index;
+
+insertOrReplace:
+INSERT OR REPLACE INTO CONTENT_UNIT (
+  source_id, media_type, media_id, unit_id, title, unit_index, published_at, fetched_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteByMedia:
+DELETE FROM CONTENT_UNIT WHERE source_id = ? AND media_type = ? AND media_id = ?;

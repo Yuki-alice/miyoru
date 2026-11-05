@@ -1,0 +1,63 @@
+CREATE TABLE DOWNLOAD_TASK (
+  id TEXT NOT NULL PRIMARY KEY,
+  source_id TEXT NOT NULL,
+  media_type TEXT NOT NULL,
+  media_id TEXT NOT NULL,
+  unit_id TEXT,
+  kind TEXT NOT NULL,
+  request_json TEXT NOT NULL,
+  secret_ref TEXT,
+  state TEXT NOT NULL,
+  downloaded_bytes INTEGER NOT NULL DEFAULT 0,
+  total_bytes INTEGER,
+  relative_path TEXT,
+  error_code TEXT,
+  retry_count INTEGER NOT NULL DEFAULT 0,
+  created_at INTEGER NOT NULL,
+  updated_at INTEGER NOT NULL
+);
+
+CREATE INDEX download_task_state_idx ON DOWNLOAD_TASK(state, updated_at DESC);
+
+CREATE TABLE LOCAL_FILE (
+  id TEXT NOT NULL PRIMARY KEY,
+  task_id TEXT NOT NULL,
+  relative_path TEXT NOT NULL,
+  mime_type TEXT,
+  size_bytes INTEGER,
+  sha256 TEXT,
+  downloaded_at INTEGER NOT NULL
+);
+
+CREATE INDEX local_file_task_idx ON LOCAL_FILE(task_id);
+
+selectTaskById:
+SELECT * FROM DOWNLOAD_TASK WHERE id = ?;
+
+selectTasksByState:
+SELECT * FROM DOWNLOAD_TASK WHERE state = ? ORDER BY updated_at DESC;
+
+selectAllTasks:
+SELECT * FROM DOWNLOAD_TASK ORDER BY created_at DESC;
+
+insertTask:
+INSERT OR REPLACE INTO DOWNLOAD_TASK (
+  id, source_id, media_type, media_id, unit_id, kind, request_json, secret_ref,
+  state, downloaded_bytes, total_bytes, relative_path, error_code, retry_count,
+  created_at, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+updateTaskState:
+UPDATE DOWNLOAD_TASK
+SET state = ?, downloaded_bytes = ?, total_bytes = ?, relative_path = ?, error_code = ?, updated_at = ?
+WHERE id = ?;
+
+deleteTask:
+DELETE FROM DOWNLOAD_TASK WHERE id = ?;
+
+insertFile:
+INSERT OR REPLACE INTO LOCAL_FILE (id, task_id, relative_path, mime_type, size_bytes, sha256, downloaded_at)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+selectFilesByTask:
+SELECT * FROM LOCAL_FILE WHERE task_id = ?;

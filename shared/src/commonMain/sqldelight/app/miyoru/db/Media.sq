@@ -1,0 +1,38 @@
+CREATE TABLE MEDIA (
+  source_id TEXT NOT NULL,
+  media_type TEXT NOT NULL,
+  remote_id TEXT NOT NULL,
+  title TEXT NOT NULL,
+  cover_url TEXT,
+  author TEXT,
+  description TEXT,
+  status TEXT,
+  tags_json TEXT NOT NULL DEFAULT '[]',
+  source_name_snapshot TEXT NOT NULL DEFAULT '',
+  fetched_at INTEGER NOT NULL,
+  PRIMARY KEY (source_id, media_type, remote_id)
+);
+
+CREATE INDEX media_title_idx ON MEDIA(title);
+CREATE INDEX media_source_idx ON MEDIA(source_id, media_type);
+
+selectById:
+SELECT * FROM MEDIA WHERE source_id = ? AND media_type = ? AND remote_id = ?;
+
+selectByTitle:
+SELECT * FROM MEDIA WHERE title LIKE ? ORDER BY title LIMIT ? OFFSET ?;
+
+selectBySource:
+SELECT * FROM MEDIA WHERE source_id = ? AND media_type = ? ORDER BY fetched_at DESC LIMIT ? OFFSET ?;
+
+insertOrReplace:
+INSERT OR REPLACE INTO MEDIA (
+  source_id, media_type, remote_id, title, cover_url, author,
+  description, status, tags_json, source_name_snapshot, fetched_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteBySource:
+DELETE FROM MEDIA WHERE source_id = ?;
+
+deleteMedia:
+DELETE FROM MEDIA WHERE source_id = ? AND media_type = ? AND remote_id = ?;

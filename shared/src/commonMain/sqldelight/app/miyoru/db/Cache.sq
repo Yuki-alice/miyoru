@@ -1,0 +1,34 @@
+CREATE TABLE CACHE_ENTRY (
+  cache_key TEXT NOT NULL PRIMARY KEY,
+  category TEXT NOT NULL,
+  source_id TEXT,
+  media_type TEXT,
+  media_id TEXT,
+  size_bytes INTEGER NOT NULL DEFAULT 0,
+  last_accessed_at INTEGER NOT NULL,
+  expires_at INTEGER
+);
+
+CREATE INDEX cache_entry_access_idx ON CACHE_ENTRY(last_accessed_at);
+
+selectByKey:
+SELECT * FROM CACHE_ENTRY WHERE cache_key = ?;
+
+upsertEntry:
+INSERT OR REPLACE INTO CACHE_ENTRY (
+  cache_key, category, source_id, media_type, media_id, size_bytes, last_accessed_at, expires_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteExpired:
+DELETE FROM CACHE_ENTRY WHERE expires_at IS NOT NULL AND expires_at < ?;
+
+deleteLeastRecentlyUsed:
+DELETE FROM CACHE_ENTRY WHERE cache_key IN (
+  SELECT cache_key FROM CACHE_ENTRY ORDER BY last_accessed_at ASC LIMIT ?
+);
+
+totalSize:
+SELECT COALESCE(SUM(size_bytes), 0) FROM CACHE_ENTRY;
+
+clearAll:
+DELETE FROM CACHE_ENTRY;

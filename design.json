@@ -1,0 +1,6634 @@
+{
+  "title": "内容库",
+  "brief": "一个把漫画、小说和视频放进同一个书架的内容应用。底部导航为首页、书架、历史、浏览、更多；浏览管理数据源与插件订阅，更多通往下载、分类、统计、插件商店、设置、关于、数据与存储。三种内容共用追更、收藏与阅读进度；深色优先，强调色取自作品封面。宽屏下仅 5 个主导航 tab 屏显示侧边导航栏，其余子页面隐藏侧栏、用顶栏返回按钮保持沉浸。",
+  "frame": "phone",
+  "platform": "web",
+  "paletteKey": "purple",
+  "dynamicColor": true,
+  "theme": {
+    "dark": true,
+    "bothModes": true,
+    "contrast": "standard",
+    "shape": "rounded",
+    "font": "roboto",
+    "emphasized": true,
+    "motion": "expressive"
+  },
+  "frames": [
+    {
+      "id": "home",
+      "name": "首页",
+      "x": 0,
+      "y": 0,
+      "note": "首页：按内容类型切换的推荐流，含继续阅读横向卡片与最近更新列表。"
+    },
+    {
+      "id": "home_w",
+      "name": "首页",
+      "x": 0,
+      "y": 1000,
+      "note": "首页：按内容类型切换的推荐流，含继续阅读横向卡片与最近更新列表。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "library",
+      "name": "书架",
+      "x": 1360,
+      "y": 0,
+      "note": "书架：统一收藏漫画、小说与视频，封面网格 + 类型筛选 + 继续阅读记录。"
+    },
+    {
+      "id": "library_w",
+      "name": "书架",
+      "x": 1360,
+      "y": 1000,
+      "note": "书架：统一收藏漫画、小说与视频，封面网格 + 类型筛选 + 继续阅读记录。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "history",
+      "name": "历史",
+      "x": 2720,
+      "y": 0,
+      "note": "历史：按日期分组的阅读与观看记录，可从任意条目续播或续读。"
+    },
+    {
+      "id": "history_w",
+      "name": "历史",
+      "x": 2720,
+      "y": 1000,
+      "note": "历史：按日期分组的阅读与观看记录，可从任意条目续播或续读。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "browse",
+      "name": "浏览",
+      "x": 4080,
+      "y": 0,
+      "note": "浏览：站点、数据源与插件订阅三个分页，进入站点浏览与插件商店。"
+    },
+    {
+      "id": "browse_w",
+      "name": "浏览",
+      "x": 4080,
+      "y": 1000,
+      "note": "浏览：站点、数据源与插件订阅三个分页，进入站点浏览与插件商店。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "more",
+      "name": "更多",
+      "x": 0,
+      "y": 2000,
+      "note": "更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件商店、设置、关于、数据与存储。"
+    },
+    {
+      "id": "more_w",
+      "name": "更多",
+      "x": 0,
+      "y": 3000,
+      "note": "更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件商店、设置、关于、数据与存储。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "detail",
+      "name": "作品详情",
+      "x": 1360,
+      "y": 2000,
+      "note": "作品详情：封面驱动的强调色、类型标签、简介、开始阅读/加入书架与章节目录；宽屏去掉侧边导航栏以更沉浸。"
+    },
+    {
+      "id": "detail_w",
+      "name": "作品详情",
+      "x": 1360,
+      "y": 3000,
+      "note": "作品详情：封面驱动的强调色、类型标签、简介、开始阅读/加入书架与章节目录；宽屏去掉侧边导航栏以更沉浸。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "reader",
+      "name": "阅读器",
+      "x": 2720,
+      "y": 2000,
+      "note": "阅读器：小说分页文本与漫画竖向卷轴共用一套沉浸式界面，隐藏全部导航，进度自动保存。",
+      "bg": "surfaceContainerLow"
+    },
+    {
+      "id": "reader_w",
+      "name": "阅读器",
+      "x": 2720,
+      "y": 3000,
+      "note": "阅读器：小说分页文本与漫画竖向卷轴共用一套沉浸式界面，隐藏全部导航，进度自动保存。",
+      "w": 1280,
+      "h": 800,
+      "bg": "surfaceContainerLow"
+    },
+    {
+      "id": "player",
+      "name": "播放器",
+      "x": 4080,
+      "y": 2000,
+      "note": "播放器：视频画面、波浪进度条、播放控制与选集列表，从上次观看点续播。",
+      "bg": "surfaceContainerLow"
+    },
+    {
+      "id": "player_w",
+      "name": "播放器",
+      "x": 4080,
+      "y": 3000,
+      "note": "播放器：视频画面、波浪进度条、播放控制与选集列表，从上次观看点续播。",
+      "w": 1280,
+      "h": 800,
+      "bg": "surfaceContainerLow"
+    },
+    {
+      "id": "sources",
+      "name": "数据源管理",
+      "x": 0,
+      "y": 4000,
+      "note": "数据源管理：已订阅来源的开关、可用来源列表与添加入口，插件提供来源。"
+    },
+    {
+      "id": "sources_w",
+      "name": "数据源管理",
+      "x": 0,
+      "y": 5000,
+      "note": "数据源管理：已订阅来源的开关、可用来源列表与添加入口，插件提供来源。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "site",
+      "name": "站点浏览",
+      "x": 1360,
+      "y": 4000,
+      "note": "站点浏览：某个数据源内的搜索、类型/排序筛选与作品封面网格。"
+    },
+    {
+      "id": "site_w",
+      "name": "站点浏览",
+      "x": 1360,
+      "y": 5000,
+      "note": "站点浏览：某个数据源内的搜索、类型/排序筛选与作品封面网格。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "downloads",
+      "name": "下载",
+      "x": 2720,
+      "y": 4000,
+      "note": "下载：已下载与下载中的任务列表、存储占用与批量暂停/清理。"
+    },
+    {
+      "id": "downloads_w",
+      "name": "下载",
+      "x": 2720,
+      "y": 5000,
+      "note": "下载：已下载与下载中的任务列表、存储占用与批量暂停/清理。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "categories",
+      "name": "分类",
+      "x": 4080,
+      "y": 4000,
+      "note": "分类：自定义分类列表与新建入口，点击分类回到带筛选的书架。"
+    },
+    {
+      "id": "categories_w",
+      "name": "分类",
+      "x": 4080,
+      "y": 5000,
+      "note": "分类：自定义分类列表与新建入口，点击分类回到带筛选的书架。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "statistics",
+      "name": "统计",
+      "x": 0,
+      "y": 6000,
+      "note": "统计：本月时长、各内容类型数量与占比分布。"
+    },
+    {
+      "id": "statistics_w",
+      "name": "统计",
+      "x": 0,
+      "y": 7000,
+      "note": "统计：本月时长、各内容类型数量与占比分布。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "extensions",
+      "name": "插件商店",
+      "x": 1360,
+      "y": 6000,
+      "note": "插件商店：已安装与可用插件，安装后回到数据源管理启用。"
+    },
+    {
+      "id": "extensions_w",
+      "name": "插件商店",
+      "x": 1360,
+      "y": 7000,
+      "note": "插件商店：已安装与可用插件，安装后回到数据源管理启用。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "settings",
+      "name": "设置",
+      "x": 2720,
+      "y": 6000,
+      "note": "设置：外观、阅读与播放、通知三组开关与选项。"
+    },
+    {
+      "id": "settings_w",
+      "name": "设置",
+      "x": 2720,
+      "y": 7000,
+      "note": "设置：外观、阅读与播放、通知三组开关与选项。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "about",
+      "name": "关于",
+      "x": 4080,
+      "y": 6000,
+      "note": "关于：版本、项目说明、许可与反馈入口。"
+    },
+    {
+      "id": "about_w",
+      "name": "关于",
+      "x": 4080,
+      "y": 7000,
+      "note": "关于：版本、项目说明、许可与反馈入口。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "storage",
+      "name": "数据与存储",
+      "x": 0,
+      "y": 8000,
+      "note": "数据与存储：缓存与下载位置、自动清理、自动备份、创建与恢复备份。"
+    },
+    {
+      "id": "storage_w",
+      "name": "数据与存储",
+      "x": 0,
+      "y": 9000,
+      "note": "数据与存储：缓存与下载位置、自动清理、自动备份、创建与恢复备份。",
+      "w": 1280,
+      "h": 800
+    }
+  ],
+  "groups": [
+    {
+      "id": "g2",
+      "x": 0,
+      "y": 788,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i1",
+          "kind": "bottomNav",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 0,
+          "actions": {
+            "tab:1": {
+              "to": "library",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g4",
+      "x": 0,
+      "y": 0,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i3",
+          "kind": "topAppBar",
+          "label": "首页",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search"
+        }
+      ]
+    },
+    {
+      "id": "g6",
+      "x": 16,
+      "y": 88,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i5",
+          "kind": "searchBar",
+          "label": "搜索作品、作者或来源",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "note": "统一搜索漫画、小说与视频；结果按内容类型分组，支持按来源过滤。"
+        }
+      ]
+    },
+    {
+      "id": "g8",
+      "x": 0,
+      "y": 160,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i7",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "全部"
+            },
+            {
+              "icon": "",
+              "label": "漫画"
+            },
+            {
+              "icon": "",
+              "label": "小说"
+            },
+            {
+              "icon": "",
+              "label": "视频"
+            }
+          ],
+          "note": "按内容类型切换首页内容；三种类型共用同一套书架、进度与追更逻辑。"
+        }
+      ]
+    },
+    {
+      "id": "g10",
+      "x": 16,
+      "y": 224,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i9",
+          "kind": "text",
+          "label": "继续阅读",
+          "icon": null,
+          "variant": "filled",
+          "size": 22,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g12",
+      "x": 0,
+      "y": 265,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i11",
+          "kind": "carousel",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "",
+              "label": "《长夜余火》· 第 12 话"
+            },
+            {
+              "icon": "",
+              "label": "《山海拾遗》· 第 3 卷"
+            },
+            {
+              "icon": "",
+              "label": "《黎明之前》· EP06"
+            }
+          ],
+          "count": 3,
+          "layout": "multiBrowse",
+          "size": 412,
+          "size2": 200,
+          "note": "横向滑动最近阅读/观看的作品，封面取自作品主视觉；点击从上次进度继续，角标显示内容类型与进度。"
+        }
+      ]
+    },
+    {
+      "id": "g14",
+      "x": 16,
+      "y": 481,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i13",
+          "kind": "text",
+          "label": "最近更新",
+          "icon": null,
+          "variant": "filled",
+          "size": 22,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g18",
+      "x": 16,
+      "y": 522,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i15",
+          "kind": "listItem",
+          "label": "《长夜余火》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 更新至第 24 话 · 2 小时前",
+          "note": "打开作品详情，可查看章节目录、更新状态并开始阅读。",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i16",
+          "kind": "listItem",
+          "label": "《山海拾遗》",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说 · 更新至第 3 卷 第 8 章",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i17",
+          "kind": "listItem",
+          "label": "《黎明之前》",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · 更新至 EP08 · 昨天",
+          "note": "视频条目直接进入播放器，并从上次观看时间点续播。",
+          "action": {
+            "to": "player",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g20",
+      "x": 0,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i19",
+          "kind": "navRail",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 0,
+          "size2": 800,
+          "actions": {
+            "tab:1": {
+              "to": "library_w",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history_w",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse_w",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more_w",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g22",
+      "x": 80,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i21",
+          "kind": "topAppBar",
+          "label": "首页",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1200
+        }
+      ]
+    },
+    {
+      "id": "g24",
+      "x": 112,
+      "y": 1064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i23",
+          "kind": "searchBar",
+          "label": "搜索作品、作者或来源",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1136,
+          "note": "统一搜索漫画、小说与视频；结果按内容类型分组，支持按来源过滤。"
+        }
+      ]
+    },
+    {
+      "id": "g26",
+      "x": 112,
+      "y": 1136,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i25",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1136,
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "全部"
+            },
+            {
+              "icon": "",
+              "label": "漫画"
+            },
+            {
+              "icon": "",
+              "label": "小说"
+            },
+            {
+              "icon": "",
+              "label": "视频"
+            }
+          ],
+          "note": "按内容类型切换首页内容；三种类型共用同一套书架、进度与追更逻辑。"
+        }
+      ]
+    },
+    {
+      "id": "g28",
+      "x": 112,
+      "y": 1200,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i27",
+          "kind": "text",
+          "label": "继续阅读",
+          "icon": null,
+          "variant": "filled",
+          "size": 22,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g30",
+      "x": 112,
+      "y": 1241,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i29",
+          "kind": "carousel",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "",
+              "label": "《长夜余火》· 第 12 话"
+            },
+            {
+              "icon": "",
+              "label": "《山海拾遗》· 第 3 卷"
+            },
+            {
+              "icon": "",
+              "label": "《黎明之前》· EP06"
+            },
+            {
+              "icon": "",
+              "label": "《雾中列车》· 第 07 话"
+            }
+          ],
+          "count": 4,
+          "layout": "multiBrowse",
+          "size": 1136,
+          "size2": 230,
+          "note": "横向滑动最近阅读/观看的作品，封面取自作品主视觉；点击从上次进度继续，角标显示内容类型与进度。"
+        }
+      ]
+    },
+    {
+      "id": "g32",
+      "x": 112,
+      "y": 1487,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i31",
+          "kind": "text",
+          "label": "最近更新",
+          "icon": null,
+          "variant": "filled",
+          "size": 22,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g36",
+      "x": 112,
+      "y": 1528,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i33",
+          "kind": "listItem",
+          "label": "《长夜余火》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 更新至第 24 话 · 2 小时前",
+          "note": "打开作品详情，可查看章节目录、更新状态并开始阅读。",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i34",
+          "kind": "listItem",
+          "label": "《山海拾遗》",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说 · 更新至第 3 卷 第 8 章",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i35",
+          "kind": "listItem",
+          "label": "《黎明之前》",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · 更新至 EP08 · 昨天",
+          "note": "视频条目直接进入播放器，并从上次观看时间点续播。",
+          "action": {
+            "to": "player_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g38",
+      "x": 1360,
+      "y": 788,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i37",
+          "kind": "bottomNav",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 1,
+          "actions": {
+            "tab:0": {
+              "to": "home",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g40",
+      "x": 1360,
+      "y": 0,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i39",
+          "kind": "topAppBar",
+          "label": "书架",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search"
+        }
+      ]
+    },
+    {
+      "id": "g45",
+      "x": 1376,
+      "y": 88,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i41",
+          "kind": "chip",
+          "label": "全部",
+          "icon": null,
+          "variant": "filled",
+          "checked": true
+        },
+        {
+          "id": "i42",
+          "kind": "chip",
+          "label": "漫画",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i43",
+          "kind": "chip",
+          "label": "小说",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i44",
+          "kind": "chip",
+          "label": "视频",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g47",
+      "x": 1376,
+      "y": 136,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i46",
+          "kind": "card",
+          "label": "《长夜余火》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 24 话 · 有更新",
+          "note": "封面卡片进入详情；长按可批量移出书架或归类到自定义分组。",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g49",
+      "x": 1574,
+      "y": 136,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i48",
+          "kind": "card",
+          "label": "《山海拾遗》",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说 · 3 卷 · 已读 62%",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g51",
+      "x": 1376,
+      "y": 402,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i50",
+          "kind": "card",
+          "label": "《黎明之前》",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · EP08 · 已看 36%",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g53",
+      "x": 1574,
+      "y": 402,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i52",
+          "kind": "card",
+          "label": "《雾中列车》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 18 话 · 已读完",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g55",
+      "x": 1376,
+      "y": 668,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i54",
+          "kind": "text",
+          "label": "共 12 部作品 · 4 部有更新",
+          "icon": null,
+          "variant": "filled",
+          "size": 15,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g57",
+      "x": 1360,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i56",
+          "kind": "navRail",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 1,
+          "size2": 800,
+          "actions": {
+            "tab:0": {
+              "to": "home_w",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history_w",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse_w",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more_w",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g59",
+      "x": 1440,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i58",
+          "kind": "topAppBar",
+          "label": "书架",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1200
+        }
+      ]
+    },
+    {
+      "id": "g64",
+      "x": 1472,
+      "y": 1064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i60",
+          "kind": "chip",
+          "label": "全部",
+          "icon": null,
+          "variant": "filled",
+          "checked": true
+        },
+        {
+          "id": "i61",
+          "kind": "chip",
+          "label": "漫画",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i62",
+          "kind": "chip",
+          "label": "小说",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i63",
+          "kind": "chip",
+          "label": "视频",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g66",
+      "x": 1472,
+      "y": 1112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i65",
+          "kind": "card",
+          "label": "《长夜余火》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 24 话 · 有更新",
+          "note": "封面卡片进入详情；长按可批量移出书架或归类到自定义分组。",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 272,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g68",
+      "x": 1760,
+      "y": 1112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i67",
+          "kind": "card",
+          "label": "《山海拾遗》",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说 · 3 卷 · 已读 62%",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 272,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g70",
+      "x": 2048,
+      "y": 1112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i69",
+          "kind": "card",
+          "label": "《黎明之前》",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · EP08 · 已看 36%",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 272,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g72",
+      "x": 2336,
+      "y": 1112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i71",
+          "kind": "card",
+          "label": "《雾中列车》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 18 话 · 已读完",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 272,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g74",
+      "x": 1472,
+      "y": 1468,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i73",
+          "kind": "text",
+          "label": "最近阅读",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g77",
+      "x": 1472,
+      "y": 1506,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i75",
+          "kind": "listItem",
+          "label": "《长夜余火》 第 12 话",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "继续阅读 · 昨天 22:14",
+          "action": {
+            "to": "reader_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i76",
+          "kind": "listItem",
+          "label": "《黎明之前》 EP06",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "继续播放 · 剩 18 分钟",
+          "action": {
+            "to": "player_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g79",
+      "x": 2720,
+      "y": 788,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i78",
+          "kind": "bottomNav",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 2,
+          "actions": {
+            "tab:0": {
+              "to": "home",
+              "transition": "fade"
+            },
+            "tab:1": {
+              "to": "library",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g81",
+      "x": 2720,
+      "y": 0,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i80",
+          "kind": "topAppBar",
+          "label": "历史",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "delete_sweep"
+        }
+      ]
+    },
+    {
+      "id": "g83",
+      "x": 2720,
+      "y": 88,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i82",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "全部"
+            },
+            {
+              "icon": "",
+              "label": "漫画"
+            },
+            {
+              "icon": "",
+              "label": "小说"
+            },
+            {
+              "icon": "",
+              "label": "视频"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g85",
+      "x": 2736,
+      "y": 152,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i84",
+          "kind": "text",
+          "label": "今天",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g89",
+      "x": 2736,
+      "y": 187,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i86",
+          "kind": "listItem",
+          "label": "《长夜余火》 第 12 话",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 昨天 22:14 · 已读 42%",
+          "note": "点击从上次阅读位置继续；历史按日期分组，可左滑删除单条或一键清空。",
+          "action": {
+            "to": "reader",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i87",
+          "kind": "listItem",
+          "label": "《黎明之前》 EP06",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · 20:08 · 已看 36%",
+          "action": {
+            "to": "player",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i88",
+          "kind": "listItem",
+          "label": "《山海拾遗》 第 3 卷",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说 · 08:30 · 已读 62%",
+          "action": {
+            "to": "reader",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g91",
+      "x": 2736,
+      "y": 419,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i90",
+          "kind": "text",
+          "label": "更早",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g94",
+      "x": 2736,
+      "y": 454,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i92",
+          "kind": "listItem",
+          "label": "《雾中列车》 第 07 话",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 11 月 2 日",
+          "action": {
+            "to": "reader",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i93",
+          "kind": "listItem",
+          "label": "《回声纪年》 EP02",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · 10 月 30 日",
+          "action": {
+            "to": "player",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g96",
+      "x": 2720,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i95",
+          "kind": "navRail",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 2,
+          "size2": 800,
+          "actions": {
+            "tab:0": {
+              "to": "home_w",
+              "transition": "fade"
+            },
+            "tab:1": {
+              "to": "library_w",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse_w",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more_w",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g98",
+      "x": 2800,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i97",
+          "kind": "topAppBar",
+          "label": "历史",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "delete_sweep",
+          "size": 1200
+        }
+      ]
+    },
+    {
+      "id": "g100",
+      "x": 2832,
+      "y": 1064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i99",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1136,
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "全部"
+            },
+            {
+              "icon": "",
+              "label": "漫画"
+            },
+            {
+              "icon": "",
+              "label": "小说"
+            },
+            {
+              "icon": "",
+              "label": "视频"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g102",
+      "x": 2832,
+      "y": 1128,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i101",
+          "kind": "text",
+          "label": "今天",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g106",
+      "x": 2832,
+      "y": 1163,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i103",
+          "kind": "listItem",
+          "label": "《长夜余火》 第 12 话",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 昨天 22:14 · 已读 42%",
+          "note": "点击从上次阅读位置继续；历史按日期分组，可左滑删除单条或一键清空。",
+          "action": {
+            "to": "reader_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i104",
+          "kind": "listItem",
+          "label": "《黎明之前》 EP06",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · 20:08 · 已看 36%",
+          "action": {
+            "to": "player_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i105",
+          "kind": "listItem",
+          "label": "《山海拾遗》 第 3 卷",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说 · 08:30 · 已读 62%",
+          "action": {
+            "to": "reader_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g108",
+      "x": 2832,
+      "y": 1395,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i107",
+          "kind": "text",
+          "label": "更早",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g111",
+      "x": 2832,
+      "y": 1430,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i109",
+          "kind": "listItem",
+          "label": "《雾中列车》 第 07 话",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 11 月 2 日",
+          "action": {
+            "to": "reader_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i110",
+          "kind": "listItem",
+          "label": "《回声纪年》 EP02",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频 · 10 月 30 日",
+          "action": {
+            "to": "player_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g113",
+      "x": 4080,
+      "y": 788,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i112",
+          "kind": "bottomNav",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 3,
+          "actions": {
+            "tab:0": {
+              "to": "home",
+              "transition": "fade"
+            },
+            "tab:1": {
+              "to": "library",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g115",
+      "x": 4080,
+      "y": 0,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i114",
+          "kind": "topAppBar",
+          "label": "浏览",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search"
+        }
+      ]
+    },
+    {
+      "id": "g117",
+      "x": 4080,
+      "y": 88,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i116",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "站点"
+            },
+            {
+              "icon": "",
+              "label": "数据源"
+            },
+            {
+              "icon": "",
+              "label": "插件订阅"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g119",
+      "x": 4096,
+      "y": 152,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i118",
+          "kind": "searchBar",
+          "label": "搜索站点、数据源与插件",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search"
+        }
+      ]
+    },
+    {
+      "id": "g121",
+      "x": 4096,
+      "y": 224,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i120",
+          "kind": "text",
+          "label": "已订阅数据源",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g125",
+      "x": 4096,
+      "y": 259,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i122",
+          "kind": "listItem",
+          "label": "漫岛",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "漫画 · 12,480 部作品 · 已订阅",
+          "note": "进入站点浏览，按最新、热门与分类查找作品；数据源由插件提供。",
+          "action": {
+            "to": "site",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i123",
+          "kind": "listItem",
+          "label": "轻文阁",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "小说 · 8,216 部作品 · 已订阅",
+          "action": {
+            "to": "site",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i124",
+          "kind": "listItem",
+          "label": "影库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "视频 · 3,042 部作品 · 已订阅",
+          "action": {
+            "to": "site",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g127",
+      "x": 4096,
+      "y": 491,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i126",
+          "kind": "text",
+          "label": "插件订阅",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g130",
+      "x": 4096,
+      "y": 526,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i128",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 · 3 个数据源可用",
+          "action": {
+            "to": "extensions",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i129",
+          "kind": "listItem",
+          "label": "管理数据源与插件",
+          "icon": "tune",
+          "variant": "filled",
+          "supporting": "启用、停用、检查更新",
+          "note": "集中管理已订阅的数据源开关与插件版本，可跳转到插件商店安装新来源。",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g132",
+      "x": 4080,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i131",
+          "kind": "navRail",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 3,
+          "size2": 800,
+          "actions": {
+            "tab:0": {
+              "to": "home_w",
+              "transition": "fade"
+            },
+            "tab:1": {
+              "to": "library_w",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history_w",
+              "transition": "fade"
+            },
+            "tab:4": {
+              "to": "more_w",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g134",
+      "x": 4160,
+      "y": 1000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i133",
+          "kind": "topAppBar",
+          "label": "浏览",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1200
+        }
+      ]
+    },
+    {
+      "id": "g136",
+      "x": 4192,
+      "y": 1064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i135",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1136,
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "站点"
+            },
+            {
+              "icon": "",
+              "label": "数据源"
+            },
+            {
+              "icon": "",
+              "label": "插件订阅"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g138",
+      "x": 4192,
+      "y": 1128,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i137",
+          "kind": "searchBar",
+          "label": "搜索站点、数据源与插件",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g140",
+      "x": 4192,
+      "y": 1200,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i139",
+          "kind": "text",
+          "label": "已订阅数据源",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g144",
+      "x": 4192,
+      "y": 1235,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i141",
+          "kind": "listItem",
+          "label": "漫岛",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "漫画 · 12,480 部作品 · 已订阅",
+          "note": "进入站点浏览，按最新、热门与分类查找作品；数据源由插件提供。",
+          "action": {
+            "to": "site_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i142",
+          "kind": "listItem",
+          "label": "轻文阁",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "小说 · 8,216 部作品 · 已订阅",
+          "action": {
+            "to": "site_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i143",
+          "kind": "listItem",
+          "label": "影库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "视频 · 3,042 部作品 · 已订阅",
+          "action": {
+            "to": "site_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g146",
+      "x": 4192,
+      "y": 1467,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i145",
+          "kind": "text",
+          "label": "插件订阅",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g149",
+      "x": 4192,
+      "y": 1502,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i147",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 · 3 个数据源可用",
+          "action": {
+            "to": "extensions_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i148",
+          "kind": "listItem",
+          "label": "管理数据源与插件",
+          "icon": "tune",
+          "variant": "filled",
+          "supporting": "启用、停用、检查更新",
+          "note": "集中管理已订阅的数据源开关与插件版本，可跳转到插件商店安装新来源。",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g151",
+      "x": 0,
+      "y": 2788,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i150",
+          "kind": "bottomNav",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 4,
+          "actions": {
+            "tab:0": {
+              "to": "home",
+              "transition": "fade"
+            },
+            "tab:1": {
+              "to": "library",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g153",
+      "x": 0,
+      "y": 2000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i152",
+          "kind": "topAppBar",
+          "label": "更多",
+          "icon": null,
+          "variant": "filled"
+        }
+      ]
+    },
+    {
+      "id": "g155",
+      "x": 16,
+      "y": 2088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i154",
+          "kind": "text",
+          "label": "内容管理",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g159",
+      "x": 16,
+      "y": 2123,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i156",
+          "kind": "listItem",
+          "label": "下载",
+          "icon": "download",
+          "variant": "filled",
+          "supporting": "已下载 28 章 / 3 集",
+          "action": {
+            "to": "downloads",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i157",
+          "kind": "listItem",
+          "label": "分类",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "5 个自定义分类",
+          "action": {
+            "to": "categories",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i158",
+          "kind": "listItem",
+          "label": "统计",
+          "icon": "bar_chart",
+          "variant": "filled",
+          "supporting": "本月 42 小时 18 分",
+          "action": {
+            "to": "statistics",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g161",
+      "x": 16,
+      "y": 2355,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i160",
+          "kind": "text",
+          "label": "扩展与系统",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g166",
+      "x": 16,
+      "y": 2390,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i162",
+          "kind": "listItem",
+          "label": "插件商店",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "12 个可用插件",
+          "action": {
+            "to": "extensions",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i163",
+          "kind": "listItem",
+          "label": "设置",
+          "icon": "settings",
+          "variant": "filled",
+          "supporting": "外观、阅读、播放与通知",
+          "action": {
+            "to": "settings",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i164",
+          "kind": "listItem",
+          "label": "数据与存储",
+          "icon": "storage",
+          "variant": "filled",
+          "supporting": "已用 2.4 GB",
+          "action": {
+            "to": "storage",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i165",
+          "kind": "listItem",
+          "label": "关于",
+          "icon": "info",
+          "variant": "filled",
+          "supporting": "版本 0.1.0 · MIT",
+          "action": {
+            "to": "about",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g168",
+      "x": 0,
+      "y": 3000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i167",
+          "kind": "navRail",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "home",
+              "label": "首页"
+            },
+            {
+              "icon": "menu_book",
+              "label": "书架"
+            },
+            {
+              "icon": "history",
+              "label": "历史"
+            },
+            {
+              "icon": "explore",
+              "label": "浏览"
+            },
+            {
+              "icon": "more_horiz",
+              "label": "更多"
+            }
+          ],
+          "selected": 4,
+          "size2": 800,
+          "actions": {
+            "tab:0": {
+              "to": "home_w",
+              "transition": "fade"
+            },
+            "tab:1": {
+              "to": "library_w",
+              "transition": "fade"
+            },
+            "tab:2": {
+              "to": "history_w",
+              "transition": "fade"
+            },
+            "tab:3": {
+              "to": "browse_w",
+              "transition": "fade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g170",
+      "x": 80,
+      "y": 3000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i169",
+          "kind": "topAppBar",
+          "label": "更多",
+          "icon": null,
+          "variant": "filled",
+          "size": 1200
+        }
+      ]
+    },
+    {
+      "id": "g172",
+      "x": 112,
+      "y": 3064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i171",
+          "kind": "text",
+          "label": "内容管理",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g176",
+      "x": 112,
+      "y": 3099,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i173",
+          "kind": "listItem",
+          "label": "下载",
+          "icon": "download",
+          "variant": "filled",
+          "supporting": "已下载 28 章 / 3 集",
+          "action": {
+            "to": "downloads_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i174",
+          "kind": "listItem",
+          "label": "分类",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "5 个自定义分类",
+          "action": {
+            "to": "categories_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i175",
+          "kind": "listItem",
+          "label": "统计",
+          "icon": "bar_chart",
+          "variant": "filled",
+          "supporting": "本月 42 小时 18 分",
+          "action": {
+            "to": "statistics_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g178",
+      "x": 112,
+      "y": 3331,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i177",
+          "kind": "text",
+          "label": "扩展与系统",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g183",
+      "x": 112,
+      "y": 3366,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i179",
+          "kind": "listItem",
+          "label": "插件商店",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "12 个可用插件",
+          "action": {
+            "to": "extensions_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i180",
+          "kind": "listItem",
+          "label": "设置",
+          "icon": "settings",
+          "variant": "filled",
+          "supporting": "外观、阅读、播放与通知",
+          "action": {
+            "to": "settings_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i181",
+          "kind": "listItem",
+          "label": "数据与存储",
+          "icon": "storage",
+          "variant": "filled",
+          "supporting": "已用 2.4 GB",
+          "action": {
+            "to": "storage_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i182",
+          "kind": "listItem",
+          "label": "关于",
+          "icon": "info",
+          "variant": "filled",
+          "supporting": "版本 0.1.0 · MIT",
+          "action": {
+            "to": "about_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        }
+      ]
+    },
+    {
+      "id": "g185",
+      "x": 1360,
+      "y": 2000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i184",
+          "kind": "topAppBar",
+          "label": "作品详情",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "more_vert",
+          "note": "宽屏下不显示侧边导航栏，让封面与作品信息占据整幅画面；点击返回回到来源页面。",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g187",
+      "x": 1376,
+      "y": 2104,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i186",
+          "kind": "image",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 180,
+          "size2": 250,
+          "note": "作品封面，界面强调色从封面主色动态提取，切换作品时随封面过渡。"
+        }
+      ]
+    },
+    {
+      "id": "g189",
+      "x": 1572,
+      "y": 2112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i188",
+          "kind": "text",
+          "label": "《长夜余火》",
+          "icon": null,
+          "variant": "filled",
+          "size": 22,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g191",
+      "x": 1572,
+      "y": 2152,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i190",
+          "kind": "text",
+          "label": "漫画 · 连载中",
+          "icon": null,
+          "variant": "filled",
+          "size": 14,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g193",
+      "x": 1572,
+      "y": 2192,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i192",
+          "kind": "chip",
+          "label": "已追更",
+          "icon": "notifications",
+          "variant": "filled",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "g197",
+      "x": 1376,
+      "y": 2380,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i194",
+          "kind": "chip",
+          "label": "奇幻",
+          "icon": null,
+          "variant": "filled"
+        },
+        {
+          "id": "i195",
+          "kind": "chip",
+          "label": "悬疑",
+          "icon": null,
+          "variant": "filled"
+        },
+        {
+          "id": "i196",
+          "kind": "chip",
+          "label": "每周更新",
+          "icon": null,
+          "variant": "filled"
+        }
+      ]
+    },
+    {
+      "id": "g199",
+      "x": 1376,
+      "y": 2428,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i198",
+          "kind": "text",
+          "label": "简介",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g201",
+      "x": 1376,
+      "y": 2464,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i200",
+          "kind": "text",
+          "label": "永夜之城里，没有人记得上一次日出。",
+          "icon": null,
+          "variant": "filled",
+          "size": 14,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g204",
+      "x": 1376,
+      "y": 2512,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i202",
+          "kind": "button",
+          "label": "开始阅读",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "size": 182,
+          "action": {
+            "to": "reader",
+            "transition": "slideUp"
+          },
+          "note": "从上次阅读进度打开阅读器；漫画为竖向卷轴，小说为可调字号的分页文本。"
+        },
+        {
+          "id": "i203",
+          "kind": "button",
+          "label": "加入书架",
+          "icon": "bookmark_add",
+          "variant": "tonal",
+          "size": 182,
+          "note": "收藏作品并订阅更新；已收藏时按钮切换为“已在书架”。"
+        }
+      ]
+    },
+    {
+      "id": "g206",
+      "x": 1376,
+      "y": 2584,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i205",
+          "kind": "text",
+          "label": "目录 · 共 24 话",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g210",
+      "x": 1376,
+      "y": 2624,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i207",
+          "kind": "listItem",
+          "label": "第 12 话 · 回声",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "18 页 · 已读 42%",
+          "action": {
+            "to": "reader",
+            "transition": "slideUp"
+          }
+        },
+        {
+          "id": "i208",
+          "kind": "listItem",
+          "label": "第 13 话 · 空楼",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "21 页 · 2 天前更新",
+          "action": {
+            "to": "reader",
+            "transition": "slideUp"
+          }
+        },
+        {
+          "id": "i209",
+          "kind": "listItem",
+          "label": "第 14 话 · 钟声",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "19 页 · 最新",
+          "action": {
+            "to": "reader",
+            "transition": "slideUp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g212",
+      "x": 1360,
+      "y": 3000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i211",
+          "kind": "topAppBar",
+          "label": "作品详情",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "more_vert",
+          "size": 1280,
+          "note": "宽屏下不显示侧边导航栏，让封面与作品信息占据整幅画面；点击返回回到来源页面。",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g214",
+      "x": 1392,
+      "y": 3088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i213",
+          "kind": "image",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 280,
+          "size2": 392,
+          "note": "作品封面，界面强调色从封面主色动态提取，切换作品时随封面过渡。"
+        }
+      ]
+    },
+    {
+      "id": "g216",
+      "x": 1704,
+      "y": 3112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i215",
+          "kind": "text",
+          "label": "《长夜余火》",
+          "icon": null,
+          "variant": "filled",
+          "size": 32,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g218",
+      "x": 1704,
+      "y": 3164,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i217",
+          "kind": "text",
+          "label": "漫画 · 连载中 · 每周五更新",
+          "icon": null,
+          "variant": "filled",
+          "size": 16,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g222",
+      "x": 1704,
+      "y": 3204,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i219",
+          "kind": "chip",
+          "label": "奇幻",
+          "icon": null,
+          "variant": "filled"
+        },
+        {
+          "id": "i220",
+          "kind": "chip",
+          "label": "悬疑",
+          "icon": null,
+          "variant": "filled"
+        },
+        {
+          "id": "i221",
+          "kind": "chip",
+          "label": "已追更",
+          "icon": "notifications",
+          "variant": "filled",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "g224",
+      "x": 1704,
+      "y": 3256,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i223",
+          "kind": "text",
+          "label": "简介",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g226",
+      "x": 1704,
+      "y": 3296,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i225",
+          "kind": "text",
+          "label": "永夜之城里，没有人记得上一次日出是什么时候。",
+          "icon": null,
+          "variant": "filled",
+          "size": 15,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g229",
+      "x": 1704,
+      "y": 3352,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i227",
+          "kind": "button",
+          "label": "开始阅读",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "size": 240,
+          "action": {
+            "to": "reader_w",
+            "transition": "slideUp"
+          },
+          "note": "从上次阅读进度打开阅读器；漫画为竖向卷轴，小说为可调字号的分页文本。"
+        },
+        {
+          "id": "i228",
+          "kind": "button",
+          "label": "加入书架",
+          "icon": "bookmark_add",
+          "variant": "tonal",
+          "size": 240,
+          "note": "收藏作品并订阅更新；已收藏时按钮切换为“已在书架”。"
+        }
+      ]
+    },
+    {
+      "id": "g231",
+      "x": 1392,
+      "y": 3512,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i230",
+          "kind": "text",
+          "label": "目录 · 共 24 话",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g235",
+      "x": 1392,
+      "y": 3552,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i232",
+          "kind": "listItem",
+          "label": "第 12 话 · 回声",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "18 页 · 已读 42%",
+          "size": 1216,
+          "action": {
+            "to": "reader_w",
+            "transition": "slideUp"
+          }
+        },
+        {
+          "id": "i233",
+          "kind": "listItem",
+          "label": "第 13 话 · 空楼",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "21 页 · 2 天前更新",
+          "size": 1216,
+          "action": {
+            "to": "reader_w",
+            "transition": "slideUp"
+          }
+        },
+        {
+          "id": "i234",
+          "kind": "listItem",
+          "label": "第 14 话 · 钟声",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "19 页 · 最新",
+          "size": 1216,
+          "action": {
+            "to": "reader_w",
+            "transition": "slideUp"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g237",
+      "x": 2720,
+      "y": 2000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i236",
+          "kind": "topAppBar",
+          "label": "第 12 话 · 长夜余火",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "note": "点击正文区域可隐藏/显示上下工具栏，进入全沉浸阅读；宽屏隐藏导航并把正文限制在 720dp 居中。",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g239",
+      "x": 2736,
+      "y": 2112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i238",
+          "kind": "box",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 380,
+          "size2": 520,
+          "fill": "surfaceContainerLow",
+          "note": "正文区域：小说为可调字号/行距/背景的分页文本，漫画为竖向连续卷轴；左右滑动翻页或翻话，进度实时保存。"
+        }
+      ]
+    },
+    {
+      "id": "g241",
+      "x": 2752,
+      "y": 2144,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i240",
+          "kind": "text",
+          "label": "第十二话 · 永夜之城",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g243",
+      "x": 2752,
+      "y": 2192,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i242",
+          "kind": "text",
+          "label": "夜色像潮水一样漫过街道。",
+          "icon": null,
+          "variant": "filled",
+          "size": 15,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g245",
+      "x": 2752,
+      "y": 2224,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i244",
+          "kind": "text",
+          "label": "他把灯熄灭，等第三声钟响。",
+          "icon": null,
+          "variant": "filled",
+          "size": 15,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g247",
+      "x": 2752,
+      "y": 2256,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i246",
+          "kind": "text",
+          "label": "窗外，有人正沿着屋檐往北走。",
+          "icon": null,
+          "variant": "filled",
+          "size": 15,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g249",
+      "x": 2736,
+      "y": 2664,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i248",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 380,
+          "value": 42,
+          "wavy": true,
+          "note": "阅读进度，随章节滚动推进；拖动可跳转章节内位置。"
+        }
+      ]
+    },
+    {
+      "id": "g251",
+      "x": 2816,
+      "y": 2724,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i250",
+          "kind": "toolbar",
+          "label": "",
+          "icon": null,
+          "variant": "tonal",
+          "tabs": [
+            {
+              "icon": "skip_previous",
+              "label": ""
+            },
+            {
+              "icon": "list",
+              "label": ""
+            },
+            {
+              "icon": "text_fields",
+              "label": ""
+            },
+            {
+              "icon": "skip_next",
+              "label": ""
+            }
+          ],
+          "note": "上一话 / 章节目录 / 阅读设置（字号、行距、翻页方向、主题）/ 下一话。"
+        }
+      ]
+    },
+    {
+      "id": "g253",
+      "x": 2720,
+      "y": 3000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i252",
+          "kind": "topAppBar",
+          "label": "第 12 话 · 长夜余火",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "size": 1280,
+          "note": "点击正文区域可隐藏/显示上下工具栏，进入全沉浸阅读；宽屏隐藏导航并把正文限制在 720dp 居中。",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g255",
+      "x": 3000,
+      "y": 3088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i254",
+          "kind": "box",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 720,
+          "size2": 520,
+          "fill": "surfaceContainerLow",
+          "note": "正文区域：小说为可调字号/行距/背景的分页文本，漫画为竖向连续卷轴；左右滑动翻页或翻话，进度实时保存。"
+        }
+      ]
+    },
+    {
+      "id": "g257",
+      "x": 3032,
+      "y": 3128,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i256",
+          "kind": "text",
+          "label": "第十二话 · 永夜之城",
+          "icon": null,
+          "variant": "filled",
+          "size": 24,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g259",
+      "x": 3032,
+      "y": 3184,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i258",
+          "kind": "text",
+          "label": "夜色像潮水一样漫过街道。",
+          "icon": null,
+          "variant": "filled",
+          "size": 16,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g261",
+      "x": 3032,
+      "y": 3220,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i260",
+          "kind": "text",
+          "label": "他把灯熄灭，等第三声钟响。",
+          "icon": null,
+          "variant": "filled",
+          "size": 16,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g263",
+      "x": 3032,
+      "y": 3256,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i262",
+          "kind": "text",
+          "label": "窗外，有人正沿着屋檐往北走。",
+          "icon": null,
+          "variant": "filled",
+          "size": 16,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g265",
+      "x": 3000,
+      "y": 3632,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i264",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 720,
+          "value": 42,
+          "wavy": true,
+          "note": "阅读进度，随章节滚动推进；拖动可跳转章节内位置。"
+        }
+      ]
+    },
+    {
+      "id": "g267",
+      "x": 3280,
+      "y": 3688,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i266",
+          "kind": "toolbar",
+          "label": "",
+          "icon": null,
+          "variant": "tonal",
+          "tabs": [
+            {
+              "icon": "skip_previous",
+              "label": ""
+            },
+            {
+              "icon": "list",
+              "label": ""
+            },
+            {
+              "icon": "text_fields",
+              "label": ""
+            },
+            {
+              "icon": "skip_next",
+              "label": ""
+            }
+          ],
+          "note": "上一话 / 章节目录 / 阅读设置（字号、行距、翻页方向、主题）/ 下一话。"
+        }
+      ]
+    },
+    {
+      "id": "g269",
+      "x": 4080,
+      "y": 2000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i268",
+          "kind": "topAppBar",
+          "label": "黎明之前 · EP06",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g271",
+      "x": 4096,
+      "y": 2104,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i270",
+          "kind": "box",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 380,
+          "size2": 214,
+          "fill": "inverseSurface",
+          "note": "视频画面区；支持全屏、倍速、投屏与弹幕开关，横屏时铺满屏幕。"
+        }
+      ]
+    },
+    {
+      "id": "g273",
+      "x": 4096,
+      "y": 2330,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i272",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 380,
+          "value": 36,
+          "wavy": true,
+          "note": "播放进度条，缓冲进度以浅色显示；拖动定位并记忆续播点。"
+        }
+      ]
+    },
+    {
+      "id": "g275",
+      "x": 4176,
+      "y": 2366,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i274",
+          "kind": "toolbar",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "skip_previous",
+              "label": ""
+            },
+            {
+              "icon": "play_arrow",
+              "label": ""
+            },
+            {
+              "icon": "skip_next",
+              "label": ""
+            },
+            {
+              "icon": "speed",
+              "label": ""
+            },
+            {
+              "icon": "fullscreen",
+              "label": ""
+            }
+          ],
+          "note": "上一集 / 播放暂停 / 下一集 / 倍速 / 全屏。"
+        }
+      ]
+    },
+    {
+      "id": "g277",
+      "x": 4096,
+      "y": 2440,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i276",
+          "kind": "text",
+          "label": "选集",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g281",
+      "x": 4096,
+      "y": 2480,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i278",
+          "kind": "listItem",
+          "label": "EP06 · 回声",
+          "icon": "play_circle",
+          "variant": "filled",
+          "supporting": "32:18 · 正在播放"
+        },
+        {
+          "id": "i279",
+          "kind": "listItem",
+          "label": "EP07 · 空白来信",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "29:44"
+        },
+        {
+          "id": "i280",
+          "kind": "listItem",
+          "label": "EP08 · 天亮之前",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "31:02 · 最新"
+        }
+      ]
+    },
+    {
+      "id": "g283",
+      "x": 4096,
+      "y": 2712,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i282",
+          "kind": "text",
+          "label": "简介",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g285",
+      "x": 4096,
+      "y": 2748,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i284",
+          "kind": "text",
+          "label": "天亮之前，最后一台放映机还在转动。",
+          "icon": null,
+          "variant": "filled",
+          "size": 14,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g287",
+      "x": 4080,
+      "y": 3000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i286",
+          "kind": "topAppBar",
+          "label": "黎明之前 · EP06",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g289",
+      "x": 4144,
+      "y": 3088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i288",
+          "kind": "box",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 752,
+          "size2": 423,
+          "fill": "inverseSurface",
+          "note": "视频画面区；支持全屏、倍速、投屏与弹幕开关，横屏时铺满窗口。"
+        }
+      ]
+    },
+    {
+      "id": "g291",
+      "x": 4144,
+      "y": 3527,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i290",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 752,
+          "value": 36,
+          "wavy": true,
+          "note": "播放进度条，缓冲进度以浅色显示；拖动定位并记忆续播点。"
+        }
+      ]
+    },
+    {
+      "id": "g293",
+      "x": 4416,
+      "y": 3560,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i292",
+          "kind": "toolbar",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "tabs": [
+            {
+              "icon": "skip_previous",
+              "label": ""
+            },
+            {
+              "icon": "play_arrow",
+              "label": ""
+            },
+            {
+              "icon": "skip_next",
+              "label": ""
+            },
+            {
+              "icon": "speed",
+              "label": ""
+            },
+            {
+              "icon": "fullscreen",
+              "label": ""
+            }
+          ],
+          "note": "上一集 / 播放暂停 / 下一集 / 倍速 / 全屏。"
+        }
+      ]
+    },
+    {
+      "id": "g295",
+      "x": 4928,
+      "y": 3096,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i294",
+          "kind": "text",
+          "label": "选集",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g299",
+      "x": 4928,
+      "y": 3136,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i296",
+          "kind": "listItem",
+          "label": "EP06 · 回声",
+          "icon": "play_circle",
+          "variant": "filled",
+          "supporting": "32:18 · 正在播放",
+          "size": 368
+        },
+        {
+          "id": "i297",
+          "kind": "listItem",
+          "label": "EP07 · 空白来信",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "29:44",
+          "size": 368
+        },
+        {
+          "id": "i298",
+          "kind": "listItem",
+          "label": "EP08 · 天亮之前",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "31:02 · 最新",
+          "size": 368
+        }
+      ]
+    },
+    {
+      "id": "g301",
+      "x": 4144,
+      "y": 3632,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i300",
+          "kind": "text",
+          "label": "简介",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g303",
+      "x": 4144,
+      "y": 3672,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i302",
+          "kind": "text",
+          "label": "天亮之前，城市里最后一台放映机还在转动。",
+          "icon": null,
+          "variant": "filled",
+          "size": 15,
+          "bold": false
+        }
+      ]
+    },
+    {
+      "id": "g305",
+      "x": 0,
+      "y": 4000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i304",
+          "kind": "topAppBar",
+          "label": "数据源",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "add",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g307",
+      "x": 0,
+      "y": 4088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i306",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "已订阅"
+            },
+            {
+              "icon": "",
+              "label": "全部来源"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g309",
+      "x": 16,
+      "y": 4152,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i308",
+          "kind": "text",
+          "label": "已订阅",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g313",
+      "x": 16,
+      "y": 4187,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i310",
+          "kind": "listItem",
+          "label": "漫岛",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "漫画 · 12,480 部作品",
+          "switch": true,
+          "checked": true,
+          "note": "开关控制该来源是否参与全局搜索与追更检查。"
+        },
+        {
+          "id": "i311",
+          "kind": "listItem",
+          "label": "轻文阁",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "小说 · 8,216 部作品",
+          "switch": true,
+          "checked": true
+        },
+        {
+          "id": "i312",
+          "kind": "listItem",
+          "label": "影库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "视频 · 3,042 部作品",
+          "switch": true,
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g315",
+      "x": 16,
+      "y": 4419,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i314",
+          "kind": "text",
+          "label": "可用来源",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g318",
+      "x": 16,
+      "y": 4454,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i316",
+          "kind": "listItem",
+          "label": "插件提供的来源",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "安装插件后可在此启用",
+          "action": {
+            "to": "extensions",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i317",
+          "kind": "listItem",
+          "label": "检查来源更新",
+          "icon": "update",
+          "variant": "filled",
+          "supporting": "上次检查 2 小时前",
+          "action": {
+            "to": "extensions",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g320",
+      "x": 16,
+      "y": 4614,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i319",
+          "kind": "button",
+          "label": "添加数据源",
+          "icon": "add",
+          "variant": "tonal",
+          "note": "跳转到插件商店安装来源插件，安装后回到此处启用。",
+          "action": {
+            "to": "extensions",
+            "transition": "slide"
+          },
+          "size": 380
+        }
+      ]
+    },
+    {
+      "id": "g322",
+      "x": 0,
+      "y": 5000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i321",
+          "kind": "topAppBar",
+          "label": "数据源",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "add",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g324",
+      "x": 32,
+      "y": 5064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i323",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1216,
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "已订阅"
+            },
+            {
+              "icon": "",
+              "label": "全部来源"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g326",
+      "x": 32,
+      "y": 5128,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i325",
+          "kind": "text",
+          "label": "已订阅",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g330",
+      "x": 32,
+      "y": 5163,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i327",
+          "kind": "listItem",
+          "label": "漫岛",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "漫画 · 12,480 部作品",
+          "switch": true,
+          "checked": true,
+          "note": "开关控制该来源是否参与全局搜索与追更检查。",
+          "size": 1216
+        },
+        {
+          "id": "i328",
+          "kind": "listItem",
+          "label": "轻文阁",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "小说 · 8,216 部作品",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        },
+        {
+          "id": "i329",
+          "kind": "listItem",
+          "label": "影库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "视频 · 3,042 部作品",
+          "switch": true,
+          "checked": false,
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g332",
+      "x": 32,
+      "y": 5395,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i331",
+          "kind": "text",
+          "label": "可用来源",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g335",
+      "x": 32,
+      "y": 5430,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i333",
+          "kind": "listItem",
+          "label": "插件提供的来源",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "安装插件后可在此启用",
+          "action": {
+            "to": "extensions_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i334",
+          "kind": "listItem",
+          "label": "检查来源更新",
+          "icon": "update",
+          "variant": "filled",
+          "supporting": "上次检查 2 小时前",
+          "action": {
+            "to": "extensions_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g337",
+      "x": 32,
+      "y": 5590,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i336",
+          "kind": "button",
+          "label": "添加数据源",
+          "icon": "add",
+          "variant": "tonal",
+          "note": "跳转到插件商店安装来源插件，安装后回到此处启用。",
+          "action": {
+            "to": "extensions_w",
+            "transition": "slide"
+          },
+          "size": 240
+        }
+      ]
+    },
+    {
+      "id": "g339",
+      "x": 1360,
+      "y": 4000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i338",
+          "kind": "topAppBar",
+          "label": "漫岛",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "search",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g341",
+      "x": 1376,
+      "y": 4088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i340",
+          "kind": "searchBar",
+          "label": "搜索站内作品",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search"
+        }
+      ]
+    },
+    {
+      "id": "g348",
+      "x": 1376,
+      "y": 4160,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i342",
+          "kind": "chip",
+          "label": "全部",
+          "icon": null,
+          "variant": "filled",
+          "checked": true
+        },
+        {
+          "id": "i343",
+          "kind": "chip",
+          "label": "漫画",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i344",
+          "kind": "chip",
+          "label": "小说",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i345",
+          "kind": "chip",
+          "label": "视频",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g349",
+      "x": 1376,
+      "y": 4200,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i346",
+          "kind": "chip",
+          "label": "最新",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i347",
+          "kind": "chip",
+          "label": "热门",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g351",
+      "x": 1376,
+      "y": 4248,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i350",
+          "kind": "card",
+          "label": "《长夜余火》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 连载中",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g353",
+      "x": 1574,
+      "y": 4248,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i352",
+          "kind": "card",
+          "label": "《雾中列车》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 完结",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g355",
+      "x": 1376,
+      "y": 4514,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i354",
+          "kind": "card",
+          "label": "《北街七号》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 连载中",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g357",
+      "x": 1574,
+      "y": 4514,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i356",
+          "kind": "card",
+          "label": "《白昼尽头》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 完结",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g359",
+      "x": 1360,
+      "y": 5000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i358",
+          "kind": "topAppBar",
+          "label": "漫岛",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g361",
+      "x": 1392,
+      "y": 5064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i360",
+          "kind": "searchBar",
+          "label": "搜索站内作品",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g368",
+      "x": 1392,
+      "y": 5136,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i362",
+          "kind": "chip",
+          "label": "全部",
+          "icon": null,
+          "variant": "filled",
+          "checked": true
+        },
+        {
+          "id": "i363",
+          "kind": "chip",
+          "label": "漫画",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i364",
+          "kind": "chip",
+          "label": "小说",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i365",
+          "kind": "chip",
+          "label": "视频",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i366",
+          "kind": "chip",
+          "label": "最新",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        },
+        {
+          "id": "i367",
+          "kind": "chip",
+          "label": "热门",
+          "icon": null,
+          "variant": "filled",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g370",
+      "x": 1392,
+      "y": 5184,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i369",
+          "kind": "card",
+          "label": "《长夜余火》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 连载中",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 292,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g372",
+      "x": 1700,
+      "y": 5184,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i371",
+          "kind": "card",
+          "label": "《雾中列车》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 完结",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 292,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g374",
+      "x": 2008,
+      "y": 5184,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i373",
+          "kind": "card",
+          "label": "《北街七号》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 连载中",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 292,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g376",
+      "x": 2316,
+      "y": 5184,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i375",
+          "kind": "card",
+          "label": "《白昼尽头》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 完结",
+          "action": {
+            "to": "detail_w",
+            "transition": "slide"
+          },
+          "size": 292,
+          "size2": 340
+        }
+      ]
+    },
+    {
+      "id": "g378",
+      "x": 2720,
+      "y": 4000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i377",
+          "kind": "topAppBar",
+          "label": "下载",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g380",
+      "x": 2720,
+      "y": 4088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i379",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "已完成"
+            },
+            {
+              "icon": "",
+              "label": "下载中"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g385",
+      "x": 2736,
+      "y": 4152,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i381",
+          "kind": "listItem",
+          "label": "《长夜余火》 第 12 话",
+          "icon": "download_done",
+          "variant": "filled",
+          "supporting": "18 页 · 42 MB · 已完成"
+        },
+        {
+          "id": "i382",
+          "kind": "listItem",
+          "label": "《黎明之前》 EP06",
+          "icon": "download_done",
+          "variant": "filled",
+          "supporting": "720p · 286 MB · 已完成"
+        },
+        {
+          "id": "i383",
+          "kind": "listItem",
+          "label": "《山海拾遗》 第 3 卷",
+          "icon": "download",
+          "variant": "filled",
+          "supporting": "12 章 · 下载中 68%"
+        },
+        {
+          "id": "i384",
+          "kind": "listItem",
+          "label": "《雾中列车》 第 08 话",
+          "icon": "download",
+          "variant": "filled",
+          "supporting": "21 页 · 等待中"
+        }
+      ]
+    },
+    {
+      "id": "g387",
+      "x": 2736,
+      "y": 4456,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i386",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "value": 30,
+          "wavy": true,
+          "note": "本机存储占用 2.4 GB / 8 GB，接近上限时按最久未读自动清理。"
+        }
+      ]
+    },
+    {
+      "id": "g389",
+      "x": 2736,
+      "y": 4496,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i388",
+          "kind": "text",
+          "label": "批量操作",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g392",
+      "x": 2736,
+      "y": 4531,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i390",
+          "kind": "button",
+          "label": "全部暂停",
+          "icon": "pause",
+          "variant": "tonal",
+          "size": 182
+        },
+        {
+          "id": "i391",
+          "kind": "button",
+          "label": "清理已完成",
+          "icon": "cleaning_services",
+          "variant": "outlined",
+          "size": 182
+        }
+      ]
+    },
+    {
+      "id": "g394",
+      "x": 2720,
+      "y": 5000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i393",
+          "kind": "topAppBar",
+          "label": "下载",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g396",
+      "x": 2752,
+      "y": 5064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i395",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1216,
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "已完成"
+            },
+            {
+              "icon": "",
+              "label": "下载中"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g401",
+      "x": 2752,
+      "y": 5128,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i397",
+          "kind": "listItem",
+          "label": "《长夜余火》 第 12 话",
+          "icon": "download_done",
+          "variant": "filled",
+          "supporting": "18 页 · 42 MB · 已完成",
+          "size": 1216
+        },
+        {
+          "id": "i398",
+          "kind": "listItem",
+          "label": "《黎明之前》 EP06",
+          "icon": "download_done",
+          "variant": "filled",
+          "supporting": "720p · 286 MB · 已完成",
+          "size": 1216
+        },
+        {
+          "id": "i399",
+          "kind": "listItem",
+          "label": "《山海拾遗》 第 3 卷",
+          "icon": "download",
+          "variant": "filled",
+          "supporting": "12 章 · 下载中 68%",
+          "size": 1216
+        },
+        {
+          "id": "i400",
+          "kind": "listItem",
+          "label": "《雾中列车》 第 08 话",
+          "icon": "download",
+          "variant": "filled",
+          "supporting": "21 页 · 等待中",
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g403",
+      "x": 2752,
+      "y": 5432,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i402",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1216,
+          "value": 30,
+          "wavy": true,
+          "note": "本机存储占用 2.4 GB / 8 GB，接近上限时按最久未读自动清理。"
+        }
+      ]
+    },
+    {
+      "id": "g405",
+      "x": 2752,
+      "y": 5472,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i404",
+          "kind": "text",
+          "label": "批量操作",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g408",
+      "x": 2752,
+      "y": 5507,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i406",
+          "kind": "button",
+          "label": "全部暂停",
+          "icon": "pause",
+          "variant": "tonal",
+          "size": 240
+        },
+        {
+          "id": "i407",
+          "kind": "button",
+          "label": "清理已完成",
+          "icon": "cleaning_services",
+          "variant": "outlined",
+          "size": 240
+        }
+      ]
+    },
+    {
+      "id": "g410",
+      "x": 4080,
+      "y": 4000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i409",
+          "kind": "topAppBar",
+          "label": "分类",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "add",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g416",
+      "x": 4096,
+      "y": 4088,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i411",
+          "kind": "listItem",
+          "label": "正在追",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "8 部作品",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i412",
+          "kind": "listItem",
+          "label": "周末读",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "5 部作品",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i413",
+          "kind": "listItem",
+          "label": "已完结",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "12 部作品",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i414",
+          "kind": "listItem",
+          "label": "漫画",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "14 部作品",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i415",
+          "kind": "listItem",
+          "label": "待看片单",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "6 部作品",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g418",
+      "x": 4096,
+      "y": 4464,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i417",
+          "kind": "button",
+          "label": "新建分类",
+          "icon": "add",
+          "variant": "tonal",
+          "note": "创建后可给作品打多个分类标签，书架按分类筛选或分组显示。",
+          "size": 380
+        }
+      ]
+    },
+    {
+      "id": "g420",
+      "x": 4080,
+      "y": 5000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i419",
+          "kind": "topAppBar",
+          "label": "分类",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "add",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g426",
+      "x": 4112,
+      "y": 5064,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i421",
+          "kind": "listItem",
+          "label": "正在追",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "8 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i422",
+          "kind": "listItem",
+          "label": "周末读",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "5 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i423",
+          "kind": "listItem",
+          "label": "已完结",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "12 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i424",
+          "kind": "listItem",
+          "label": "漫画",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "14 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i425",
+          "kind": "listItem",
+          "label": "待看片单",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "6 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g428",
+      "x": 4112,
+      "y": 5440,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i427",
+          "kind": "button",
+          "label": "新建分类",
+          "icon": "add",
+          "variant": "tonal",
+          "note": "创建后可给作品打多个分类标签，书架按分类筛选或分组显示。",
+          "size": 240
+        }
+      ]
+    },
+    {
+      "id": "g430",
+      "x": 0,
+      "y": 6000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i429",
+          "kind": "topAppBar",
+          "label": "统计",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g432",
+      "x": 16,
+      "y": 6088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i431",
+          "kind": "text",
+          "label": "本月概览",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g434",
+      "x": 16,
+      "y": 6126,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i433",
+          "kind": "card",
+          "label": "42 小时 18 分",
+          "icon": "schedule",
+          "variant": "filled",
+          "supporting": "总阅读 / 观看时长",
+          "size": 182,
+          "size2": 120,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g436",
+      "x": 214,
+      "y": 6126,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i435",
+          "kind": "card",
+          "label": "24 话",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画",
+          "size": 182,
+          "size2": 120,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g438",
+      "x": 16,
+      "y": 6262,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i437",
+          "kind": "card",
+          "label": "12 章",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说",
+          "size": 182,
+          "size2": 120,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g440",
+      "x": 214,
+      "y": 6262,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i439",
+          "kind": "card",
+          "label": "8 集",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频",
+          "size": 182,
+          "size2": 120,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g442",
+      "x": 16,
+      "y": 6398,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i441",
+          "kind": "text",
+          "label": "内容分布",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g446",
+      "x": 16,
+      "y": 6433,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i443",
+          "kind": "listItem",
+          "label": "漫画",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "占比 52% · 22 小时",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i444",
+          "kind": "listItem",
+          "label": "小说",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "占比 27% · 11 小时",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i445",
+          "kind": "listItem",
+          "label": "视频",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "占比 21% · 9 小时",
+          "action": {
+            "to": "library",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g448",
+      "x": 0,
+      "y": 7000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i447",
+          "kind": "topAppBar",
+          "label": "统计",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g450",
+      "x": 32,
+      "y": 7064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i449",
+          "kind": "text",
+          "label": "本月概览",
+          "icon": null,
+          "variant": "filled",
+          "size": 20,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g452",
+      "x": 32,
+      "y": 7102,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i451",
+          "kind": "card",
+          "label": "42 小时 18 分",
+          "icon": "schedule",
+          "variant": "filled",
+          "supporting": "总阅读 / 观看时长",
+          "size": 292,
+          "size2": 140,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g454",
+      "x": 340,
+      "y": 7102,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i453",
+          "kind": "card",
+          "label": "24 话",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画",
+          "size": 292,
+          "size2": 140,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g456",
+      "x": 648,
+      "y": 7102,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i455",
+          "kind": "card",
+          "label": "12 章",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "小说",
+          "size": 292,
+          "size2": 140,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g458",
+      "x": 956,
+      "y": 7102,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i457",
+          "kind": "card",
+          "label": "8 集",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "视频",
+          "size": 292,
+          "size2": 140,
+          "noImage": true
+        }
+      ]
+    },
+    {
+      "id": "g460",
+      "x": 32,
+      "y": 7258,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i459",
+          "kind": "text",
+          "label": "内容分布",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g464",
+      "x": 32,
+      "y": 7293,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i461",
+          "kind": "listItem",
+          "label": "漫画",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "占比 52% · 22 小时",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i462",
+          "kind": "listItem",
+          "label": "小说",
+          "icon": "article",
+          "variant": "filled",
+          "supporting": "占比 27% · 11 小时",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i463",
+          "kind": "listItem",
+          "label": "视频",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "占比 21% · 9 小时",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g466",
+      "x": 1360,
+      "y": 6000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i465",
+          "kind": "topAppBar",
+          "label": "插件商店",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "search",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g468",
+      "x": 1360,
+      "y": 6088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i467",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "已安装"
+            },
+            {
+              "icon": "",
+              "label": "可用"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g470",
+      "x": 1376,
+      "y": 6152,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i469",
+          "kind": "searchBar",
+          "label": "搜索插件与数据源",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search"
+        }
+      ]
+    },
+    {
+      "id": "g476",
+      "x": 1376,
+      "y": 6224,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i471",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 · 已安装 · 3 个来源",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i472",
+          "kind": "listItem",
+          "label": "漫画源扩展",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v2.1.0 · 有更新",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i473",
+          "kind": "listItem",
+          "label": "轻小说源",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v0.9.3 · 可用",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i474",
+          "kind": "listItem",
+          "label": "视频源扩展",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.2.1 · 可用",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i475",
+          "kind": "listItem",
+          "label": "元数据插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v0.6.0 · 可用 · 实验性",
+          "note": "插件只提供数据源与元数据；安装后可回到数据源管理页逐个启用。",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g478",
+      "x": 1360,
+      "y": 7000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i477",
+          "kind": "topAppBar",
+          "label": "插件商店",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g480",
+      "x": 1392,
+      "y": 7064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i479",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1216,
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "已安装"
+            },
+            {
+              "icon": "",
+              "label": "可用"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g482",
+      "x": 1392,
+      "y": 7128,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i481",
+          "kind": "searchBar",
+          "label": "搜索插件与数据源",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search",
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g488",
+      "x": 1392,
+      "y": 7200,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i483",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 · 已安装 · 3 个来源",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i484",
+          "kind": "listItem",
+          "label": "漫画源扩展",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v2.1.0 · 有更新",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i485",
+          "kind": "listItem",
+          "label": "轻小说源",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v0.9.3 · 可用",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i486",
+          "kind": "listItem",
+          "label": "视频源扩展",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.2.1 · 可用",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i487",
+          "kind": "listItem",
+          "label": "元数据插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v0.6.0 · 可用 · 实验性",
+          "note": "插件只提供数据源与元数据；安装后可回到数据源管理页逐个启用。",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g490",
+      "x": 2720,
+      "y": 6000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i489",
+          "kind": "topAppBar",
+          "label": "设置",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g492",
+      "x": 2736,
+      "y": 6088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i491",
+          "kind": "text",
+          "label": "外观",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g496",
+      "x": 2736,
+      "y": 6123,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i493",
+          "kind": "listItem",
+          "label": "深色模式",
+          "icon": "dark_mode",
+          "variant": "filled",
+          "supporting": "跟随系统",
+          "switch": true,
+          "checked": true
+        },
+        {
+          "id": "i494",
+          "kind": "listItem",
+          "label": "封面动态取色",
+          "icon": "palette",
+          "variant": "filled",
+          "supporting": "强调色取自当前作品封面",
+          "switch": true,
+          "checked": true
+        },
+        {
+          "id": "i495",
+          "kind": "listItem",
+          "label": "界面语言",
+          "icon": "translate",
+          "variant": "filled",
+          "supporting": "简体中文"
+        }
+      ]
+    },
+    {
+      "id": "g498",
+      "x": 2736,
+      "y": 6355,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i497",
+          "kind": "text",
+          "label": "阅读与播放",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g502",
+      "x": 2736,
+      "y": 6390,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i499",
+          "kind": "listItem",
+          "label": "默认阅读方向",
+          "icon": "swap_vert",
+          "variant": "filled",
+          "supporting": "竖向卷轴 / 左右翻页"
+        },
+        {
+          "id": "i500",
+          "kind": "listItem",
+          "label": "自动续播",
+          "icon": "play_circle",
+          "variant": "filled",
+          "supporting": "从上次时间点继续",
+          "switch": true,
+          "checked": true
+        },
+        {
+          "id": "i501",
+          "kind": "listItem",
+          "label": "默认画质",
+          "icon": "tune",
+          "variant": "filled",
+          "supporting": "跟随网络自动选择"
+        }
+      ]
+    },
+    {
+      "id": "g504",
+      "x": 2736,
+      "y": 6622,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i503",
+          "kind": "text",
+          "label": "通知",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g506",
+      "x": 2736,
+      "y": 6657,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i505",
+          "kind": "listItem",
+          "label": "追更提醒",
+          "icon": "notifications",
+          "variant": "filled",
+          "supporting": "订阅作品更新时通知",
+          "switch": true,
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "g508",
+      "x": 2720,
+      "y": 7000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i507",
+          "kind": "topAppBar",
+          "label": "设置",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g510",
+      "x": 2752,
+      "y": 7064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i509",
+          "kind": "text",
+          "label": "外观",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g514",
+      "x": 2752,
+      "y": 7099,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i511",
+          "kind": "listItem",
+          "label": "深色模式",
+          "icon": "dark_mode",
+          "variant": "filled",
+          "supporting": "跟随系统",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        },
+        {
+          "id": "i512",
+          "kind": "listItem",
+          "label": "封面动态取色",
+          "icon": "palette",
+          "variant": "filled",
+          "supporting": "强调色取自当前作品封面",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        },
+        {
+          "id": "i513",
+          "kind": "listItem",
+          "label": "界面语言",
+          "icon": "translate",
+          "variant": "filled",
+          "supporting": "简体中文",
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g516",
+      "x": 2752,
+      "y": 7331,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i515",
+          "kind": "text",
+          "label": "阅读与播放",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g520",
+      "x": 2752,
+      "y": 7366,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i517",
+          "kind": "listItem",
+          "label": "默认阅读方向",
+          "icon": "swap_vert",
+          "variant": "filled",
+          "supporting": "竖向卷轴 / 左右翻页",
+          "size": 1216
+        },
+        {
+          "id": "i518",
+          "kind": "listItem",
+          "label": "自动续播",
+          "icon": "play_circle",
+          "variant": "filled",
+          "supporting": "从上次时间点继续",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        },
+        {
+          "id": "i519",
+          "kind": "listItem",
+          "label": "默认画质",
+          "icon": "tune",
+          "variant": "filled",
+          "supporting": "跟随网络自动选择",
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g522",
+      "x": 2752,
+      "y": 7598,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i521",
+          "kind": "text",
+          "label": "通知",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g524",
+      "x": 2752,
+      "y": 7633,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i523",
+          "kind": "listItem",
+          "label": "追更提醒",
+          "icon": "notifications",
+          "variant": "filled",
+          "supporting": "订阅作品更新时通知",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g526",
+      "x": 4080,
+      "y": 6000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i525",
+          "kind": "topAppBar",
+          "label": "关于",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g528",
+      "x": 4096,
+      "y": 6088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i527",
+          "kind": "text",
+          "label": "内容库",
+          "icon": null,
+          "variant": "filled",
+          "size": 28,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g530",
+      "x": 4096,
+      "y": 6136,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i529",
+          "kind": "text",
+          "label": "版本 0.1.0 · MIT 开源",
+          "icon": null,
+          "variant": "filled",
+          "size": 14,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g532",
+      "x": 4096,
+      "y": 6166,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i531",
+          "kind": "card",
+          "label": "一个书架，三种内容",
+          "icon": null,
+          "variant": "filled",
+          "supporting": "漫画、小说与视频共用追更、收藏与进度；支持插件数据源、离线下载与本地备份。",
+          "noImage": true,
+          "size2": 110
+        }
+      ]
+    },
+    {
+      "id": "g534",
+      "x": 4096,
+      "y": 6292,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i533",
+          "kind": "text",
+          "label": "项目",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g539",
+      "x": 4096,
+      "y": 6327,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i535",
+          "kind": "listItem",
+          "label": "开源许可",
+          "icon": "gavel",
+          "variant": "filled",
+          "supporting": "MIT · 第三方组件致谢",
+          "action": {
+            "to": "settings",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i536",
+          "kind": "listItem",
+          "label": "更新日志",
+          "icon": "description",
+          "variant": "filled",
+          "supporting": "查看版本变更",
+          "action": {
+            "to": "settings",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i537",
+          "kind": "listItem",
+          "label": "反馈问题",
+          "icon": "bug_report",
+          "variant": "filled",
+          "supporting": "提交问题与建议",
+          "action": {
+            "to": "settings",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i538",
+          "kind": "listItem",
+          "label": "数据与存储",
+          "icon": "storage",
+          "variant": "filled",
+          "supporting": "备份与清理",
+          "action": {
+            "to": "storage",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g541",
+      "x": 4096,
+      "y": 6631,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i540",
+          "kind": "text",
+          "label": "产品名称待定，此处为中性占位名",
+          "icon": null,
+          "variant": "filled",
+          "size": 13,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g543",
+      "x": 4080,
+      "y": 7000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i542",
+          "kind": "topAppBar",
+          "label": "关于",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g545",
+      "x": 4112,
+      "y": 7064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i544",
+          "kind": "text",
+          "label": "内容库",
+          "icon": null,
+          "variant": "filled",
+          "size": 28,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g547",
+      "x": 4112,
+      "y": 7112,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i546",
+          "kind": "text",
+          "label": "版本 0.1.0 · MIT 开源",
+          "icon": null,
+          "variant": "filled",
+          "size": 14,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g549",
+      "x": 4112,
+      "y": 7142,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i548",
+          "kind": "card",
+          "label": "一个书架，三种内容",
+          "icon": null,
+          "variant": "filled",
+          "supporting": "漫画、小说与视频共用追更、收藏与进度；支持插件数据源、离线下载与本地备份。",
+          "noImage": true,
+          "size": 1216,
+          "size2": 120
+        }
+      ]
+    },
+    {
+      "id": "g551",
+      "x": 4112,
+      "y": 7278,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i550",
+          "kind": "text",
+          "label": "项目",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g556",
+      "x": 4112,
+      "y": 7313,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i552",
+          "kind": "listItem",
+          "label": "开源许可",
+          "icon": "gavel",
+          "variant": "filled",
+          "supporting": "MIT · 第三方组件致谢",
+          "action": {
+            "to": "settings_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i553",
+          "kind": "listItem",
+          "label": "更新日志",
+          "icon": "description",
+          "variant": "filled",
+          "supporting": "查看版本变更",
+          "action": {
+            "to": "settings_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i554",
+          "kind": "listItem",
+          "label": "反馈问题",
+          "icon": "bug_report",
+          "variant": "filled",
+          "supporting": "提交问题与建议",
+          "action": {
+            "to": "settings_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i555",
+          "kind": "listItem",
+          "label": "数据与存储",
+          "icon": "storage",
+          "variant": "filled",
+          "supporting": "备份与清理",
+          "action": {
+            "to": "storage_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g558",
+      "x": 4112,
+      "y": 7617,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i557",
+          "kind": "text",
+          "label": "产品名称待定，此处为中性占位名",
+          "icon": null,
+          "variant": "filled",
+          "size": 13,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g560",
+      "x": 0,
+      "y": 8000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i559",
+          "kind": "topAppBar",
+          "label": "数据与存储",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g562",
+      "x": 16,
+      "y": 8088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i561",
+          "kind": "text",
+          "label": "存储",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g566",
+      "x": 16,
+      "y": 8123,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i563",
+          "kind": "listItem",
+          "label": "图片缓存",
+          "icon": "image",
+          "variant": "filled",
+          "supporting": "680 MB · 自动清理",
+          "switch": true,
+          "checked": true
+        },
+        {
+          "id": "i564",
+          "kind": "listItem",
+          "label": "下载位置",
+          "icon": "folder",
+          "variant": "filled",
+          "supporting": "内部存储 / ContentLibrary"
+        },
+        {
+          "id": "i565",
+          "kind": "listItem",
+          "label": "自动清理",
+          "icon": "cleaning_services",
+          "variant": "filled",
+          "supporting": "超过 8 GB 时清理最久未读",
+          "switch": true,
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g568",
+      "x": 16,
+      "y": 8355,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i567",
+          "kind": "text",
+          "label": "备份",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g572",
+      "x": 16,
+      "y": 8390,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i569",
+          "kind": "listItem",
+          "label": "自动备份",
+          "icon": "backup",
+          "variant": "filled",
+          "supporting": "每天一次 · 保留最近 7 份",
+          "switch": true,
+          "checked": true
+        },
+        {
+          "id": "i570",
+          "kind": "listItem",
+          "label": "创建备份",
+          "icon": "cloud_upload",
+          "variant": "filled",
+          "supporting": "包含书架、分类、进度与设置",
+          "action": {
+            "to": "settings",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i571",
+          "kind": "listItem",
+          "label": "恢复备份",
+          "icon": "settings_backup_restore",
+          "variant": "filled",
+          "supporting": "从本地文件导入",
+          "action": {
+            "to": "settings",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g574",
+      "x": 16,
+      "y": 8622,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i573",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "value": 30,
+          "wavy": true,
+          "note": "已用 2.4 GB / 8 GB；缓存与下载分开统计。"
+        }
+      ]
+    },
+    {
+      "id": "g576",
+      "x": 16,
+      "y": 8662,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i575",
+          "kind": "button",
+          "label": "清除缓存",
+          "icon": "cleaning_services",
+          "variant": "outlined",
+          "note": "仅清除图片与临时缓存，不影响已下载内容和阅读进度。",
+          "size": 380
+        }
+      ]
+    },
+    {
+      "id": "g578",
+      "x": 0,
+      "y": 9000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i577",
+          "kind": "topAppBar",
+          "label": "数据与存储",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g580",
+      "x": 32,
+      "y": 9064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i579",
+          "kind": "text",
+          "label": "存储",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g584",
+      "x": 32,
+      "y": 9099,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i581",
+          "kind": "listItem",
+          "label": "图片缓存",
+          "icon": "image",
+          "variant": "filled",
+          "supporting": "680 MB · 自动清理",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        },
+        {
+          "id": "i582",
+          "kind": "listItem",
+          "label": "下载位置",
+          "icon": "folder",
+          "variant": "filled",
+          "supporting": "内部存储 / ContentLibrary",
+          "size": 1216
+        },
+        {
+          "id": "i583",
+          "kind": "listItem",
+          "label": "自动清理",
+          "icon": "cleaning_services",
+          "variant": "filled",
+          "supporting": "超过 8 GB 时清理最久未读",
+          "switch": true,
+          "checked": false,
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g586",
+      "x": 32,
+      "y": 9331,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i585",
+          "kind": "text",
+          "label": "备份",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g590",
+      "x": 32,
+      "y": 9366,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i587",
+          "kind": "listItem",
+          "label": "自动备份",
+          "icon": "backup",
+          "variant": "filled",
+          "supporting": "每天一次 · 保留最近 7 份",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        },
+        {
+          "id": "i588",
+          "kind": "listItem",
+          "label": "创建备份",
+          "icon": "cloud_upload",
+          "variant": "filled",
+          "supporting": "包含书架、分类、进度与设置",
+          "action": {
+            "to": "settings_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i589",
+          "kind": "listItem",
+          "label": "恢复备份",
+          "icon": "settings_backup_restore",
+          "variant": "filled",
+          "supporting": "从本地文件导入",
+          "action": {
+            "to": "settings_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g592",
+      "x": 32,
+      "y": 9598,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i591",
+          "kind": "linearProgress",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "size": 1216,
+          "value": 30,
+          "wavy": true,
+          "note": "已用 2.4 GB / 8 GB；缓存与下载分开统计。"
+        }
+      ]
+    },
+    {
+      "id": "g594",
+      "x": 32,
+      "y": 9638,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i593",
+          "kind": "button",
+          "label": "清除缓存",
+          "icon": "cleaning_services",
+          "variant": "outlined",
+          "note": "仅清除图片与临时缓存，不影响已下载内容和阅读进度。",
+          "size": 240
+        }
+      ]
+    }
+  ]
+}
