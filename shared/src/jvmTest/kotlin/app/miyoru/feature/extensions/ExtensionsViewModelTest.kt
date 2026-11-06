@@ -1,19 +1,15 @@
 package app.miyoru.feature.extensions
 
-import app.miyoru.data.plugin.InstallPluginFromUrl
+import app.miyoru.feature.FakePluginCatalogRepository
+import app.miyoru.feature.FakePluginRepository
+import app.miyoru.domain.plugin.model.CatalogEntry
+import app.miyoru.domain.plugin.model.CatalogEntryState
+import app.miyoru.domain.plugin.model.PluginUpdate
+import app.miyoru.domain.plugin.model.RefreshOutcome
 import app.miyoru.feature.extensions.presentation.ExtensionsViewModel
-import app.miyoru.plugin.api.InstalledPackage
-import app.miyoru.plugin.api.PluginInstallerFacade
-import app.miyoru.plugin.api.PluginManifest
-import app.miyoru.plugin.api.PluginPackageSource
-import app.miyoru.plugin.api.PluginPermissions
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.mock.MockEngine
-import io.ktor.client.engine.mock.respond
-import io.ktor.http.HttpStatusCode
+import app.miyoru.feature.extensions.presentation.TAB_UPDATES
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
@@ -25,52 +21,72 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-private class FakeInstaller(val fail: Boolean = false) : PluginInstallerFacade {
-    var lastUrl: String? = null
-    var lastBytes: Int = 0
-    override suspend fun install(pkg: PluginPackageSource, enforceSignature: Boolean): InstalledPackage {
-        lastBytes = pkg.bytes.size
-        if (fail) throw RuntimeException("bad zip")
-        return InstalledPackage(
-            PluginManifest("demo.plugin", "Demo", "1.0.0", 1, "0.1.0", mediaTypes = listOf("novel")),
-            "abc", false,
-        )
-    }
-    override suspend fun rollback(pluginId: String) = Unit
-    override suspend fun uninstall(pluginId: String) = Unit
-    override fun installDir(pluginId: String) = "plugins/$pluginId"
-}
-
 @OptIn(ExperimentalCoroutinesApi::class)
 class ExtensionsViewModelTest {
     @BeforeTest fun setup() { Dispatchers.setMain(StandardTestDispatcher()); Unit }
     @AfterTest fun teardown() { Dispatchers.resetMain(); Unit }
 
-    private fun client(bytes: ByteArray = "ZIP".encodeToByteArray()) = HttpClient(MockEngine) {
-        engine { addHandler { respond(bytes, HttpStatusCode.OK) } }
-    }
+    private fun entry(state: CatalogEntryState = CatalogEntryState.AVAILABLE) = CatalogEntry(
+        pluginId = "demo.source",
+        repositoryId = "demo.repository",
+        name = "Demo Source",
+        version = "1.0.0",
+        mediaTypes = listOf("novel"),
+        domains = listOf("https://example.com"),
+        state = state,
+    )
 
     @Test
-    fun `install from url succeeds`() = runTest {
-        val installer = FakeInstaller()
-        val vm = ExtensionsViewModel(InstallPluginFromUrl(client(), installer))
-        vm.updateUrl("https://example.com/p.zip")
-        vm.install()
+    fun `install requires explicit permission confirmation`() = runTest {
+        val catalog = FakePluginCatalogRepository()
+        val vm = ExtensionsViewModel(catalog, FakePluginRepository())
+        vm.requestInstall(entry())
+        assertEquals(entry(), vm.uiState.value.pendingInstall)
+        assertTrue(catalog.installed.isEmpty())
+        vm.confirmInstall()
         testScheduler.advanceUntilIdle()
-        val state = vm.uiState.first { !it.isInstalling }
-        assertTrue(state.message?.contains("demo.plugin") == true)
-        assertEquals(3, installer.lastBytes)
+        assertEquals(listOf("demo.repository" to "demo.source"), catalog.installed)
+        assertEquals(null, vm.uiState.value.pendingInstall)
+        assertTrue(vm.uiState.value.message!!.contains("已安装"))
         Unit
     }
 
     @Test
-    fun `install failure shows error`() = runTest {
-        val vm = ExtensionsViewModel(InstallPluginFromUrl(client(), FakeInstaller(fail = true)))
-        vm.updateUrl("https://example.com/p.zip")
-        vm.install()
+    fun `refresh reports update count and switches tab`() = runTest {
+        val catalog = FakePluginCatalogRepository()
+        catalog.refreshOutcome = RefreshOutcome(refreshed = 2, updateCount = 3)
+        catalog.snapshot.value = catalog.snapshot.value.copy(
+            updates = listOf(PluginUpdate("demo.source", "2.0.0", "demo.repository")),
+        )
+        val vm = ExtensionsViewModel(catalog, FakePluginRepository())
+        vm.selectTab(TAB_UPDATES)
+        vm.refresh()
         testScheduler.advanceUntilIdle()
-        val state = vm.uiState.first { !it.isInstalling }
-        assertTrue(state.isError)
+        assertEquals(TAB_UPDATES, vm.uiState.value.tab)
+        assertTrue(vm.uiState.value.message!!.contains("3 个更新"))
+        assertEquals(1, catalog.refreshCalls)
+        Unit
+    }
+
+    @Test
+    fun `fingerprint change is surfaced as an explicit warning`() = runTest {
+        val catalog = FakePluginCatalogRepository()
+        catalog.refreshOutcome = RefreshOutcome(fingerprintChanged = listOf("demo.repository"))
+        val vm = ExtensionsViewModel(catalog, FakePluginRepository())
+        vm.refresh()
+        testScheduler.advanceUntilIdle()
+        assertTrue(vm.uiState.value.isError)
+        assertTrue(vm.uiState.value.message!!.contains("重新确认信任"))
+        Unit
+    }
+
+    @Test
+    fun `uninstall delegates to installed plugin repository`() = runTest {
+        val plugins = FakePluginRepository()
+        val vm = ExtensionsViewModel(FakePluginCatalogRepository(), plugins)
+        vm.uninstall("demo.source")
+        testScheduler.advanceUntilIdle()
+        assertEquals(listOf("demo.source"), plugins.uninstalled)
         Unit
     }
 }

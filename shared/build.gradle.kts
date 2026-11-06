@@ -31,6 +31,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
+            implementation(libs.compose.material.icons)
             implementation(compose.components.resources)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
@@ -62,6 +63,9 @@ kotlin {
             implementation(libs.kotlinx.coroutines.swing)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.sqlite.driver)
+            // 桌面端视频后端：mediamp + mpv（与参考项目 animeko 相同的选型）
+            implementation(libs.mediamp.api)
+            implementation(libs.mediamp.mpv)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)

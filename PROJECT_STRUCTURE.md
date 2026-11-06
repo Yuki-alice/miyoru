@@ -1,7 +1,7 @@
 # miyoru 项目结构
 
-> 文档状态：v0.3，已确认（2026-11-05 更新：定名 miyoru；视频离线与本地导入进 P0）  
-> 更新时间：2026-11-05  
+> 文档状态：v0.4，已确认（2026-11-06 更新：插件分发改为仓库优先，移除单 ZIP 直装；2026-11-05 定名 miyoru、视频离线与本地导入进 P0）  
+> 更新时间：2026-11-06  
 > 适用对象：开发、测试及后续编码 Agent  
 > 关联文档：[项目目标](./PROJECT_GOALS.md)
 
@@ -38,6 +38,7 @@
 | ADR-010 | 首版不承诺 Web/Wasm；iOS 待技术验证 | 接受（iOS 部分已被 ADR-011 更新） |
 | ADR-011 | 首发覆盖 Android / Windows / macOS / Linux / iOS 五端；iOS 验证前移至 M0，不再延后 | 接受 |
 | ADR-012 | QuickJS-KT 升级到 io.github.dokar3:quickjs-kt 1.0.15：1.0.0-alpha13 无中断能力（死循环永久卡死），1.0.15 提供 evaluationTimeoutMillis + interruptEvaluation，验证通过 | 接受 |
+| ADR-013 | 插件分发改为仓库优先（添加仓库链接 → 识别/信任 → 仓库内按需安装），移除单 ZIP 直装入口；原因：对齐 Mihon/Komikku/Miru 的插件操作模型，让插件来源可解释、可更新、可撤销；迁移：新增 `PLUGIN_REPOSITORY` / `REPOSITORY_PLUGIN` 表与 `1.sqm`，`PLUGIN.repository_id` 改 NOT NULL；回滚：保留索引缓存表与旧 `PLUGIN.repository_id` 可空，恢复单包入口需回滚 ADR-013 并重新评审 | 接受 |
 
 修改接受状态的 ADR 必须新增一条记录，说明原因、迁移和回滚，不得直接改历史结论。
 
@@ -60,7 +61,7 @@ F:/miyoru/
 │       ├── iosMain/
 │       └── commonTest/
 ├── plugin/
-│   ├── api/                         # 稳定纯 Kotlin 插件契约
+│   ├── api/                         # 稳定纯 Kotlin 插件契约、仓库索引契约与解析
 │   └── runtime/                     # QuickJS-KT、Host API、验证与隔离
 ├── plugin-sdk-ts/                   # 独立 Node/TypeScript 工具
 ├── docs/
@@ -82,8 +83,8 @@ F:/miyoru/
 | `androidApp` | Android 入口、Activity、系统集成、权限、后台任务注册 | 领域逻辑、直接访问 DAO、解析插件 JSON |
 | `desktopApp` | Desktop `main`、窗口、文件选择入口、系统集成（覆盖 Windows / macOS / Linux） | 领域逻辑、直接访问 DAO |
 | `iosApp` | iOS 入口、SwiftUI 集成、权限、后台任务注册 | 领域逻辑、直接访问 DAO、解析插件 JSON |
-| `shared` | Compose App、导航、DI 组合根、Domain、Data、Feature、平台 expect/actual | 暴露 QuickJS 类型到 UI/Domain |
-| `plugin:api` | 插件清单、能力、DTO、`PluginEngine`/Host 接口、稳定错误协议 | Compose、Ktor、QuickJS、SQLDelight、Android Context |
+| `shared` | Compose App、导航、DI 组合根、Domain、Data、Feature、仓库目录与索引缓存、平台 expect/actual | 暴露 QuickJS 类型到 UI/Domain |
+| `plugin:api` | 插件清单、能力、DTO、`PluginEngine`/Host 接口、仓库索引契约与解析、稳定错误协议 | Compose、Ktor、QuickJS、SQLDelight、Android Context |
 | `plugin:runtime` | QuickJS 生命周期、宿主 HTTP/HTML、权限、超时、输出校验 | Compose、DAO、直接修改用户库 |
 | `plugin-sdk-ts` | TypeScript 类型、esbuild 打包、清单校验、测试工具 | 运行时依赖 Node 内置模块的插件代码 |
 
@@ -186,9 +187,17 @@ shared/src/commonMain/kotlin/app/miyoru/
 │   ├── plugin/
 │   │   ├── model/
 │   │   │   ├── InstalledPlugin.kt
-│   │   │   └── PluginUpdate.kt
+│   │   │   ├── PluginUpdate.kt
+│   │   │   ├── PluginRepo.kt
+│   │   │   ├── RepositoryPreview.kt
+│   │   │   ├── PluginCatalog.kt
+│   │   │   ├── RepositoryGroup.kt
+│   │   │   ├── CatalogEntry.kt
+│   │   │   ├── CatalogEntryState.kt
+│   │   │   └── RefreshOutcome.kt
 │   │   ├── repository/
-│   │   │   └── PluginRepository.kt
+│   │   │   ├── PluginRepository.kt
+│   │   │   └── PluginCatalogRepository.kt
 │   │   └── usecase/
 │   │       ├── InstallPlugin.kt
 │   │       └── RollbackPlugin.kt
@@ -218,9 +227,9 @@ shared/src/commonMain/kotlin/app/miyoru/
 │   │   └── mapper/
 │   ├── plugin/
 │   │   ├── PluginRepositoryImpl.kt
-│   │   ├── PluginPackageInstaller.kt
-│   │   ├── PluginSignatureVerifier.kt
-│   │   ├── PluginRepositoryClient.kt
+│   │   ├── PluginCatalogRepositoryImpl.kt
+│   │   ├── RepositoryIndexClient.kt
+│   │   ├── RepositoryPreviewStore.kt
 │   │   └── mapper/
 │   ├── library/
 │   │   ├── LibraryRepositoryImpl.kt
@@ -261,7 +270,10 @@ shared/src/commonMain/kotlin/app/miyoru/
 │   ├── downloads/
 │   │   ├── ui/
 │   │   └── presentation/
-│   ├── pluginmanager/
+│   ├── repositories/
+│   │   ├── ui/
+│   │   └── presentation/
+│   ├── extensions/
 │   │   ├── ui/
 │   │   └── presentation/
 │   └── settings/
@@ -403,12 +415,17 @@ sealed class AppError(message: String?, cause: Throwable? = null) : Exception(me
     data class Storage(override val cause: Throwable) : AppError("本地存储失败", cause)
     data class InvalidInput(val detail: String) : AppError("输入不合法")
     data object PermissionDenied : AppError("权限不足")
+    data class RepositoryInvalid(val detail: String) : AppError("仓库索引不合法")
+    data class RepositoryUntrusted(val fingerprint: String) : AppError("仓库尚未被用户信任")
+    data class RepositoryFingerprintChanged(val repositoryId: String) : AppError("仓库身份指纹变化，需重新确认")
+    data class PluginSourceMismatch(val pluginId: String) : AppError("插件来源仓库不匹配")
 }
 ```
 
 - 每个错误必须有稳定错误码供日志和插件开发者定位；可另建 `ErrorCode` 枚举或字符串常量。
 - 协程取消必须重新抛出 `CancellationException`，不得转成普通错误或展示给用户。
 - 不向用户展示原始 HTML、堆栈或完整 URL。
+- 仓库相关错误使用上述 `RepositoryInvalid` / `RepositoryUntrusted` / `RepositoryFingerprintChanged` / `PluginSourceMismatch` 类型，各自带稳定错误码（`REPOSITORY_INVALID` / `REPOSITORY_UNTRUSTED` / `REPOSITORY_FINGERPRINT_CHANGED` / `PLUGIN_SOURCE_MISMATCH`）；索引解析阶段的结构性失败仍可复用 `Parse` / `InvalidInput`，但必须保留稳定错误码，不得只给通用提示。
 
 ## 7. SQLDelight 设计
 
@@ -429,15 +446,17 @@ sealed class AppError(message: String?, cause: Throwable? = null) : Exception(me
 shared/src/commonMain/sqldelight/
 ├── app/miyoru/db/
 │   ├── Plugin.sq
+│   ├── PluginRepository.sq       # PLUGIN_REPOSITORY / REPOSITORY_PLUGIN
 │   ├── Media.sq
 │   ├── ContentUnit.sq
 │   ├── Library.sq
 │   ├── Download.sq
 │   ├── Cache.sq
 │   └── migrations/
-│       └── 1.sqm                 # 首次 Schema 变更时创建
+│       └── 1.sqm                 # v1 → v2：新增仓库表、PLUGIN.repository_id 改 NOT NULL
 └── databases/
-    └── 1.db                      # generate schema 产物，用于迁移验证
+    ├── 1.db                      # v1 基线，generate schema 产物
+    └── 2.db                      # v2 产物，用于迁移验证
 ```
 
 - `.sq` 始终描述最新 Schema 与查询。
@@ -445,11 +464,14 @@ shared/src/commonMain/sqldelight/
 - 配置 `schemaOutputDirectory`，在第一次迁移前生成初始 `1.db`。
 - CI 必须执行 SQLDelight 迁移验证；发布前在旧数据库副本上做升级测试。
 - Schema 变化与迁移文件必须同一个变更提交。
+- `1.db`（v1 基线）与 `2.db`（v2）都纳入迁移验证；升级测试从 `1.db` 副本开始应用 `1.sqm`，不得只测新建数据库。
 
 ### 7.3 表设计
 
 ```mermaid
 erDiagram
+    PLUGIN_REPOSITORY ||--o{ REPOSITORY_PLUGIN : lists
+    PLUGIN_REPOSITORY ||--o{ PLUGIN : installs
     PLUGIN ||--o{ MEDIA : provides
     MEDIA ||--o{ CONTENT_UNIT : contains
     MEDIA ||--o| FAVORITE : saved_as
@@ -469,7 +491,7 @@ erDiagram
         text manifest_json
         text package_sha256
         text signature
-        text repository_id
+        text repository_id "NOT NULL"
         text relative_install_dir
         text previous_version
         text previous_package_sha256
@@ -479,6 +501,41 @@ erDiagram
         text last_error
         integer installed_at
         integer updated_at
+    }
+
+    PLUGIN_REPOSITORY {
+        text id PK
+        text url UK
+        text name
+        text description
+        text website_url
+        text icon_url
+        integer schema_version
+        text signing_key
+        text fingerprint
+        integer enabled
+        integer last_updated
+        text last_error
+        integer plugin_count
+        integer created_at
+    }
+
+    REPOSITORY_PLUGIN {
+        text repository_id PK
+        text plugin_id PK
+        text name
+        text version
+        integer api_version
+        text min_app_version
+        text media_types_json
+        text capabilities_json
+        text domains_json
+        text author
+        text homepage
+        text icon_url
+        text description
+        text download_url
+        text package_sha256
     }
 
     MEDIA {
@@ -577,7 +634,7 @@ erDiagram
 
 实现要求：
 
-- 主键、索引在 `.sq` 中显式定义，常用查询至少覆盖 `media(title)`、`content_unit(media id)`、`history(last_opened_at)`、`download_task(state)`、`cache_entry(last_accessed_at)`。
+- 主键、索引在 `.sq` 中显式定义，常用查询至少覆盖 `media(title)`、`content_unit(media id)`、`history(last_opened_at)`、`download_task(state)`、`cache_entry(last_accessed_at)`、`repository_plugin(repository_id)` 及按 `repository_id` 查询已安装插件。
 - 枚举存稳定字符串或经集中 ColumnAdapter 转换；不要依赖序号。
 - 时间统一 epoch milliseconds；展示层再格式化。
 - JSON 列只用于标签、能力等非主查询字段；不要把整个领域对象塞进单个 JSON。
@@ -590,6 +647,10 @@ erDiagram
 - `LOCAL_FILE.relative_path` 和 `PLUGIN.relative_install_dir` 必须相对应用数据根目录，避免应用目录移动后失效。
 - 缓存与下载分开：缓存可淘汰，下载不能被自动清理。
 - P1 全文搜索可通过 SQLite FTS 表或迁移加入；在驱动验证前不要假设所有平台 FTS 可用。
+- `PLUGIN_REPOSITORY` 保存用户已信任的仓库与身份指纹（`fingerprint` 列存的是 `identityFingerprint`，不是索引内容摘要；另存 `signing_key`）；`REPOSITORY_PLUGIN` 是最后一次已验证索引的缓存，属于可清理派生数据，但只在删除对应仓库时随仓库清理，刷新失败必须保留旧缓存供离线浏览。
+- 插件更新只能查询相同 `repository_id` 的 `REPOSITORY_PLUGIN` 缓存条目并比较 semver；跨仓库覆盖必须显式拒绝。
+- 删除仓库不级联删除 `PLUGIN` 及 `FAVORITE` / `HISTORY` / `PROGRESS`；用户选择「仅移除仓库」时插件保留但标记来源已移除、不可更新。
+- `1.sqm` 迁移必须保留 `PLUGIN` 历史行（历史 `repository_id` 用空串兜底，仅代表迁移前安装），不得重建表丢数据。
 
 ### 7.4 Driver 与数据库打开
 
@@ -636,12 +697,25 @@ interface LibraryRepository {
 
 interface PluginRepository {
     fun observeInstalled(): Flow<List<InstalledPlugin>>
-    suspend fun install(source: PluginPackageSource, expectedSha256: String? = null)
     suspend fun setEnabled(pluginId: String, enabled: Boolean)
     suspend fun checkForUpdate(pluginId: String): PluginUpdate?
-    suspend fun update(pluginId: String): InstalledPlugin
     suspend fun rollback(pluginId: String): InstalledPlugin
     suspend fun uninstall(pluginId: String)
+}
+
+interface PluginCatalogRepository {
+    fun observeRepositories(): Flow<List<PluginRepo>>
+    fun observeCatalog(): Flow<PluginCatalog>
+    suspend fun inspectRepository(url: String): RepositoryPreview
+    suspend fun addRepository(fingerprint: String): PluginRepo
+    suspend fun removeRepository(id: String, removePlugins: Boolean)
+    suspend fun setRepositoryEnabled(id: String, enabled: Boolean)
+    suspend fun refreshRepository(id: String): RefreshOutcome
+    suspend fun refreshAll(): RefreshOutcome
+    suspend fun install(repositoryId: String, pluginId: String): InstalledPlugin
+    suspend fun update(pluginId: String): InstalledPlugin
+    suspend fun checkForUpdates(): List<PluginUpdate>
+    suspend fun catalogEntry(repositoryId: String, pluginId: String): CatalogEntry?
 }
 
 interface DownloadRepository {
@@ -654,8 +728,9 @@ interface DownloadRepository {
 }
 ```
 
-- `PluginPackageSource` 表示用户选择的 URL 或本地文件，Domain 不持有平台文件对象。
-- `PluginRepositoryImpl` 负责安装事务和调用 `PluginPackageInstaller`；`PluginEngine` 不负责安装、启用或修改数据库。
+- 单包直装已移除：`PluginRepository` 不再暴露游离的 `install(source)` / `update(pluginId)`；更新统一走 `PluginCatalogRepository.update(pluginId)`，且只能回到插件的来源仓库；`PluginPackageSource` 只由 Data 层在仓库安装链内部构造（由索引条目的 `downloadUrl` 下载得到），Domain 不持有平台文件对象，也不做二次网络请求。
+- `PluginCatalogRepositoryImpl` 负责仓库安装链（安全拉取索引 → 整包哈希与 `packageSha256` 比对 → 调用 `PluginInstallerFacade` → 写 `PLUGIN` 且 `repository_id` 必填）；`PluginRepositoryImpl` 只管已安装插件的启用、回滚、卸载，以及按 `repository_id` 查缓存并比较 semver 的 `checkForUpdate()`；`PluginEngine` 不负责安装、启用或修改数据库。
+- 待确认仓库（`inspectRepository` 的结果）只放在 Data 层内存的 `RepositoryPreviewStore`，按身份指纹索引，`addRepository(fingerprint)` 取出落库；Domain 不依赖 `plugin:api` 类型；进程重启后待确认预览失效，需重新识别。
 - `MediaDetail` 不携带完整章节列表；章节通过 `contentUnits()` 单独获取，避免超大目录拖慢详情首屏。
 
 `SearchAcrossSources` 负责并行执行、单源超时、部分成功与合并状态。实现规则：
@@ -700,6 +775,8 @@ plugin/api/src/commonMain/kotlin/app/miyoru/plugin/api/
 ├── PluginResponse.kt
 ├── PluginError.kt
 ├── PluginEngine.kt
+├── RepositoryIndex.kt
+├── Sha256.kt
 └── HostServices.kt
 ```
 
@@ -752,6 +829,7 @@ plugin/runtime/src/
 - 不通过 JS 传输图片、视频或大文件，只传 URL/Header/元数据；媒体下载由原生 Data 层完成。
 - 不执行远程预编译 QuickJS bytecode；仅执行插件 ZIP 内声明的源码 bundle，编译缓存与引擎版本绑定。
 - 运行时不直接读写用户数据库；需要缓存时由 `shared` Data 层负责。
+- 全项目只保留一份 SHA-256 实现：`plugin:api` 的 `Sha256.kt`（纯 Kotlin，供 `shared` 使用）；`plugin:runtime` 的哈希校验委托给它，不在 runtime 另写一份。
 
 ### 9.3 插件包
 
@@ -786,42 +864,73 @@ plugin.zip
 
 - `bundle.js` 使用 ES Modules/IIFE 的单一产物，不依赖 Node 内置模块、DOM 或 `require`。
 - 插件只导出 manifest 声明过的能力函数；未声明能力被调用时返回 `CapabilityUnsupported`。
-- `entrySha256` 校验 ZIP 内入口文件；整个 ZIP 的 `packageSha256` 由仓库索引提供或安装时计算并写入数据库，避免 manifest 对自身哈希产生循环依赖。
+- `entrySha256` 校验 ZIP 内入口文件；整个 ZIP 的 `packageSha256` 一律由来源仓库索引提供并写入数据库（不再有单包直装时安装时计算），避免 manifest 对自身哈希产生循环依赖。
 - `signature` 是发布者对“不含 `signature` 字段的规范化 manifest”的 Ed25519 签名，Base64 编码；签名校验必须使用规范化字节序列。
-- 开发模式允许未签名 ZIP，但必须在 UI 显示高风险提示和本地指纹；Release 始终校验完整性与兼容性，并按每个源仓库配置决定是否强制发布者签名。
-- 安装流程：暂存目录 → 解压安全检查（无路径穿越/符号链接）→ 清单校验 → 入口哈希/可选签名校验 → 与仓库索引比对包哈希 → 兼容性检查 → 原子替换 → 记录 DB。失败保留旧版本。
+- 开发模式测试插件也必须经本地 mock 仓库 + 固定 fixture 安装，不再提供本地 ZIP 侧载；未签名包必须在 UI 显示高风险提示和仓库身份指纹。Release 始终校验完整性与兼容性，并按每个仓库配置决定是否强制发布者签名。
+- 安装流程：下载 ZIP → 整包 SHA-256 先与索引 `packageSha256` 比对（不符即终止）→ 交给 `PluginInstallerFacade`（暂存目录 → 解压安全检查（无路径穿越/符号链接）→ 清单校验 → 入口哈希/可选签名校验 → 兼容性检查 → 原子替换）→ 写 `PLUGIN` 表且 `repository_id` 必填。失败保留旧版本。
 - 更新默认需要用户确认；自动检查只获取元数据，不静默替换执行代码。
 - 插件日志按 `pluginId + sessionId` 标记，写入前脱敏。
 
-### 9.4 源仓库索引
+### 9.4 插件仓库（一等实体）
 
-应用不内置正式源仓库。用户添加仓库 URL 后，应用只负责获取索引、展示来源并校验安装包：
+插件仓库是插件分发的唯一来源，作为一等实体建模（表设计见 §7.3 的 `PLUGIN_REPOSITORY` / `REPOSITORY_PLUGIN`）。应用不内置任何正式仓库，也不预置、不推荐仓库地址；正式构建不含默认仓库。用户添加的索引文件 URL（`index.json` / `repository.json` / `index.min.json` 均可）内容必须按 miyoru 原生格式解析，**不兼容 Mihon/Komikku 的 APK 扩展与 `index.min.json` 字段语义**（文件名可同名，格式与字段含义不兼容）。
+
+索引格式（`schemaVersion = 1`）：
 
 ```json
 {
   "schemaVersion": 1,
   "repositoryId": "example.repository",
   "name": "Example Repository",
+  "description": "…",
+  "websiteUrl": "https://example.com",
+  "iconUrl": "https://example.com/icon.png",
   "generatedAt": 1790000000000,
+  "signature": null,
   "plugins": [
     {
       "id": "example.source",
+      "name": "Example Source",
       "version": "1.0.0",
       "apiVersion": 1,
+      "minAppVersion": "0.1.0",
       "mediaTypes": ["novel"],
+      "capabilities": ["search", "detail"],
+      "domains": ["https://example.com"],
+      "author": "Example",
+      "homepage": "https://example.com",
+      "iconUrl": "https://example.com/icon.png",
+      "description": "…",
       "downloadUrl": "https://example.com/plugins/example-source-1.0.0.zip",
-      "packageSha256": "<zip sha256>",
-      "minAppVersion": "0.1.0"
+      "packageSha256": "<64 位 hex>"
     }
   ]
 }
 ```
 
-- 仓库索引和插件包必须通过 HTTPS；`downloadUrl` 每一跳重新校验域名、协议和重定向。
-- 索引 SHOULD 提供分离签名 `repository.json.sig`；公钥由用户添加仓库时确认或通过可信渠道预置。
-- 仓库只能提供元数据和包，不得指定应用行为、插件安装路径或宿主权限之外的设置。
-- 索引缓存属于可清理数据；断网时可以使用最后一次已验证的索引，但更新操作必须重新验证。
-- 同一个插件 `id` 的降级、版本回滚和来源切换必须由用户确认，防止仓库劫持。
+索引规则：
+
+- `repositoryId` 与插件 `id` 使用与插件 `id` 相同的正则；版本号为 semver；`apiVersion` 必须在 `1..CURRENT_API_VERSION`；`mediaTypes` ∈ {`video`, `novel`, `comic`}；`capabilities` ∈ 白名单。
+- `domains`、`downloadUrl` 及可选的 `websiteUrl` / `iconUrl` / `homepage` 必须是合规 HTTPS 源：拒绝 `http`、`localhost`、私网字面 IP；`packageSha256` 必须是 64 位 hex。
+- 索引条目上限 1000、索引体上限 2 MiB；`schemaVersion` 高于客户端支持值时给出「需要更新应用」的明确错误，而不是解析失败。
+- 未知字段一律忽略（向前兼容：只新增可选字段、不改名、不改类型）；lenient 解析后由 `RepositoryIndex.validate()` 统一严格校验。
+- 每一跳重定向重新校验域名与协议，最多 3 跳。
+- `signature` 为可选的对「不含 `signature` 字段的规范化索引字节」的 Ed25519 发布者签名（Base64）；P0 以「身份指纹 + 用户确认」建立信任，公钥分发与撤销策略仍列为待确认事项（§18）。
+- 身份指纹 `identityFingerprint(index, url)` = SHA-256(`repositoryId` + 仓库 URL + `signingKey`)，落库于 `PLUGIN_REPOSITORY.fingerprint`，与索引内容无关：插件版本更新等正常刷新不触发重新确认。仅当仓库 ID、仓库 URL 或发布者公钥变化时，刷新返回 `fingerprintChanged` 且不静默应用新索引，必须重新识别并由用户确认信任；索引内容摘要 `fingerprint(index)` 仅用于诊断展示，不作为信任依据。
+
+三步用户流程：
+
+1. **添加并识别**：从「浏览 / 更多」进入「插件仓库」页，点「添加仓库」输入 HTTPS 索引 URL；应用安全拉取索引（`RepositoryIndexClient`）→ 严格校验 → 展示识别结果（仓库名、描述、主页、图标、插件数量、`schemaVersion`、身份指纹、是否带发布者签名、第三方代码风险提示）。此步**不落库**，预览只存于 Data 层内存 `RepositoryPreviewStore`，按身份指纹索引。
+2. **信任并添加**：用户点「信任并添加」，记录身份指纹并落库（`PLUGIN_REPOSITORY`）；仅当仓库 ID、仓库链接或发布者公钥变化时必须重新由用户确认，防止仓库劫持。进程重启后待确认预览失效，需重新识别。
+3. **浏览与安装**：回到「插件商店」页（或下拉刷新），按仓库分组浏览目录（「可安装 / 有更新 / 已安装」三分面），按需逐个安装；安装前弹出权限确认（域名、媒体类型、能力、来源仓库、版本）。
+
+信任与生命周期约束：
+
+- 最后一次已验证的索引写入 `REPOSITORY_PLUGIN` 缓存，离线时可用它浏览目录，但安装/更新必须重新验证。
+- 更新只能来自插件的**来源仓库**：按 `repository_id` 查缓存条目并比较 semver，跨仓库覆盖必须显式拒绝。用户可检查更新、逐个更新、回滚一层。
+- 删除仓库时必须提示影响范围（该仓库下已安装的 N 个插件），用户可选「仅移除仓库（插件保留但标记来源已移除、不可更新）」或「同时卸载插件」；`FAVORITE` / `HISTORY` / `PROGRESS` 一律不级联删除。
+- 仓库是不可信索引提供者：只提供元数据和包，不得指定应用行为、安装路径或宿主权限之外的设置。
+- 不做插件市场网站、云同步或自动静默更新；更新必须用户确认。
 
 ### 9.5 插件开发 SDK
 
@@ -851,6 +960,7 @@ plugin-sdk-ts/
 - Node 版本在 `.nvmrc`/`package.json engines` 固定为当前 LTS，不把 Node 运行时带入客户端。
 - 单元测试使用 Vitest；不得在 SDK 默认 fixture 中硬编码真实站点解析规则。
 - `plugin-sdk-ts` 的 `apiVersion` 必须与 `plugin:api` 的合同一致；升级 API 时同时修改 TypeScript 类型、Kotlin DTO 和契约测试。
+- CLI 需能生成/校验仓库索引条目（`downloadUrl` 与整包 `packageSha256`），以便发布者为本地 mock 仓库与正式仓库产出合规索引。
 
 ## 10. 播放与下载边界
 
@@ -918,6 +1028,7 @@ data class NovelReaderRoute(
 ```
 
 - 路由定义在 `navigation/AppRoute.kt`；Feature 暴露 `Screen` 和事件回调，不直接操作全局 `NavController`。
+- 「插件仓库」页对应新增的 `Repositories` destination；「插件商店」页由 `extensions` feature 提供，按仓库分组浏览（见 §9.4）。
 - 不传完整 `MediaDetail`、图片列表或播放器对象。
 - 阅读器/播放器进入独立 destination；返回时保存进度。
 - Android 系统返回、桌面键盘返回和 URL/Deep Link（P1）应共享同一导航语义。
@@ -995,13 +1106,19 @@ shared/src/commonTest/kotlin/app/miyoru/
 ├── domain/source/SearchAcrossSourcesTest.kt
 ├── domain/library/UpdateProgressTest.kt
 ├── data/source/SourceRepositoryImplTest.kt
+├── data/plugin/PluginCatalogRepositoryImplTest.kt
 ├── feature/search/SearchViewModelTest.kt
+├── feature/repositories/RepositoriesViewModelTest.kt
+├── feature/extensions/ExtensionsViewModelTest.kt
 └── fixtures/
 
 shared/src/jvmTest/kotlin/app/miyoru/
-├── database/DatabaseMigrationTest.kt
+├── database/DatabaseMigrationTest.kt          # v1 → v2 升级迁移
 ├── database/QuerySmokeTest.kt
 └── filesystem/AppFileStoreTest.kt
+
+plugin/api/src/commonTest/kotlin/app/miyoru/plugin/api/
+└── RepositoryIndexTest.kt
 
 plugin/runtime/src/jvmTest/kotlin/app/miyoru/plugin/runtime/
 ├── QuickJsRuntimeTest.kt
@@ -1023,6 +1140,7 @@ plugin-sdk-ts/test/
 - UI 测试使用 Fake Repository 和固定状态；Compose 截图测试可选，不作为唯一验证。
 - 禁止 CI 依赖真实外网站点。使用本地 Mock HTTP Server 和固定 HTML/JSON fixture。
 - 测试插件只放在 Debug/test fixture，Release 包不打包真实源。
+- 仓库相关测试必须覆盖：索引解析向前兼容（未知字段忽略）、私网/HTTP 拒绝、`schemaVersion` 过高明确报错、整包哈希与 `packageSha256` 不符、跨仓库覆盖被拒、身份指纹在插件版本更新时保持稳定而换 ID/URL/公钥时需重新确认、刷新失败保留缓存、删除仓库不删用户数据；一律使用本地 Mock HTTP Server 与固定 fixture，不依赖真实外网。
 
 ## 15. 编码规范
 
@@ -1087,6 +1205,9 @@ UI 先行、临时把数据塞入 Composable、稍后“再重构”是不允许
 - [ ] Android、桌面三端（Windows/macOS/Linux）与 iOS 均完成编译和相关冒烟测试；未经真机/安装包验证的功能不得标记完成。
 - [ ] 所有新增决策、限制和未解决问题写入文档。
 - [ ] 不引入真实内容源、默认仓库、Room/KSP 或未批准的架构变更。
+- [ ] 仓库流程可用：添加/识别/信任 → 按仓库浏览 → 按需安装 → 同源更新/回滚 → 删除仓库影响范围提示；正式构建不含默认仓库。
+- [ ] 插件更新只能来自来源仓库，跨仓库覆盖被显式拒绝。
+- [ ] 不提供单个 ZIP 包 URL 直装或本地 ZIP 侧载入口。
 
 ## 17. 渐进式模块拆分触发条件
 
@@ -1118,7 +1239,7 @@ UI 先行、临时把数据塞入 Composable、稍后“再重构”是不允许
 以下问题不阻塞 M0/M1 的默认实现，但必须在启动对应工作前更新本文档：
 
 1. 正式 `applicationId`、产品名、包名及 iOS Bundle ID。
-2. 插件仓库 URL、签名公钥分发与撤销策略。
+2. 仓库签名公钥分发/撤销策略与身份指纹信任 UI 细节（仓库地址一律由用户添加、应用不预置，故不再待确认）。
 3. 各桌面端分发格式与签名策略（Windows 安装包、macOS DMG/签名、Linux deb/AppImage 等）。
 4. iOS 商店/侧载分发方式、QuickJS、AVKit、后台下载限制在 M0 的验证结果。
 5. HLS/DASH 独立音轨合并等高级离线选项是否进入 P0 的某一小版本（当前默认仍为 P1）。
@@ -1132,3 +1253,4 @@ UI 先行、临时把数据塞入 Composable、稍后“再重构”是不允许
 - 产品范围变更更新 `PROJECT_GOALS.md`，技术边界变更更新本文档。
 - 不在聊天中达成但未落文档的架构决定，不视为已生效。
 - 新增真实源、插件市场、云服务、Web 端或数据库替换，必须作为新 ADR 评审。
+- 插件安装入口变更必须同时更新 ADR 与 §9（仓库索引、安装链、§7.3 ER 图与 §8.1 接口），避免文档与代码分叉。

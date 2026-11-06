@@ -11,4 +11,12 @@ sealed class AppError(message: String?, cause: Throwable? = null) : Exception(me
     data class Storage(override val cause: Throwable) : AppError("storage failed", cause)
     data class InvalidInput(val detail: String) : AppError("invalid: $detail")
     data object PermissionDenied : AppError("permission denied")
+
+    // 仓库优先流程的专用错误：稳定错误码见 ErrorCode，UI 据此给出可理解的原因。
+    data class RepositoryInvalid(val detail: String) : AppError("invalid repository: $detail")
+    data class RepositoryUntrusted(val fingerprint: String) : AppError("repository not trusted: $fingerprint")
+    data class RepositoryFingerprintChanged(val repositoryId: String) :
+        AppError("repository identity fingerprint changed, reconfirm: $repositoryId")
+    data class PluginSourceMismatch(val pluginId: String) :
+        AppError("plugin source repository mismatch: $pluginId")
 }

@@ -1,4 +1,5 @@
 .gradle/
+.kotlin/
 build/
 **/build/
 local.properties
@@ -7,3 +8,7 @@ local.properties
 .idea/
 *.iml
 kotlin-js-store/
+# 第三方参考项目（仅本地阅读，不入库）
+reference/
+# 会话内部记忆
+.workbuddy/

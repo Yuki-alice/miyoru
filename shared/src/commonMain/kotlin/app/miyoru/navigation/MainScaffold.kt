@@ -1,17 +1,10 @@
 package app.miyoru.navigation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationRail
-import androidx.compose.material3.NavigationRailItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -21,9 +14,12 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
+import app.miyoru.core.ui.components.MiyoruBottomBar
+import app.miyoru.core.ui.components.MiyoruNavRail
+import app.miyoru.core.ui.components.NavItem
+import app.miyoru.core.ui.icon.MiyoruIcons
 
-private val TAB_ORDER: List<Pair<Any, kotlin.reflect.KClass<*>>> = listOf(
+internal val TAB_ORDER: List<Pair<Any, kotlin.reflect.KClass<*>>> = listOf(
     Home to Home::class,
     Library to Library::class,
     History to History::class,
@@ -31,8 +27,18 @@ private val TAB_ORDER: List<Pair<Any, kotlin.reflect.KClass<*>>> = listOf(
     More to More::class,
 )
 
-/** 自适应骨架：窄屏底栏 / 宽屏（≥840dp）侧栏仅 5 主 Tab 显示；子页沉浸 + 顶栏返回。 */
-@OptIn(ExperimentalMaterial3Api::class)
+private fun tabIcon(route: Any) = when (route) {
+    is Home -> MiyoruIcons.Home
+    is Library -> MiyoruIcons.Library
+    is History -> MiyoruIcons.History
+    is Browse -> MiyoruIcons.Browse
+    else -> MiyoruIcons.More
+}
+
+/**
+ * 自适应骨架：宽屏（≥840dp）显示 80dp 侧栏且仅 5 个主 Tab 有导航；
+ * 窄屏显示底栏；子页两端都沉浸，由各屏自己的顶栏提供返回。
+ */
 @Composable
 fun MainScaffold() {
     val nav: NavHostController = rememberNavController()
@@ -50,69 +56,27 @@ fun MainScaffold() {
                 restoreState = true
             }
         }
-        Scaffold(
-            topBar = {
-                if (currentTab == null) {
-                    val e = entry
-                    val label = if (e == null) "" else try {
-                        val r: Any = when {
-                            e.destination.hasRoute(Detail::class) -> e.toRoute<Detail>()
-                            e.destination.hasRoute(Reader::class) -> e.toRoute<Reader>()
-                            e.destination.hasRoute(Player::class) -> e.toRoute<Player>()
-                            e.destination.hasRoute(Site::class) -> e.toRoute<Site>()
-                            e.destination.hasRoute(Sources::class) -> Sources
-                            e.destination.hasRoute(Downloads::class) -> Downloads
-                            e.destination.hasRoute(Categories::class) -> Categories
-                            e.destination.hasRoute(Statistics::class) -> Statistics
-                            e.destination.hasRoute(Extensions::class) -> Extensions
-                            e.destination.hasRoute(Settings::class) -> Settings
-                            e.destination.hasRoute(About::class) -> About
-                            e.destination.hasRoute(Import::class) -> Import
-                            else -> Storage
-                        }
-                        routeLabel(r)
-                    } catch (_: Exception) {
-                        ""
-                    }
-                    TopAppBar(
-                        title = { Text(label) },
-                        navigationIcon = {
-                            TextButton(onClick = { nav.popBackStack() }) { Text("‹ 返回") }
-                        },
-                    )
-                }
-            },
-            bottomBar = {
-                if (!wide && currentTab != null) {
-                    NavigationBar {
-                        TAB_ORDER.forEach { (route, k) ->
-                            val selected = dest?.hierarchy?.any { it.hasRoute(k) } == true
-                            NavigationBarItem(
-                                selected = selected,
-                                onClick = { if (!selected) onTab(route) },
-                                icon = {},
-                                label = { Text(MAIN_TAB_LABELS.getValue(route)) },
-                            )
-                        }
-                    }
-                }
-            },
-        ) { padding ->
+        val items = TAB_ORDER.map { (route, _) -> NavItem(MAIN_TAB_LABELS.getValue(route), tabIcon(route)) }
+        val index = TAB_ORDER.indexOfFirst { it.first == currentTab }
+        val select: (Int) -> Unit = { onTab(TAB_ORDER[it].first) }
+
+        if (wide) {
             Row(Modifier.fillMaxSize()) {
-                if (wide && currentTab != null) {
-                    NavigationRail {
-                        TAB_ORDER.forEach { (route, k) ->
-                            val selected = dest?.hierarchy?.any { it.hasRoute(k) } == true
-                            NavigationRailItem(
-                                selected = selected,
-                                onClick = { if (!selected) onTab(route) },
-                                icon = {},
-                                label = { Text(MAIN_TAB_LABELS.getValue(route)) },
-                            )
-                        }
-                    }
+                if (currentTab != null) {
+                    MiyoruNavRail(items = items, selected = index, onSelect = select)
                 }
-                AppNavHost(nav, padding, onTab)
+                Box(Modifier.weight(1f)) {
+                    AppNavHost(nav = nav, wide = true, onNavigate = onTab)
+                }
+            }
+        } else {
+            Column(Modifier.fillMaxSize()) {
+                Box(Modifier.weight(1f)) {
+                    AppNavHost(nav = nav, wide = false, onNavigate = onTab)
+                }
+                if (currentTab != null) {
+                    MiyoruBottomBar(items = items, selected = index, onSelect = select)
+                }
             }
         }
     }

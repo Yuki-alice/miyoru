@@ -1,0 +1,97 @@
+Starting a Gradle Daemon, 15 busy and 2 incompatible and 9 stopped Daemons could not be reused, use --status for details
+Reusing configuration cache.
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :shared:preBuild UP-TO-DATE
+> Task :plugin:api:preBuild UP-TO-DATE
+> Task :shared:preDebugBuild UP-TO-DATE
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :shared:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :shared:convertXmlValueResourcesForJvmMain NO-SOURCE
+> Task :shared:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :plugin:api:jvmProcessResources NO-SOURCE
+> Task :plugin:runtime:jvmProcessResources NO-SOURCE
+> Task :shared:convertXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :plugin:api:processJvmMainResources SKIPPED
+> Task :plugin:api:preDebugBuild UP-TO-DATE
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :shared:copyNonXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :shared:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :shared:copyNonXmlValueResourcesForJvmMain NO-SOURCE
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :plugin:api:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :shared:checkJvmMainComposeLibrariesCompatibility
+> Task :shared:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :plugin:runtime:processJvmMainResources SKIPPED
+> Task :plugin:runtime:kmpPartiallyResolvedDependenciesChecker
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :plugin:api:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:prepareComposeResourcesTaskForJvmMain NO-SOURCE
+> Task :shared:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :shared:convertXmlValueResourcesForCommonTest NO-SOURCE
+> Task :shared:checkJvmTestComposeLibrariesCompatibility
+> Task :plugin:runtime:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:prepareComposeResourcesTaskForAndroidDebug NO-SOURCE
+> Task :shared:copyNonXmlValueResourcesForCommonTest NO-SOURCE
+> Task :shared:generateResourceAccessorsForJvmMain NO-SOURCE
+> Task :shared:generateResourceAccessorsForCommonMain NO-SOURCE
+> Task :shared:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :shared:generateResourceAccessorsForAndroidDebug NO-SOURCE
+> Task :shared:convertXmlValueResourcesForJvmTest NO-SOURCE
+> Task :shared:prepareComposeResourcesTaskForCommonTest NO-SOURCE
+> Task :shared:generateResourceAccessorsForCommonTest NO-SOURCE
+> Task :shared:copyNonXmlValueResourcesForJvmTest NO-SOURCE
+> Task :shared:generateResourceAccessorsForAndroidMain NO-SOURCE
+> Task :shared:generateExpectResourceCollectorsForCommonMain UP-TO-DATE
+> Task :shared:generateComposeResClass UP-TO-DATE
+> Task :shared:generateActualResourceCollectorsForJvmMain UP-TO-DATE
+> Task :plugin:api:generateDebugResources UP-TO-DATE
+> Task :shared:assembleJvmMainResources UP-TO-DATE
+> Task :shared:copyDebugComposeResourcesToAndroidAssets UP-TO-DATE
+> Task :shared:generateDebugResources UP-TO-DATE
+> Task :shared:processDebugNavigationResources UP-TO-DATE
+> Task :plugin:api:processDebugNavigationResources UP-TO-DATE
+> Task :shared:generateCommonMainMiyoruDatabaseInterface UP-TO-DATE
+> Task :plugin:api:javaPreCompileDebug UP-TO-DATE
+> Task :shared:generateActualResourceCollectorsForAndroidMain UP-TO-DATE
+> Task :shared:prepareComposeResourcesTaskForJvmTest NO-SOURCE
+> Task :shared:jvmProcessResources UP-TO-DATE
+> Task :shared:generateResourceAccessorsForJvmTest NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :shared:assembleJvmTestResources UP-TO-DATE
+> Task :shared:jvmTestProcessResources UP-TO-DATE
+> Task :shared:processJvmTestResources SKIPPED
+> Task :plugin:api:packageDebugResources UP-TO-DATE
+> Task :shared:packageDebugResources UP-TO-DATE
+> Task :plugin:api:parseDebugLocalResources UP-TO-DATE
+> Task :shared:parseDebugLocalResources UP-TO-DATE
+> Task :plugin:api:generateDebugRFile UP-TO-DATE
+> Task :shared:generateDebugRFile UP-TO-DATE
+> Task :plugin:api:compileKotlinJvm UP-TO-DATE
+> Task :plugin:api:compileJvmMainJava NO-SOURCE
+> Task :plugin:api:jvmMainClasses UP-TO-DATE
+> Task :plugin:api:jvmJar UP-TO-DATE
+> Task :plugin:api:compileDebugKotlinAndroid UP-TO-DATE
+> Task :plugin:api:compileDebugJavaWithJavac NO-SOURCE
+> Task :plugin:api:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :plugin:runtime:compileKotlinJvm UP-TO-DATE
+> Task :plugin:runtime:compileJvmMainJava NO-SOURCE
+> Task :plugin:runtime:jvmMainClasses UP-TO-DATE
+> Task :plugin:runtime:jvmJar UP-TO-DATE
+> Task :shared:compileKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses UP-TO-DATE
+> Task :shared:jvmJar UP-TO-DATE
+> Task :shared:compileDebugKotlinAndroid UP-TO-DATE
+> Task :desktopApp:compileKotlin UP-TO-DATE
+> Task :shared:compileTestKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmTestJava NO-SOURCE
+> Task :shared:jvmTestClasses UP-TO-DATE
+> Task :shared:jvmTest UP-TO-DATE
+
+BUILD SUCCESSFUL in 7s
+38 actionable tasks: 5 executed, 33 up-to-date
+Configuration cache entry reused.

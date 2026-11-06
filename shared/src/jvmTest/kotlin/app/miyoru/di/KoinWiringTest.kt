@@ -61,6 +61,7 @@ class KoinWiringTest {
             assertNotNull(koin.get<app.miyoru.data.source.SourceSnapshotStore>())
             assertNotNull(koin.get<SourceRepository>())
             assertNotNull(koin.get<PluginRepository>())
+            assertNotNull(koin.get<app.miyoru.domain.plugin.repository.PluginCatalogRepository>())
             assertNotNull(koin.get<app.miyoru.domain.source.usecase.SearchAcrossSources>())
             assertNotNull(koin.get<app.miyoru.domain.source.usecase.ResolveContent>())
             assertNotNull(koin.get<app.miyoru.feature.library.presentation.LibraryViewModel>())
@@ -86,6 +87,7 @@ class KoinWiringTest {
             assertNotNull(koin.get<app.miyoru.feature.statistics.presentation.StatisticsViewModel>())
             assertNotNull(koin.get<app.miyoru.feature.categories.presentation.CategoriesViewModel>())
             assertNotNull(koin.get<app.miyoru.feature.extensions.presentation.ExtensionsViewModel>())
+            assertNotNull(koin.get<app.miyoru.feature.repositories.presentation.RepositoriesViewModel>())
             assertNotNull(koin.get<app.miyoru.feature.localimport.presentation.ImportViewModel>())
             assertNotNull(koin.get<app.miyoru.platform.download.DownloadEngine>())
         } finally {

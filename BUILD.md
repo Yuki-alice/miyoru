@@ -309,3 +309,90 @@
       启动即 `ClassNotFoundException`）。结论：**`kotlin.android` 插件仍是必需的**，配合 `jvmTarget = 17`
       与 Java 17 对齐——之前的“不再需要 kotlin.android”是误读，已更正。
 - [x] Release 包用 debug keystore 签名验证出包+启动流程（18MB）；正式商店签名待办。
+
+## D1 完成（2026-11-06，插件系统改为仓库优先）
+
+- 插件分发改为「仓库优先」：添加 HTTPS 索引 URL → 严格校验并展示识别结果（不落库）→ 用户信任并落库（记录身份指纹）→ 按仓库分组浏览「可安装 / 有更新 / 已安装」三分面目录 → 安装前权限确认、按需逐个安装 → 同源检查更新 / 更新 / 回滚 → 删除仓库提示影响范围。
+- 信任模型修正：初版把「索引内容摘要」当信任指纹，会导致仓库每次发布新插件版本都要求用户重新确认。改为 `identityFingerprint(index, url)` = SHA-256(`repositoryId` + 仓库 URL + `signingKey`)，索引新增 `signingKey` 字段并校验其为合法 Base64 公钥；只有仓库 ID、链接或发布者公钥变化才要求重新识别确认，索引内容摘要 `fingerprint(index)` 保留为诊断用途。
+- 新增/改动的文件类别：`plugin:api` 的 `RepositoryIndex.kt`（miyoru 原生索引模型 + lenient 解析 + `validate()`）与 `Sha256.kt`（纯 Kotlin 整包哈希，全项目唯一实现，runtime 委托之）；`shared/domain/plugin` 的仓库/目录模型与 `PluginCatalogRepository`，`PluginRepository` 移除游离 `install()` / `update()`、`checkForUpdate()` 改为按 `repository_id` 查缓存并比较 semver 的真实实现；`shared/data/plugin` 的 `RepositoryIndexClient` / `RepositoryPreviewStore` / `PluginCatalogRepositoryImpl`；`shared/feature/repositories` 与重写后的 `shared/feature/extensions`；导航新增 `Repositories` destination；`appModule` 装配新仓储与 ViewModel，平台入口仍传 `PluginInstallerFacade` / `HttpClient`。
+- SQLDelight 升级到 v2：新增 `PLUGIN_REPOSITORY` / `REPOSITORY_PLUGIN` 表（`PluginRepository.sq`），`PLUGIN.repository_id` 改 NOT NULL（历史行用空串兜底，仅代表迁移前安装）；新增 `migrations/1.sqm` 与 `databases/2.db`，保留 `databases/1.db` 作为 v1 基线；`FAVORITE` / `HISTORY` / `PROGRESS` 不因仓库删除或插件卸载而级联删除。
+- 移除单 ZIP 直装：删除 `InstallPluginFromUrl.kt` 与「输入单个 plugin.zip URL / 本地 ZIP 安装」入口；开发模式测试插件改用本地 mock 仓库 + 固定 fixture；采用 miyoru 原生索引格式（`schemaVersion = 1`），不兼容 Mihon/Komikku 的 `index.min.json` 字段语义；正式构建不内置、不预置、不推荐任何仓库地址。
+
+### D1 验证（2026-11-06，补记真实执行结果）
+
+- [x] `./gradlew :shared:jvmTest :plugin:api:jvmTest :plugin:runtime:jvmTest --console=plain` → `BUILD SUCCESSFUL`。JUnit XML 汇总 47 个测试类 / 143 个测试 / 0 失败 / 0 跳过。仓库相关：`PluginCatalogRepositoryImplTest` 8 项（识别不落库、按需安装写来源仓库并启用更新、整包哈希不符拒绝、换发布者公钥需重新确认且保留旧缓存、刷新失败保留已验证索引、删除仓库两种影响范围、跨仓库覆盖被拒）、`RepositoryIndexTest` 10 项、`PluginRepositoryContractTest` 5 项、`RepositoriesViewModelTest` 4 项、`ExtensionsViewModelTest` 4 项、`KoinWiringTest` 1 项。
+- [x] `./gradlew :shared:verifyCommonMainMiyoruDatabaseMigration --console=plain` → `BUILD SUCCESSFUL`（v1 → v2 迁移校验通过）。原待办写的 `:shared:verifySqlDelightMigration` 不是本项目任务名，已更正。注意 `:shared:generateCommonMainMiyoruDatabaseSchema` 与 verify 不能放进同一次 Gradle 调用并行执行，Gradle 9.7 会报隐式依赖；schema（`2.db`）需先单独生成。
+- [x] `./gradlew :shared:compileKotlinJvm :desktopApp:compileKotlin :androidApp:assembleDebug --continue --console=plain` → `BUILD SUCCESSFUL`；产出 `androidApp/build/outputs/apk/debug/androidApp-debug.apk`（31,298,211 字节）。
+- [x] `./gradlew :shared:compileKotlinIosArm64 :shared:compileKotlinIosSimulatorArm64 --console=plain` → `BUILD SUCCESSFUL`（Windows 主机交叉编译 Kotlin/Native iOS 目标；仅编译，未链接 framework、未跑模拟器测试，后者在 Windows 上由 Gradle 明确禁用）。
+- [x] `python build_prototype.py` → `frames=36 groups=271 items=397`，重新生成 `design.json` / `prototype.html` / `share-link.txt`；原型新增「插件仓库」逻辑屏（共 18 个），文案统一为「身份指纹」。
+
+踩坑记录（两次假失败，均已定位，不要据此改业务代码）：
+
+- 首次全量 JVM 测试出现 `PlayerViewModelTest.resolve failure surfaces error` 失败（94 tests / 1 failed，`PlayerViewModelTest.kt:89` 断言 `errorMessage != null`）。单独重跑该测试类 `BUILD SUCCESSFUL`，随后全量重跑也通过；`PlayerViewModel.kt` 本轮未改动，其 `player.state` 订阅已用 `ps.errorMessage ?: _uiState.value.errorMessage` 保护解析阶段错误。判断为多测试类共享 `Dispatchers.setMain` 全局状态的偶发时序问题，列为观察项。
+- 一次把 JVM / Android / iOS 编译放在同一条 `--continue` 命令里时，`:shared:compileKotlinJvm` 报 `JvmPlayer.kt:104 UNSAFE_CALL (MediaProperties?)`；拆开单独编译全部通过，且该行本就是安全调用 `player.mediaProperties.value?.durationMillis`。判断为 Kotlin/Native 与 JVM 并发编译共享增量缓存导致的假错误。后续验证把 iOS 目标与 JVM/Android 目标拆成两条命令执行。
+
+仍待完成（需真机 / macOS 环境，本轮未做，不写结论）：
+
+- [ ] Android / iOS / 桌面三端仓库流程手测：添加/识别/信任、跨仓库覆盖被拒、离线缓存浏览但安装需重新验证、删除仓库不删用户数据。
+- [ ] iOS framework 链接、模拟器/真机运行（需 macOS）；桌面与 Android 安装包实机启动回归。
+
+## 本机环境（Windows 开发机，2026-11-06）
+
+所有工具链集中在 `D:/DevCache`，通过用户级环境变量指向，不依赖 C 盘：
+
+| 用途 | 路径 | 说明 |
+|---|---|---|
+| JDK | `D:/DevCache/jdk/jdk-21.0.12.1+1` | Temurin 21，`JAVA_HOME` |
+| JBR | `D:/DevCache/.gradle/jdks/jetbrains_s_r_o_-21-amd64-windows.2` | JBR 21.0.11（**热重载必需**），Gradle daemon JVM |
+| Gradle 用户目录 | `D:/DevCache/.gradle` | `GRADLE_USER_HOME`，wrapper 9.7.0 缓存已在此 |
+| Android SDK | `D:/DevCache/Android/Sdk` | `ANDROID_HOME` / `ANDROID_SDK_ROOT`，platforms 34–37 |
+
+- `local.properties`（已 gitignore）写 `sdk.dir=D:/DevCache/Android/Sdk`；
+  `gradle.properties` 里原来写死的 macOS 路径已移除，改由各机器 local.properties 提供。
+- `gradlew` / `gradlew.bat` / `gradle/wrapper/gradle-wrapper.jar` 已用 9.7.0 重新生成：
+  原先是手写 shim（只找 `~/.gradle` 缓存、找不到就调系统 gradle），Windows 上直接失败。
+- `kotlin.incremental=true` 显式写进 `gradle.properties`（全局 `~/.gradle/gradle.properties`
+  里是 `kotlin.incremental=false`，会让增量编译失效、拖慢热重载回合）。
+
+## 桌面端热重载（Compose Hot Reload 1.2.0）
+
+`desktopApp` 已接入 `org.jetbrains.compose.hot-reload`，`jvmToolchain` 提到 21：
+
+```bash
+export JAVA_HOME=D:/DevCache/jdk/jdk-21.0.12.1+1
+export GRADLE_USER_HOME=D:/DevCache/.gradle
+export ANDROID_HOME=D:/DevCache/Android/Sdk
+export MIYORU_DEMO=1          # 可选：注入设计对照用的演示数据
+./gradlew :desktopApp:hotRun --auto
+```
+
+- 启动日志里应出现 `JetBrains Runtime: ...jbrsdk...`；若跑到 Temurin 上，热重载会因为
+  缺少增强类重定义能力而失效——这是 JBR 与普通 JDK 的关键差别。
+- `--auto` 会常驻一个 Gradle daemon 监听源码，保存即重编译并 reload；改 `main()`
+  里的窗口参数、依赖、Compose 编译器插件行为时需要重启（结构变更不走热替换）。
+- 手工触发：`./gradlew :desktopApp:hotReloadMain`；应用内触发可用 `./gradlew reload`。
+- 窗口按设计画板 1280×800 打开；`alwaysOnTop` 仅在 `MIYORU_DEMO=1` 时开启，方便与设计稿对照。
+
+## 设计对照与演示数据
+
+17 屏表现层按 `build_prototype.py` 的声明重写，通用件集中在
+`shared/src/commonMain/kotlin/app/miyoru/core/ui/`：
+
+- `theme/Theme.kt`：深色优先的 M3 紫色方案（surface container 全阶）、字阶（22/18/15/13）、
+  `Dimens`（侧栏 80、顶栏 64、页边距 32/16、卡片 340/250、行高 72）。
+- `components/Navigation.kt`：顶栏、侧栏、底栏、页面骨架、空状态。
+- `components/Controls.kt`：搜索框、一级 Tab、筛选 chip、按钮、进度条、设置行。
+- `components/Media.kt`：封面、封面卡片、列表行、继续阅读卡、网格、数字卡。
+- `icon/MiyoruIcons.kt`：图标门面（`material-icons-extended:1.7.3`），屏幕层不直接依赖生成类。
+
+`MIYORU_DEMO=1` 时 `dev/DemoContent.kt` 用内存仓储覆盖 `LibraryRepository` /
+`SourceRepository` / `DownloadRepository`，让空数据下的 17 屏也能呈现接近设计稿的内容密度。
+正式构建不含该模块的任何装配。
+
+## 表现层已修正的问题
+
+- **JVM 数据库第二次启动崩溃**：`JvmDatabaseDriverFactory` 之前无条件 `Schema.create`，
+  第二次启动必然 `table CACHE_ENTRY already exists`。改为读写 `PRAGMA user_version`：
+  0 → create、低于当前版本 → migrate、再回写版本（Android/Native 驱动自带版本管理，无需改）。
+- 顶栏标题与操作按钮的 `weight` 争抢导致搜索图标跑到页面中间。
+- 列表行 `supporting` 与标题重复（目录行同时显示「第 1 话」和「第 1 话」）。

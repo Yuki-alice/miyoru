@@ -43,6 +43,66 @@ class FakePluginRepository : PluginRepository {
     }
 }
 
+/** 仓库目录的内存假实现，供 ViewModel 测试使用（不依赖真实数据库/网络）。 */
+class FakePluginCatalogRepository : app.miyoru.domain.plugin.repository.PluginCatalogRepository {
+    val repos = MutableStateFlow<List<app.miyoru.domain.plugin.model.PluginRepo>>(emptyList())
+    val snapshot = MutableStateFlow(app.miyoru.domain.plugin.model.PluginCatalog())
+    var preview: app.miyoru.domain.plugin.model.RepositoryPreview? = null
+    var inspectError: String? = null
+    var refreshOutcome = app.miyoru.domain.plugin.model.RefreshOutcome()
+    val inspected = mutableListOf<String>()
+    val addedFingerprints = mutableListOf<String>()
+    val installed = mutableListOf<Pair<String, String>>()
+    val updated = mutableListOf<String>()
+    var removed: Pair<String, Boolean>? = null
+    var refreshCalls = 0
+
+    override fun observeRepositories() = repos
+    override fun observeCatalog() = snapshot
+    override suspend fun inspectRepository(url: String): app.miyoru.domain.plugin.model.RepositoryPreview {
+        inspected += url
+        inspectError?.let { throw app.miyoru.core.common.AppError.RepositoryInvalid(it) }
+        return preview ?: app.miyoru.domain.plugin.model.RepositoryPreview(
+            url = url, repositoryId = "demo.repository", name = "Demo Repository",
+            schemaVersion = 1, fingerprint = "f".repeat(64), pluginCount = 1, hasSignature = false,
+        )
+    }
+    override suspend fun addRepository(fingerprint: String): app.miyoru.domain.plugin.model.PluginRepo {
+        addedFingerprints += fingerprint
+        return app.miyoru.domain.plugin.model.PluginRepo(
+            id = "demo.repository", url = "https://example.com/index.json",
+            name = "Demo Repository", schemaVersion = 1, fingerprint = fingerprint,
+        )
+    }
+    override suspend fun removeRepository(id: String, removePlugins: Boolean) {
+        removed = id to removePlugins
+    }
+    override suspend fun setRepositoryEnabled(id: String, enabled: Boolean) = Unit
+    override suspend fun refreshRepository(id: String): app.miyoru.domain.plugin.model.RefreshOutcome {
+        refreshCalls++
+        return refreshOutcome
+    }
+    override suspend fun refreshAll(): app.miyoru.domain.plugin.model.RefreshOutcome {
+        refreshCalls++
+        return refreshOutcome
+    }
+    override suspend fun install(repositoryId: String, pluginId: String): app.miyoru.domain.plugin.model.InstalledPlugin {
+        installed += repositoryId to pluginId
+        return app.miyoru.domain.plugin.model.InstalledPlugin(pluginId, "1.0.0", true, repositoryId)
+    }
+    override suspend fun update(pluginId: String): app.miyoru.domain.plugin.model.InstalledPlugin {
+        updated += pluginId
+        return app.miyoru.domain.plugin.model.InstalledPlugin(pluginId, "2.0.0", true, "demo.repository")
+    }
+    override suspend fun checkForUpdates(): List<PluginUpdate> = snapshot.value.updates
+    override suspend fun catalogEntry(
+        repositoryId: String,
+        pluginId: String,
+    ): app.miyoru.domain.plugin.model.CatalogEntry? =
+        snapshot.value.groups.firstOrNull { it.repository.id == repositoryId }
+            ?.entries?.firstOrNull { it.pluginId == pluginId }
+}
+
 class FakeDownloadRepository : DownloadRepository {
     val tasks = MutableStateFlow<List<DownloadTask>>(emptyList())
     val calls = mutableListOf<String>()

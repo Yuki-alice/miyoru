@@ -325,6 +325,7 @@ page_browse = list_page(
             {"label": "影库", "icon": "public", "supporting": "视频 · 3,042 部作品 · 已订阅", "to": "site"},
         ]),
         ("插件订阅", [
+            {"label": "插件仓库", "icon": "public", "supporting": "3 个已信任仓库 · 刷新索引", "to": "repositories"},
             {"label": "站点插件", "icon": "extension", "supporting": "v1.4.2 · 3 个数据源可用", "to": "extensions"},
             {"label": "管理数据源与插件", "icon": "tune", "supporting": "启用、停用、检查更新",
              "to": "sources", "note": "集中管理已订阅的数据源开关与插件版本，可跳转到插件商店安装新来源。"},
@@ -341,7 +342,9 @@ page_more = list_page(
             {"label": "统计", "icon": "bar_chart", "supporting": "本月 42 小时 18 分", "to": "statistics"},
         ]),
         ("扩展与系统", [
-            {"label": "插件商店", "icon": "extension", "supporting": "12 个可用插件", "to": "extensions"},
+            {"label": "插件仓库", "icon": "public", "supporting": "3 个已信任仓库 · 添加、识别、刷新", "to": "repositories",
+             "note": "先添加仓库索引链接，系统识别并确认信任后，才能在插件商店按需安装。"},
+            {"label": "插件商店", "icon": "extension", "supporting": "按仓库浏览 · 按需安装与更新", "to": "extensions"},
             {"label": "设置", "icon": "settings", "supporting": "外观、阅读、播放与通知", "to": "settings"},
             {"label": "数据与存储", "icon": "storage", "supporting": "已用 2.4 GB", "to": "storage"},
             {"label": "关于", "icon": "info", "supporting": "版本 0.1.0 · MIT", "to": "about"},
@@ -484,6 +487,7 @@ page_sources = list_page(
         ("可用来源", [
             {"label": "插件提供的来源", "icon": "extension", "supporting": "安装插件后可在此启用", "to": "extensions"},
             {"label": "检查来源更新", "icon": "update", "supporting": "上次检查 2 小时前", "to": "extensions"},
+            {"label": "插件仓库", "icon": "public", "supporting": "添加与管理插件来源仓库", "to": "repositories"},
         ]),
     ],
     trailing=lambda f, t: f.buttons([
@@ -560,17 +564,61 @@ def page_statistics(f, t):
     ])
 
 
+page_repositories = list_page(
+    "插件仓库", back=True, icon2="add",
+    sections=[
+        ("已添加的仓库", [
+            {"label": "社区漫画源仓库", "icon": "public",
+             "supporting": "42 个插件 · 指纹 8f3a2c1d · 已启用",
+             "switch": True, "checked": True,
+             "note": "应用不内置任何仓库。用户粘贴仓库索引链接，系统识别（名称、插件数、身份指纹）后由用户确认信任才生效。"},
+            {"label": "小说源合集", "icon": "public",
+             "supporting": "18 个插件 · 身份指纹 c91b7e04 · 已启用", "switch": True, "checked": True},
+            {"label": "实验性视频源", "icon": "public",
+             "supporting": "6 个插件 · 上次刷新失败 · 已停用", "switch": True, "checked": False},
+        ]),
+        ("仓库操作", [
+            {"label": "添加仓库", "icon": "add",
+             "supporting": "粘贴 HTTPS 索引链接 → 识别 → 信任并添加",
+             "note": "识别阶段不落库；确认页展示仓库信息、插件数与身份指纹，并提示第三方代码风险。"},
+            {"label": "刷新全部仓库", "icon": "update", "supporting": "重新拉取并校验索引；失败保留上次缓存"},
+            {"label": "移除仓库", "icon": "delete_sweep",
+             "supporting": "提示该仓库下已安装插件数，可选仅移除或同时卸载"},
+        ]),
+        ("安全提示", [
+            {"label": "第三方代码与身份指纹信任", "icon": "info",
+             "supporting": "仓库 ID、链接或发布者公钥变化需重新确认；插件只能从来源仓库更新"},
+        ]),
+    ],
+    trailing=lambda f, t: f.buttons([
+        {"label": "前往插件商店", "icon": "extension", "variant": "tonal", "to": "extensions",
+         "note": "仓库确认后，在插件商店按仓库分组浏览，逐个按需安装。"},
+    ]),
+)
+
 page_extensions = list_page(
-    "插件商店", back=True, icon2="search",
-    search="搜索插件与数据源", tabs=["已安装", "可用"],
-    sections=[("", [
-        {"label": "站点插件", "icon": "extension", "supporting": "v1.4.2 · 已安装 · 3 个来源", "to": "sources"},
-        {"label": "漫画源扩展", "icon": "extension", "supporting": "v2.1.0 · 有更新", "to": "sources"},
-        {"label": "轻小说源", "icon": "extension", "supporting": "v0.9.3 · 可用", "to": "sources"},
-        {"label": "视频源扩展", "icon": "extension", "supporting": "v1.2.1 · 可用", "to": "sources"},
-        {"label": "元数据插件", "icon": "extension", "supporting": "v0.6.0 · 可用 · 实验性", "to": "sources",
-         "note": "插件只提供数据源与元数据；安装后可回到数据源管理页逐个启用。"},
-    ])],
+    "插件商店", back=True, icon2="update",
+    search="搜索仓库内的插件", tabs=["可安装", "有更新", "已安装"],
+    sections=[
+        ("社区漫画源仓库", [
+            {"label": "漫画源扩展", "icon": "extension", "supporting": "v2.1.0 · 漫画 · 可安装", "to": "sources",
+             "note": "安装前展示申请域名、媒体类型与能力；确认后从该仓库下载 ZIP，校验整包哈希再安装。"},
+            {"label": "视频源扩展", "icon": "extension", "supporting": "v1.2.1 · 视频 · 可安装", "to": "sources"},
+            {"label": "元数据插件", "icon": "extension", "supporting": "v0.6.0 · 实验性 · 需新版应用", "to": "sources"},
+        ]),
+        ("小说源合集", [
+            {"label": "轻小说源", "icon": "extension", "supporting": "v0.9.3 · 小说 · 可安装", "to": "sources"},
+            {"label": "站点插件", "icon": "extension", "supporting": "v1.4.2 → v1.5.0 · 有更新", "to": "sources"},
+        ]),
+        ("已安装", [
+            {"label": "站点插件", "icon": "extension", "supporting": "v1.4.2 · 来自社区漫画源仓库", "to": "sources"},
+        ]),
+        ("来源管理", [
+            {"label": "管理插件仓库", "icon": "public",
+             "supporting": "添加仓库、识别信任、刷新索引与移除", "to": "repositories"},
+            {"label": "数据源管理", "icon": "tune", "supporting": "安装后回到此处启用", "to": "sources"},
+        ]),
+    ],
 )
 
 page_settings = list_page(
@@ -653,7 +701,7 @@ SCREENS = [
     dict(key="browse", name="浏览", group="主导航", sel=3, nav_phone=True,
          note="浏览：站点、数据源与插件订阅三个分页，进入站点浏览与插件商店。", build=page_browse),
     dict(key="more", name="更多", group="主导航", sel=4, nav_phone=True,
-         note="更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件商店、设置、关于、数据与存储。", build=page_more),
+         note="更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件仓库、插件商店、设置、关于、数据与存储。", build=page_more),
 
     dict(key="detail", name="作品详情", group="内容消费", sel=None, nav_phone=False,
          note="作品详情：封面驱动的强调色、类型标签、简介、开始阅读/加入书架与章节目录；宽屏去掉侧边导航栏以更沉浸。", build=page_detail),
@@ -673,8 +721,10 @@ SCREENS = [
          note="分类：自定义分类列表与新建入口，点击分类回到带筛选的书架。", build=page_categories),
     dict(key="statistics", name="统计", group="更多 · 子页面", sel=4, nav_phone=False,
          note="统计：本月时长、各内容类型数量与占比分布。", build=page_statistics),
+    dict(key="repositories", name="插件仓库", group="更多 · 子页面", sel=4, nav_phone=False,
+         note="插件仓库：添加仓库索引链接，系统识别并展示名称、插件数与指纹，用户确认信任后生效；可刷新、停用与移除，删除时提示影响范围。", build=page_repositories),
     dict(key="extensions", name="插件商店", group="更多 · 子页面", sel=4, nav_phone=False,
-         note="插件商店：已安装与可用插件，安装后回到数据源管理启用。", build=page_extensions),
+         note="插件商店：按已信任仓库分组浏览插件，可安装 / 有更新 / 已安装三分面，逐个按需安装并展示权限，安装后回到数据源管理启用。", build=page_extensions),
     dict(key="settings", name="设置", group="更多 · 子页面", sel=4, nav_phone=False,
          note="设置：外观、阅读与播放、通知三组开关与选项。", build=page_settings),
     dict(key="about", name="关于", group="更多 · 子页面", sel=4, nav_phone=False,
@@ -693,7 +743,7 @@ def frame_pos(slot: int, wide: bool):
 def build_doc() -> dict:
     doc = {
         "title": "内容库",
-        "brief": "一个把漫画、小说和视频放进同一个书架的内容应用。底部导航为首页、书架、历史、浏览、更多；浏览管理数据源与插件订阅，更多通往下载、分类、统计、插件商店、设置、关于、数据与存储。三种内容共用追更、收藏与阅读进度；深色优先，强调色取自作品封面。宽屏下仅 5 个主导航 tab 屏显示侧边导航栏，其余子页面隐藏侧栏、用顶栏返回按钮保持沉浸。",
+        "brief": "一个把漫画、小说和视频放进同一个书架的内容应用。底部导航为首页、书架、历史、浏览、更多；浏览管理数据源与插件订阅，更多通往下载、分类、统计、插件仓库、插件商店、设置、关于、数据与存储。插件采用仓库优先流程：先添加仓库索引链接并由系统识别、用户确认信任，再在插件商店按仓库分组按需安装与更新；应用不内置、不推荐任何正式仓库。三种内容共用追更、收藏与阅读进度；深色优先，强调色取自作品封面。宽屏下仅 5 个主导航 tab 屏显示侧边导航栏，其余子页面隐藏侧栏、用顶栏返回按钮保持沉浸。",
         "frame": "phone",
         "platform": "web",
         "paletteKey": "purple",
@@ -804,7 +854,7 @@ def html_page(link: str, doc: dict) -> str:
     <h2>打开原型</h2>
     <div class="meta">
       <span class="tag">5 个导航 tab</span>
-      <span class="tag">17 个逻辑屏</span>
+      <span class="tag">18 个逻辑屏</span>
       <span class="tag">手机 412×892 + 桌面 1280×800</span>
       <span class="tag">宽屏仅主屏显示侧栏</span>
       <span class="tag">深色 / 浅色双模式</span>
@@ -821,7 +871,7 @@ def html_page(link: str, doc: dict) -> str:
   <div class="card">
     <h2>屏幕与流程</h2>
     {screen_html}
-    <p class="hint">导航顺序为 首页 · 书架 · 历史 · 浏览 · 更多，五个主屏互相可跳转；「浏览」通往数据源管理与站点浏览，「更多」通往 7 个子页面。宽屏只有 5 个主导航 tab 屏显示侧边导航栏；其余 12 个子页面（详情、阅读器、播放器，以及浏览与更多下的全部二级页）一律隐藏侧栏，改用顶栏返回按钮保持沉浸。详情宽屏改为整幅画面，封面在左、信息在右、目录在下。每个逻辑屏在画布上成对上下排列：手机版在上、宽屏版在下，同名屏幕会被识别为「同一个屏幕的两种宽度」。</p>
+    <p class="hint">导航顺序为 首页 · 书架 · 历史 · 浏览 · 更多，五个主屏互相可跳转；「浏览」通往数据源管理与站点浏览，「更多」通往 8 个子页面（含插件仓库与插件商店）。宽屏只有 5 个主导航 tab 屏显示侧边导航栏；其余 13 个子页面（详情、阅读器、播放器，以及浏览与更多下的全部二级页）一律隐藏侧栏，改用顶栏返回按钮保持沉浸。详情宽屏改为整幅画面，封面在左、信息在右、目录在下。每个逻辑屏在画布上成对上下排列：手机版在上、宽屏版在下，同名屏幕会被识别为「同一个屏幕的两种宽度」。</p>
   </div>
 
   <div class="card">

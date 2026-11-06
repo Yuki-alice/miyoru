@@ -6,6 +6,9 @@ import app.miyoru.core.database.DatabaseDriverFactory
 import app.miyoru.data.download.DownloadRepositoryImpl
 import app.miyoru.data.library.LibraryRepositoryImpl
 import app.miyoru.data.plugin.PluginRepositoryImpl
+import app.miyoru.data.plugin.PluginCatalogRepositoryImpl
+import app.miyoru.data.plugin.RepositoryIndexClient
+import app.miyoru.data.plugin.RepositoryPreviewStore
 import app.miyoru.data.source.SourceRepositoryImpl
 import app.miyoru.data.source.SourceSnapshotStore
 import app.miyoru.db.MiyoruDatabase
@@ -34,7 +37,7 @@ import app.miyoru.platform.security.SecretStore
 import app.miyoru.feature.browse.presentation.BrowseViewModel
 import app.miyoru.feature.detail.presentation.DetailViewModel
 import app.miyoru.data.cache.CacheRepositoryImpl
-import app.miyoru.data.plugin.InstallPluginFromUrl
+import app.miyoru.domain.plugin.repository.PluginCatalogRepository
 
 import app.miyoru.domain.cache.repository.CacheRepository
 import app.miyoru.domain.settings.repository.SettingsRepository
@@ -42,6 +45,7 @@ import app.miyoru.feature.categories.presentation.CategoriesViewModel
 import app.miyoru.feature.comicreader.presentation.ComicReaderViewModel
 import app.miyoru.feature.downloads.presentation.DownloadsViewModel
 import app.miyoru.feature.extensions.presentation.ExtensionsViewModel
+import app.miyoru.feature.repositories.presentation.RepositoriesViewModel
 import app.miyoru.feature.settings.presentation.SettingsViewModel
 import app.miyoru.feature.site.presentation.SiteViewModel
 import app.miyoru.feature.sources.presentation.SourcesViewModel
@@ -59,8 +63,8 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 /**
- * DI 组合根：平台只传入 DatabaseDriverFactory，其余装配收敛在这里。
- * SourceRepository / PluginRepository 已落地（B4）；LocalImportRepository 在 B5 落地后接入。
+ * DI 组合根：平台只传入 DatabaseDriverFactory 等平台能力，其余装配收敛在这里。
+ * 插件分发为仓库优先（ADR-013）：不存在单个 ZIP 包 URL 或本地 ZIP 的直装绑定。
  */
 fun appModule(
     driverFactory: DatabaseDriverFactory,
@@ -70,6 +74,8 @@ fun appModule(
     filesRoot: String,
     zipReader: ZipReader,
     settings: SettingsRepository,
+    appVersion: String = "0.1.0",
+    enforcePluginSignature: Boolean = false,
 ): Module = module {
     single { driverFactory.createDriver() }
     single { MiyoruDatabase(get()) }
@@ -80,7 +86,20 @@ fun appModule(
     single { SourceSnapshotStore(get()) }
     single { UpdateProgress(get()) }
     single<SourceRepository> { SourceRepositoryImpl(get(), sessionProvider, get()) }
-    single<PluginRepository> { PluginRepositoryImpl(get(), installerFacade) }
+    single { PluginRepositoryImpl(get(), installerFacade) }
+    single<PluginRepository> { get<PluginRepositoryImpl>() }
+    single { RepositoryIndexClient(httpClient) }
+    single { RepositoryPreviewStore() }
+    single<PluginCatalogRepository> {
+        PluginCatalogRepositoryImpl(
+            db = get(),
+            client = get(),
+            previewStore = get(),
+            pluginRepository = get(),
+            appVersion = appVersion,
+            enforceSignature = enforcePluginSignature,
+        )
+    }
     single { zipReader }
     single { ImportLocalFile(get()) }
     single { SearchAcrossSources(get()) }
@@ -112,5 +131,6 @@ fun appModule(
     viewModel { StatisticsViewModel(get(), get()) }
     viewModel { CategoriesViewModel(get()) }
     viewModel { ImportViewModel(get(named("filesRoot")), get(), get()) }
-    viewModel { ExtensionsViewModel(InstallPluginFromUrl(httpClient, installerFacade)) }
+    viewModel { RepositoriesViewModel(get(), get()) }
+    viewModel { ExtensionsViewModel(get(), get()) }
 }

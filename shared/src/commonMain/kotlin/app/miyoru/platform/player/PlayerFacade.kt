@@ -11,7 +11,7 @@ data class PlaybackState(
 
 interface PlayerFacade {
     val state: StateFlow<PlaybackState>
-    /** 平台播放器实例（Android=ExoPlayer），供 VideoSurface 使用；不支持的平台为 null。 */
+    /** 平台播放器实例（Android=ExoPlayer、桌面=mediamp mpv、iOS=AVPlayer），供 VideoSurface 使用。 */
     val nativePlayer: Any? get() = null
     suspend fun prepare(url: String, headers: Map<String, String> = emptyMap(), mimeType: String? = null)
     fun play()

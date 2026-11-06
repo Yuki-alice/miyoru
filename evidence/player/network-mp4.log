@@ -1,0 +1,251 @@
+Starting a Gradle Daemon, 15 busy and 2 incompatible and 6 stopped Daemons could not be reused, use --status for details
+Reusing configuration cache.
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :shared:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :plugin:api:jvmProcessResources NO-SOURCE
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :shared:copyNonXmlValueResourcesForJvmMain NO-SOURCE
+> Task :plugin:runtime:jvmProcessResources NO-SOURCE
+> Task :shared:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :shared:convertXmlValueResourcesForJvmMain NO-SOURCE
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :plugin:api:processJvmMainResources SKIPPED
+> Task :plugin:runtime:processJvmMainResources SKIPPED
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :plugin:api:kmpPartiallyResolvedDependenciesChecker
+> Task :plugin:runtime:kmpPartiallyResolvedDependenciesChecker
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :shared:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :plugin:api:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:prepareComposeResourcesTaskForJvmMain NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :plugin:runtime:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:checkJvmMainComposeLibrariesCompatibility
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :shared:generateResourceAccessorsForCommonMain NO-SOURCE
+> Task :shared:generateResourceAccessorsForJvmMain NO-SOURCE
+> Task :shared:generateExpectResourceCollectorsForCommonMain UP-TO-DATE
+> Task :shared:generateActualResourceCollectorsForJvmMain UP-TO-DATE
+> Task :shared:generateComposeResClass UP-TO-DATE
+> Task :shared:assembleJvmMainResources UP-TO-DATE
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :shared:jvmProcessResources UP-TO-DATE
+> Task :shared:generateCommonMainMiyoruDatabaseInterface UP-TO-DATE
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :plugin:api:compileKotlinJvm UP-TO-DATE
+> Task :plugin:api:compileJvmMainJava NO-SOURCE
+> Task :plugin:api:jvmMainClasses UP-TO-DATE
+> Task :plugin:api:jvmJar UP-TO-DATE
+> Task :plugin:runtime:compileKotlinJvm UP-TO-DATE
+> Task :plugin:runtime:compileJvmMainJava NO-SOURCE
+> Task :plugin:runtime:jvmMainClasses UP-TO-DATE
+> Task :plugin:runtime:jvmJar UP-TO-DATE
+
+> Task :shared:compileKotlinJvm
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/core/ui/icon/MiyoruIcons.kt:65:32 'val Icons.Filled.MenuBook: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.MenuBook.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/core/ui/icon/MiyoruIcons.kt:71:29 'val Icons.Filled.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowBack.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/core/ui/icon/MiyoruIcons.kt:78:30 'val Icons.Filled.Article: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Article.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/core/ui/icon/MiyoruIcons.kt:86:33 'val Icons.Filled.List: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.List.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/data/download/HttpDownloadEngine.kt:128:42 'suspend fun ByteReadChannel.readRemaining(max: Long): Source' is deprecated. Use readBuffer(Long).
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/data/download/HttpDownloadEngine.kt:183:44 'suspend fun ByteReadChannel.readRemaining(max: Long): Source' is deprecated. Use readBuffer(Long).
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/data/download/HttpDownloadEngine.kt:194:44 'suspend fun ByteReadChannel.readRemaining(max: Long): Source' is deprecated. Use readBuffer(Long).
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/data/plugin/RepositoryIndexClient.kt:48:46 'suspend fun ByteReadChannel.readRemaining(max: Long): Source' is deprecated. Use readBuffer(Long).
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/data/plugin/RepositoryIndexClient.kt:53:56 'suspend fun ByteReadChannel.readRemaining(max: Long): Source' is deprecated. Use readBuffer(Long).
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:113:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:114:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:115:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:116:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:117:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:118:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:119:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:120:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:121:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:123:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:125:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:128:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:130:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:131:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:132:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:133:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:134:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+w: file:///F:/miyoru/shared/src/commonMain/kotlin/app/miyoru/di/AppModules.kt:135:5 'fun <reified T : ViewModel> Module.viewModel(qualifier: Qualifier? = ..., noinline definition: Scope.(ParametersHolder) -> T): KoinDefinition<T>' is deprecated. Moved ViewModel DSL package. Remove old imports and use org.koin.core.module.dsl.*.
+
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses
+> Task :shared:jvmJar
+> Task :desktopApp:compileKotlin
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+
+> Task :desktopApp:playerVerify
+[mpv/mediampv] [event_loop] started
+[mpv/cplayer] mpv v0.41.0 Copyright ? 2000-2025 mpv/MPlayer/mplayer2 projects
+[mpv/cplayer] libplacebo version: v7.360.1
+[mpv/cplayer] FFmpeg version: 8.0.1
+[mpv/cplayer] FFmpeg library versions:
+[mpv/cplayer]    libavcodec      62.11.100
+[mpv/cplayer]    libavdevice     62.1.100
+[mpv/cplayer]    libavfilter     11.4.100
+[mpv/cplayer]    libavformat     62.3.101
+[mpv/cplayer]    libavutil       60.8.100
+[mpv/cplayer]    libswresample   6.1.100
+[mpv/cplayer]    libswscale      9.1.100
+[mpv/cplayer] Configuration: -Dbuildtype=release -Dprefix=D:/a/mediamp/mediamp/mediamp-mpv/build/mpv/WindowsX64/install -Dlibdir=lib -Dlibmpv=true -Dcplayer=false -Dtests=false -Dfuzzers=false -Dbuild-date=false -Ddefault_library=shared -Dlua=disabled -Djavascript=disabled -Dcplugins=disabled -Dcdda=disabled -Ddvbin=disabled -Ddvdnav=disabled -Djpeg=disabled -Dlcms2=disabled -Dlibarchive=disabled -Dlibavdevice=enabled -Dlibbluray=disabled -Drubberband=disabled -Dsdl2-audio=disabled -Dsdl2-video=disabled -Dsdl2-gamepad=disabled -Duchardet=disabled -Dvapoursynth=disabled -Dzimg=disabled -Dhtml-build=disabled -Dmanpage-build=disabled -Dpdf-build=disabled -Dvulkan=disabled -Dshaderc=enabled -Dspirv-cross=enabled -Dcuda-hwaccel=disabled -Dcuda-interop=disabled -Dd3d9-hwaccel=disabled -Dvaapi=disabled -Dvaapi-drm=disabled -Dvaapi-wayland=disabled -Dvaapi-win32=disabled -Dvaapi-x11=disabled -Dvdpau=disabled -Dvdpau-gl-x11=disabled -Dxv=disabled -Dwayland=disabled -Ddrm=disabled -Dgbm=disabled -Dsixel=disabled -Dcaca=disabled -Dplain-gl=enabled -Dzlib=enabled -Dgpl=false -Dgl=enabled -Dgl-win32=enabled -Degl=disabled -Degl-x11=disabled -Degl-android=disabled -Dd3d-hwaccel=enabled -Dd3d11=enabled -Ddirect3d=disabled -Dwasapi=enabled -Dwin32-smtc=disabled -Dx11=disabled -Daudiotrack=disabled -Dopensles=disabled -Daaudio=disabled
+[mpv/cplayer] List of enabled features: d3d-hwaccel d3d11 dos-paths dxgi-debug-d3d11 ffmpeg gl gl-dxinterop gl-win32 glob glob-win32 iconv libass libavdevice libplacebo shaderc spirv-cross vector wasapi win32 win32-desktop win32-threads zlib
+[mpv/clipboard] Initialized win32 clipboard backend.
+[verify] source=https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4
+[mpv/mediampv] D3D11 device on adapter 'NVIDIA GeForce RTX 3060 Laptop GPU' (luid 00000000:00014ac5)
+[mpv/libmpv_render] Initializing SPIR-V compiler 'shaderc'
+[mpv/libmpv_render] Using Direct3D 11.1 runtime
+[mpv/libmpv_render] Maximum Texture2D size: 16384x16384
+[mpv/libmpv_render] D3DCompiler version: 10.0.22621.2506
+[mpv/libmpv_render] Testing FBO format rgba16hf
+[mpv/libmpv_render] Using FBO format rgba16hf.
+[mpv/libmpv_render] Loading hwdec driver 'd3d11va'
+[mpv/mediamp] rendering 944x561 via D3D12 surface
+[mpv/mediamp] DirectContext not initialized yet
+[mpv/mediampv] Skia D3D12 device on adapter 'NVIDIA GeForce RTX 3060 Laptop GPU'
+[mpv/mediampv] D3D11: buffer ring allocated 944x561 gen=1 readback=0
+[mpv/cplayer] Set property: pause=true -> 1
+[mpv/stream_callback] Opening https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4
+[mpv/ffmpeg] Opening https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4
+[mpv/ffmpeg] Mime-type: 'video/mp4'
+[mpv/demux] Trying demuxers for level=normal.
+[mpv/lavf] Found 'mov,mp4,m4a,3gp,3g2,mj2' at score=100 size=2048.
+[mpv/demux] Detected file format: mov,mp4,m4a,3gp,3g2,mj2 (libavformat)
+[mpv/cplayer] Opening done: https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4
+[mpv/mediampv] [event_loop] unhandled event: 8
+[mpv/lavf] select track 0
+[mpv/cplayer] �� Video  --vid=1  (h264 640x360 30 fps) [default]
+[mpv/display-tags] File tags:
+[mpv/display-tags]  Artist: Blender Foundation 2008, Janus Bager Kristensen 2013
+[mpv/display-tags]  Comment: Creative Commons Attribution 3.0 - http://bbb3d.renderfarming.net
+[mpv/display-tags]  Composer: Sacha Goedegebure
+[mpv/display-tags]  Genre: Animation
+[mpv/display-tags]  Title: Big Buck Bunny, Sunflower version
+[mpv/vd] Container reported FPS: 30.000000
+[mpv/vd] Codec list:
+[mpv/vd]     h264 - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+[mpv/vd] Opening decoder h264
+[mpv/vd] Looking at hwdec h264-d3d11va...
+[mpv/vd] Trying hardware decoding via h264-d3d11va.
+[mpv/vd] Requesting 4 threads for decoding.
+[mpv/vd] Selected decoder: h264 - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+[mpv/vf] User filter list:
+[mpv/vf]   (empty)
+[mpv/cplayer] Starting playback...
+[mpv/cplayer] Set property: pause=false -> 1
+[mpv/vd] Pixel formats supported by decoder: d3d11va_vld d3d11 yuv420p
+[mpv/vd] Codec profile: High (0x64)
+[mpv/vd] Requesting pixfmt 'd3d11' from decoder.
+[mpv/vd] Using hardware decoding (d3d11va).
+[mpv/vd] Decoder format: 640x360 d3d11[nv12] auto/auto/auto/auto/auto CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/vd] Using container aspect ratio.
+[mpv/vf] [in] 640x360 d3d11[nv12] bt.601/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/vf] [userdeint] 640x360 d3d11[nv12] bt.601/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/vf] [userdeint] (disabled)
+[mpv/vf] [autovflip] 640x360 d3d11[nv12] bt.601/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/vf] [autovflip] (disabled)
+[mpv/vf] [autorotate] 640x360 d3d11[nv12] bt.601/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/vf] [autorotate] (disabled)
+[mpv/vf] [convert] 640x360 d3d11[nv12] bt.601/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/vf] [out] 640x360 d3d11[nv12] bt.601/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/mediampv] [event_loop] unhandled event: 17
+[mpv/mediampv] [event_loop] unhandled event: 17
+[mpv/mediampv] [event_loop] unhandled event: 21
+[mpv/cplayer] VO: [libmpv] 640x360 d3d11[nv12]
+[mpv/cplayer] VO: Description: render API for libmpv
+[mpv/vo/libmpv] reconfig to 640x360 d3d11[nv12] bt.601/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=640x360+0+0 A=none
+[mpv/libmpv_render] Window size: 944x561 (Borders: l=0 t=0 r=0 b=0)
+[mpv/libmpv_render] Video source: 640x360 (1:1)
+[mpv/libmpv_render] Video display: (0, 0) 640x360 -> (0, 15) 944x531
+[mpv/libmpv_render] Video scale: 1.475000/1.475000
+[mpv/libmpv_render] OSD borders: l=0 t=15 r=0 b=15
+[mpv/libmpv_render] Video borders: l=0 t=15 r=0 b=15
+[mpv/libmpv_render] Testing FBO format rgba16hf
+[mpv/libmpv_render] Using FBO format rgba16hf.
+[mpv/cplayer] first video frame after restart shown
+[mpv/cplayer] playback restart complete @ 0.000000, audio=eof, video=playing
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[mpv/libmpv_render] Compiled a vertex shader in 104176800ns
+[mpv/libmpv_render] shaderc: 101487000ns, SPIRV-Cross: 846400ns, D3DCompile: 1843400ns
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[verify] t=882ms playing=true pos=66 dur=10000 err=null
+[mpv/libmpv_render] Compiled a fragment shader in 15384700ns
+[mpv/libmpv_render] shaderc: 2748000ns, SPIRV-Cross: 358000ns, D3DCompile: 12278700ns
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[mpv/libmpv_render] Compiled a vertex shader in 3888900ns
+[mpv/libmpv_render] shaderc: 1703000ns, SPIRV-Cross: 116500ns, D3DCompile: 2069400ns
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[mpv/libmpv_render] Compiled a fragment shader in 4312500ns
+[mpv/libmpv_render] shaderc: 2114400ns, SPIRV-Cross: 162200ns, D3DCompile: 2035900ns
+[mpv/lavf] EOF reached.
+[verify] t=1093ms playing=true pos=333 dur=10000 err=null
+[verify] t=1294ms playing=true pos=533 dur=10000 err=null
+[verify] t=1496ms playing=true pos=733 dur=10000 err=null
+[verify] t=1698ms playing=true pos=933 dur=10000 err=null
+[verify] t=1898ms playing=true pos=1133 dur=10000 err=null
+[verify] screenshot saved: F:/miyoru/build/evidence/player/network-mp4.png
+[verify] t=2558ms playing=true pos=1800 dur=10000 err=null
+[verify] t=2763ms playing=true pos=2000 dur=10000 err=null
+[verify] t=2968ms playing=true pos=2200 dur=10000 err=null
+[verify] t=3169ms playing=true pos=2400 dur=10000 err=null
+[verify] t=3372ms playing=true pos=2600 dur=10000 err=null
+[verify] t=3575ms playing=true pos=2800 dur=10000 err=null
+[verify] t=3776ms playing=true pos=3000 dur=10000 err=null
+[verify] t=3977ms playing=true pos=3200 dur=10000 err=null
+[verify] t=4183ms playing=true pos=3433 dur=10000 err=null
+[verify] t=4385ms playing=true pos=3633 dur=10000 err=null
+[verify] t=4587ms playing=true pos=3833 dur=10000 err=null
+[verify] t=4788ms playing=true pos=4033 dur=10000 err=null
+[verify] t=4991ms playing=true pos=4233 dur=10000 err=null
+[verify] t=5195ms playing=true pos=4433 dur=10000 err=null
+[verify] t=5396ms playing=true pos=4633 dur=10000 err=null
+[verify] t=5598ms playing=true pos=4833 dur=10000 err=null
+[verify] t=5798ms playing=true pos=5033 dur=10000 err=null
+[verify] t=6000ms playing=true pos=5233 dur=10000 err=null
+[verify] t=6201ms playing=true pos=5433 dur=10000 err=null
+[verify] t=6402ms playing=true pos=5633 dur=10000 err=null
+[verify] t=6604ms playing=true pos=5833 dur=10000 err=null
+[verify] t=6815ms playing=true pos=6066 dur=10000 err=null
+[verify] t=7028ms playing=true pos=6266 dur=10000 err=null
+[verify] t=7229ms playing=true pos=6466 dur=10000 err=null
+[verify] t=7430ms playing=true pos=6666 dur=10000 err=null
+[verify] t=7631ms playing=true pos=6866 dur=10000 err=null
+[verify] t=7832ms playing=true pos=7066 dur=10000 err=null
+[verify] t=8033ms playing=true pos=7266 dur=10000 err=null
+[verify] t=8235ms playing=true pos=7466 dur=10000 err=null
+[verify] t=8437ms playing=true pos=7666 dur=10000 err=null
+[verify] t=8639ms playing=true pos=7866 dur=10000 err=null
+[verify] t=8840ms playing=true pos=8066 dur=10000 err=null
+[verify] t=9043ms playing=true pos=8266 dur=10000 err=null
+[verify] t=9245ms playing=true pos=8466 dur=10000 err=null
+[verify] t=9447ms playing=true pos=8700 dur=10000 err=null
+[verify] t=9648ms playing=true pos=8900 dur=10000 err=null
+[verify] t=9850ms playing=true pos=9100 dur=10000 err=null
+[verify] t=10051ms playing=true pos=9300 dur=10000 err=null
+[verify] t=10252ms playing=true pos=9500 dur=10000 err=null
+[verify] t=10453ms playing=true pos=9700 dur=10000 err=null
+[verify] t=10654ms playing=true pos=9900 dur=10000 err=null
+[mpv/vf] filter input EOF
+[mpv/vf] filter output EOF
+[mpv/cplayer] using demuxer frame duration for last frame
+[mpv/cplayer] video EOF reached
+[mpv/cplayer] Set property: pause=true -> 1
+[verify] t=10855ms playing=false pos=10000 dur=10000 err=null
+[verify] t=11056ms playing=false pos=10000 dur=10000 err=null
+[verify] t=11271ms playing=false pos=10000 dur=10000 err=null
+[verify] t=11475ms playing=false pos=10000 dur=10000 err=null
+[verify] t=11690ms playing=false pos=10000 dur=10000 err=null
+[verify] t=11891ms playing=false pos=10000 dur=10000 err=null
+[verify] t=12094ms playing=false pos=10000 dur=10000 err=null
+[verify] RESULT ok=true maxPosition=10000 maxDuration=10000
+
+[Incubating] Problems report is available at: file:///F:/miyoru/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 39s
+20 actionable tasks: 8 executed, 12 up-to-date
+Configuration cache entry reused.

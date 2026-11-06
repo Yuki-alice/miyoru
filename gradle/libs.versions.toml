@@ -1,6 +1,7 @@
 [versions]
 kotlin = "2.4.21"
-compose = "1.9.3"
+compose = "1.12.2"
+mediamp = "0.5.3"
 agp = "9.5.0"
 sqldelight = "2.4.1"
 ktor = "3.6.1"
@@ -17,6 +18,8 @@ activityCompose = "1.12.0"
 media3 = "1.11.1"
 filekit = "0.12.0"
 quickjs = "1.0.15"
+hotReload = "1.2.0"
+materialIcons = "1.7.3"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -49,6 +52,14 @@ filekit-dialogs-compose = { module = "io.github.vinceglb:filekit-dialogs-compose
 media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
 media3-exoplayer-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "media3" }
 media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
+compose-material-icons = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIcons" }
+mediamp-api = { module = "org.openani.mediamp:mediamp-api", version.ref = "mediamp" }
+mediamp-mpv = { module = "org.openani.mediamp:mediamp-mpv", version.ref = "mediamp" }
+mediamp-mpv-runtime-windows-x64 = { module = "org.openani.mediamp:mediamp-mpv-runtime-windows-x64", version.ref = "mediamp" }
+mediamp-mpv-runtime-windows-arm64 = { module = "org.openani.mediamp:mediamp-mpv-runtime-windows-arm64", version.ref = "mediamp" }
+mediamp-mpv-runtime-linux-x64 = { module = "org.openani.mediamp:mediamp-mpv-runtime-linux-x64", version.ref = "mediamp" }
+mediamp-mpv-runtime-macos-x64 = { module = "org.openani.mediamp:mediamp-mpv-runtime-macos-x64", version.ref = "mediamp" }
+mediamp-mpv-runtime-macos-arm64 = { module = "org.openani.mediamp:mediamp-mpv-runtime-macos-arm64", version.ref = "mediamp" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -61,3 +72,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 android-kmp-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+compose-hot-reload = { id = "org.jetbrains.compose.hot-reload", version.ref = "hotReload" }

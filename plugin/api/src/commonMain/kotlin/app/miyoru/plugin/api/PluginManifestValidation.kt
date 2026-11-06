@@ -1,8 +1,8 @@
 package app.miyoru.plugin.api
 
-private val ID_RE = Regex("^[a-z0-9][a-z0-9._-]{1,63}$")
-private val VERSION_RE = Regex("^\\d+\\.\\d+\\.\\d+(-[\\w.]+)?$")
-private val HEX64_RE = Regex("^[0-9a-fA-F]{64}$")
+internal val ID_RE = Regex("^[a-z0-9][a-z0-9._-]{1,63}$")
+internal val VERSION_RE = Regex("^\\d+\\.\\d+\\.\\d+(-[\\w.]+)?$")
+internal val HEX64_RE = Regex("^[0-9a-fA-F]{64}$")
 
 /** 返回问题列表；为空表示通过。 */
 fun PluginManifest.validate(appVersion: String, enforceSignature: Boolean): List<String> {

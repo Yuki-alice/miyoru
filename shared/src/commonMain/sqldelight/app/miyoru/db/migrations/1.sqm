@@ -1,0 +1,78 @@
+-- v1 -> v2：插件仓库成为一等实体；单包直装入口移除，PLUGIN.repository_id 必填。
+-- 历史安装的 repository_id 为 NULL，用空串兜底（仅表示迁移前安装，不可更新）。
+CREATE TABLE PLUGIN_REPOSITORY (
+  id TEXT NOT NULL PRIMARY KEY,
+  url TEXT NOT NULL UNIQUE,
+  name TEXT NOT NULL,
+  description TEXT,
+  website_url TEXT,
+  icon_url TEXT,
+  schema_version INTEGER NOT NULL,
+  signing_key TEXT,
+  fingerprint TEXT NOT NULL,
+  enabled INTEGER NOT NULL DEFAULT 1,
+  last_updated INTEGER NOT NULL,
+  last_error TEXT,
+  plugin_count INTEGER NOT NULL DEFAULT 0,
+  created_at INTEGER NOT NULL
+);
+
+CREATE TABLE REPOSITORY_PLUGIN (
+  repository_id TEXT NOT NULL,
+  plugin_id TEXT NOT NULL,
+  name TEXT NOT NULL,
+  version TEXT NOT NULL,
+  api_version INTEGER NOT NULL,
+  min_app_version TEXT NOT NULL,
+  media_types_json TEXT NOT NULL,
+  capabilities_json TEXT NOT NULL,
+  domains_json TEXT NOT NULL,
+  author TEXT,
+  homepage TEXT,
+  icon_url TEXT,
+  description TEXT,
+  download_url TEXT NOT NULL,
+  package_sha256 TEXT NOT NULL,
+  PRIMARY KEY (repository_id, plugin_id)
+);
+
+CREATE INDEX repository_plugin_repo_idx ON REPOSITORY_PLUGIN(repository_id);
+
+CREATE TABLE PLUGIN_NEW (
+  id TEXT NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  version TEXT NOT NULL,
+  api_version INTEGER NOT NULL,
+  media_types_json TEXT NOT NULL,
+  capabilities_json TEXT NOT NULL,
+  manifest_json TEXT NOT NULL,
+  package_sha256 TEXT NOT NULL,
+  signature TEXT,
+  repository_id TEXT NOT NULL,
+  relative_install_dir TEXT NOT NULL,
+  previous_version TEXT,
+  previous_package_sha256 TEXT,
+  previous_relative_install_dir TEXT,
+  previous_manifest_json TEXT,
+  enabled INTEGER NOT NULL DEFAULT 1,
+  last_error TEXT,
+  installed_at INTEGER NOT NULL,
+  updated_at INTEGER NOT NULL
+);
+
+INSERT INTO PLUGIN_NEW (
+  id, name, version, api_version, media_types_json, capabilities_json,
+  manifest_json, package_sha256, signature, repository_id, relative_install_dir,
+  previous_version, previous_package_sha256, previous_relative_install_dir,
+  previous_manifest_json, enabled, last_error, installed_at, updated_at
+)
+SELECT
+  id, name, version, api_version, media_types_json, capabilities_json,
+  manifest_json, package_sha256, signature, COALESCE(repository_id, ''), relative_install_dir,
+  previous_version, previous_package_sha256, previous_relative_install_dir,
+  previous_manifest_json, enabled, last_error, installed_at, updated_at
+FROM PLUGIN;
+
+DROP TABLE PLUGIN;
+ALTER TABLE PLUGIN_NEW RENAME TO PLUGIN;
+CREATE INDEX plugin_repository_idx ON PLUGIN(repository_id);

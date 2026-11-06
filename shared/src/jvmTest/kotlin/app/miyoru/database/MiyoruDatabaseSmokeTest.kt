@@ -23,7 +23,7 @@ class MiyoruDatabaseSmokeTest {
             manifest_json = "{}",
             package_sha256 = "abc",
             signature = null,
-            repository_id = null,
+            repository_id = "demo.repository",
             relative_install_dir = "plugins/example.source",
             previous_version = null,
             previous_package_sha256 = null,

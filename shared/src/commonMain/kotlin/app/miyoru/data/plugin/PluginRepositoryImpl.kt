@@ -9,8 +9,11 @@ import app.miyoru.db.MiyoruDatabase
 import app.miyoru.domain.plugin.model.InstalledPlugin
 import app.miyoru.domain.plugin.model.PluginUpdate
 import app.miyoru.domain.plugin.repository.PluginRepository
+import app.miyoru.plugin.api.InstalledPackage
 import app.miyoru.plugin.api.PluginInstallerFacade
 import app.miyoru.plugin.api.PluginPackageSource
+import app.miyoru.plugin.api.compareSemver
+import app.miyoru.plugin.api.parseSemver
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -23,8 +26,10 @@ import kotlin.time.Clock
 private val jsonStrict = Json { ignoreUnknownKeys = true }
 
 /**
- * 插件安装事务：文件系统先行（facade），成功后再提交数据库终态；
- * 崩溃恢复以 DB 状态 + 暂存/备份目录对账（结构文档 §7.3）。
+ * 已安装插件的启用、更新查询、回滚与卸载。
+ *
+ * 单包直装入口已移除：安装只能由 [PluginCatalogRepositoryImpl] 在校验仓库索引后调用
+ * [installFromRepository]，且必须绑定 `repository_id`。
  */
 class PluginRepositoryImpl(
     private val db: MiyoruDatabase,
@@ -32,42 +37,58 @@ class PluginRepositoryImpl(
     private val io: CoroutineDispatcher = Dispatchers.Default,
 ) : PluginRepository {
 
-    /** 安装包字节入口（供平台文件选择/下载调用）。 */
-    suspend fun install(pkg: PluginPackageSource, enforceSignature: Boolean): InstalledPlugin =
-        withContext(io) {
-            val installed = installer.install(pkg, enforceSignature)
-            val m = installed.manifest
-            val now = Clock.System.now().toEpochMilliseconds()
-            val existing = db.pluginQueries.selectById(m.id).executeAsOneOrNull()
-            db.transaction {
-                db.pluginQueries.insertOrReplace(
-                    id = m.id,
-                    name = m.name,
-                    version = m.version,
-                    api_version = m.apiVersion.toLong(),
-                    media_types_json = jsonStrict.encodeToString(m.mediaTypes),
-                    capabilities_json = jsonStrict.encodeToString(m.capabilities),
-                    manifest_json = jsonStrict.encodeToString(m),
-                    package_sha256 = installed.packageSha256,
-                    signature = m.signature,
-                    repository_id = existing?.repository_id,
-                    relative_install_dir = installer.installDir(m.id),
-                    previous_version = existing?.version,
-                    previous_package_sha256 = existing?.package_sha256,
-                    previous_relative_install_dir = existing?.relative_install_dir,
-                    previous_manifest_json = existing?.manifest_json,
-                    enabled = 1,
-                    last_error = null,
-                    installed_at = existing?.installed_at ?: now,
-                    updated_at = now,
-                )
-            }
-            InstalledPlugin(m.id, m.version, true)
+    /**
+     * 仓库安装链的最后一步：文件系统先行（facade），成功后再提交数据库终态。
+     * `repositoryId` 必填；`expectedPluginId` 防止索引条目与实际 manifest 不一致。
+     */
+    suspend fun installFromRepository(
+        pkg: PluginPackageSource,
+        repositoryId: String,
+        expectedPluginId: String,
+        enforceSignature: Boolean,
+    ): InstalledPlugin = withContext(io) {
+        val installed: InstalledPackage = installer.install(pkg, enforceSignature)
+        val m = installed.manifest
+        if (m.id != expectedPluginId) {
+            installer.uninstall(m.id)
+            throw AppError.InvalidInput("manifest id ${m.id} != catalog id $expectedPluginId")
         }
+        val now = Clock.System.now().toEpochMilliseconds()
+        val existing = db.pluginQueries.selectById(m.id).executeAsOneOrNull()
+        if (existing != null && existing.repository_id != repositoryId) {
+            // 双保险：跨仓库覆盖必须显式拒绝，不能静默改绑来源。
+            installer.rollback(m.id)
+            throw AppError.PluginSourceMismatch(m.id)
+        }
+        db.transaction {
+            db.pluginQueries.insertOrReplace(
+                id = m.id,
+                name = m.name,
+                version = m.version,
+                api_version = m.apiVersion.toLong(),
+                media_types_json = jsonStrict.encodeToString(m.mediaTypes),
+                capabilities_json = jsonStrict.encodeToString(m.capabilities),
+                manifest_json = jsonStrict.encodeToString(m),
+                package_sha256 = installed.packageSha256,
+                signature = m.signature,
+                repository_id = repositoryId,
+                relative_install_dir = installer.installDir(m.id),
+                previous_version = existing?.version,
+                previous_package_sha256 = existing?.package_sha256,
+                previous_relative_install_dir = existing?.relative_install_dir,
+                previous_manifest_json = existing?.manifest_json,
+                enabled = existing?.enabled ?: 1L,
+                last_error = null,
+                installed_at = existing?.installed_at ?: now,
+                updated_at = now,
+            )
+        }
+        InstalledPlugin(m.id, m.version, (existing?.enabled ?: 1L) == 1L, repositoryId)
+    }
 
     override fun observeInstalled(): Flow<List<InstalledPlugin>> =
         db.pluginQueries.selectAll().asFlow().mapToList(io).map { rows ->
-            rows.map { InstalledPlugin(it.id, it.version, it.enabled == 1L) }
+            rows.map { InstalledPlugin(it.id, it.version, it.enabled == 1L, it.repository_id) }
         }
 
     override suspend fun setEnabled(pluginId: String, enabled: Boolean): Unit = withContext(io) {
@@ -76,16 +97,21 @@ class PluginRepositoryImpl(
         db.pluginQueries.updateEnabled(if (enabled) 1L else 0L, Clock.System.now().toEpochMilliseconds(), pluginId)
     }
 
-    override suspend fun checkForUpdate(pluginId: String): PluginUpdate? {
-        // 仓库索引拉取是 M3 范畴；未配置仓库时返回 null（无更新）。
-        db.pluginQueries.selectById(pluginId).executeAsOneOrNull()
+    override suspend fun checkForUpdate(pluginId: String): PluginUpdate? = withContext(io) {
+        val row = db.pluginQueries.selectById(pluginId).executeAsOneOrNull()
             ?: throw AppError.InvalidInput("unknown plugin: $pluginId")
-        return null
-    }
-
-    /** 索引驱动的更新在 M3；P0 手动更新 = 用户提供新包走 install()。 */
-    suspend fun update(pluginId: String): InstalledPlugin {
-        throw AppError.CapabilityUnsupported("index-driven update not configured; use install() with package bytes")
+        // 空串只可能是 v1→v2 迁移前的历史安装，没有来源仓库因此不可更新。
+        if (row.repository_id.isBlank()) return@withContext null
+        val cached = db.pluginRepositoryQueries
+            .selectCachedPlugin(row.repository_id, pluginId)
+            .executeAsOneOrNull() ?: return@withContext null
+        val current = parseSemver(row.version) ?: return@withContext null
+        val latest = parseSemver(cached.version) ?: return@withContext null
+        if (compareSemver(latest, current) > 0) {
+            PluginUpdate(pluginId, cached.version, row.repository_id)
+        } else {
+            null
+        }
     }
 
     override suspend fun rollback(pluginId: String): InstalledPlugin = withContext(io) {
@@ -117,7 +143,7 @@ class PluginRepositoryImpl(
                 updated_at = Clock.System.now().toEpochMilliseconds(),
             )
         }
-        InstalledPlugin(row.id, prevVersion, row.enabled == 1L)
+        InstalledPlugin(row.id, prevVersion, row.enabled == 1L, row.repository_id)
     }
 
     override suspend fun uninstall(pluginId: String): Unit = withContext(io) {

@@ -15,6 +15,10 @@ object ErrorCode {
     const val STORAGE = "E_STORAGE"
     const val INVALID_INPUT = "E_INVALID_INPUT"
     const val PERMISSION_DENIED = "E_PERMISSION_DENIED"
+    const val REPOSITORY_INVALID = "E_REPOSITORY_INVALID"
+    const val REPOSITORY_UNTRUSTED = "E_REPOSITORY_UNTRUSTED"
+    const val REPOSITORY_FINGERPRINT_CHANGED = "E_REPOSITORY_FINGERPRINT_CHANGED"
+    const val PLUGIN_SOURCE_MISMATCH = "E_PLUGIN_SOURCE_MISMATCH"
 }
 
 val AppError.code: String
@@ -29,6 +33,10 @@ val AppError.code: String
         is AppError.Storage -> ErrorCode.STORAGE
         is AppError.InvalidInput -> ErrorCode.INVALID_INPUT
         AppError.PermissionDenied -> ErrorCode.PERMISSION_DENIED
+        is AppError.RepositoryInvalid -> ErrorCode.REPOSITORY_INVALID
+        is AppError.RepositoryUntrusted -> ErrorCode.REPOSITORY_UNTRUSTED
+        is AppError.RepositoryFingerprintChanged -> ErrorCode.REPOSITORY_FINGERPRINT_CHANGED
+        is AppError.PluginSourceMismatch -> ErrorCode.PLUGIN_SOURCE_MISMATCH
     }
 
 /**

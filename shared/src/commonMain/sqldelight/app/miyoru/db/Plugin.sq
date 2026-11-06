@@ -8,7 +8,7 @@ CREATE TABLE PLUGIN (
   manifest_json TEXT NOT NULL,
   package_sha256 TEXT NOT NULL,
   signature TEXT,
-  repository_id TEXT,
+  repository_id TEXT NOT NULL,
   relative_install_dir TEXT NOT NULL,
   previous_version TEXT,
   previous_package_sha256 TEXT,
@@ -20,11 +20,19 @@ CREATE TABLE PLUGIN (
   updated_at INTEGER NOT NULL
 );
 
+CREATE INDEX plugin_repository_idx ON PLUGIN(repository_id);
+
 selectAll:
 SELECT * FROM PLUGIN;
 
 selectById:
 SELECT * FROM PLUGIN WHERE id = ?;
+
+selectByRepository:
+SELECT * FROM PLUGIN WHERE repository_id = ?;
+
+countByRepository:
+SELECT COUNT(*) FROM PLUGIN WHERE repository_id = ?;
 
 insertOrReplace:
 INSERT OR REPLACE INTO PLUGIN (

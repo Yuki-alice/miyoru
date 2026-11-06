@@ -1,6 +1,6 @@
 {
   "title": "内容库",
-  "brief": "一个把漫画、小说和视频放进同一个书架的内容应用。底部导航为首页、书架、历史、浏览、更多；浏览管理数据源与插件订阅，更多通往下载、分类、统计、插件商店、设置、关于、数据与存储。三种内容共用追更、收藏与阅读进度；深色优先，强调色取自作品封面。宽屏下仅 5 个主导航 tab 屏显示侧边导航栏，其余子页面隐藏侧栏、用顶栏返回按钮保持沉浸。",
+  "brief": "一个把漫画、小说和视频放进同一个书架的内容应用。底部导航为首页、书架、历史、浏览、更多；浏览管理数据源与插件订阅，更多通往下载、分类、统计、插件仓库、插件商店、设置、关于、数据与存储。插件采用仓库优先流程：先添加仓库索引链接并由系统识别、用户确认信任，再在插件商店按仓库分组按需安装与更新；应用不内置、不推荐任何正式仓库。三种内容共用追更、收藏与阅读进度；深色优先，强调色取自作品封面。宽屏下仅 5 个主导航 tab 屏显示侧边导航栏，其余子页面隐藏侧栏、用顶栏返回按钮保持沉浸。",
   "frame": "phone",
   "platform": "web",
   "paletteKey": "purple",
@@ -84,14 +84,14 @@
       "name": "更多",
       "x": 0,
       "y": 2000,
-      "note": "更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件商店、设置、关于、数据与存储。"
+      "note": "更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件仓库、插件商店、设置、关于、数据与存储。"
     },
     {
       "id": "more_w",
       "name": "更多",
       "x": 0,
       "y": 3000,
-      "note": "更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件商店、设置、关于、数据与存储。",
+      "note": "更多：内容管理与系统设置的路由入口，覆盖下载、分类、统计、插件仓库、插件商店、设置、关于、数据与存储。",
       "w": 1280,
       "h": 800
     },
@@ -228,32 +228,48 @@
       "h": 800
     },
     {
-      "id": "extensions",
-      "name": "插件商店",
+      "id": "repositories",
+      "name": "插件仓库",
       "x": 1360,
       "y": 6000,
-      "note": "插件商店：已安装与可用插件，安装后回到数据源管理启用。"
+      "note": "插件仓库：添加仓库索引链接，系统识别并展示名称、插件数与指纹，用户确认信任后生效；可刷新、停用与移除，删除时提示影响范围。"
+    },
+    {
+      "id": "repositories_w",
+      "name": "插件仓库",
+      "x": 1360,
+      "y": 7000,
+      "note": "插件仓库：添加仓库索引链接，系统识别并展示名称、插件数与指纹，用户确认信任后生效；可刷新、停用与移除，删除时提示影响范围。",
+      "w": 1280,
+      "h": 800
+    },
+    {
+      "id": "extensions",
+      "name": "插件商店",
+      "x": 2720,
+      "y": 6000,
+      "note": "插件商店：按已信任仓库分组浏览插件，可安装 / 有更新 / 已安装三分面，逐个按需安装并展示权限，安装后回到数据源管理启用。"
     },
     {
       "id": "extensions_w",
       "name": "插件商店",
-      "x": 1360,
+      "x": 2720,
       "y": 7000,
-      "note": "插件商店：已安装与可用插件，安装后回到数据源管理启用。",
+      "note": "插件商店：按已信任仓库分组浏览插件，可安装 / 有更新 / 已安装三分面，逐个按需安装并展示权限，安装后回到数据源管理启用。",
       "w": 1280,
       "h": 800
     },
     {
       "id": "settings",
       "name": "设置",
-      "x": 2720,
+      "x": 4080,
       "y": 6000,
       "note": "设置：外观、阅读与播放、通知三组开关与选项。"
     },
     {
       "id": "settings_w",
       "name": "设置",
-      "x": 2720,
+      "x": 4080,
       "y": 7000,
       "note": "设置：外观、阅读与播放、通知三组开关与选项。",
       "w": 1280,
@@ -262,15 +278,15 @@
     {
       "id": "about",
       "name": "关于",
-      "x": 4080,
-      "y": 6000,
+      "x": 0,
+      "y": 8000,
       "note": "关于：版本、项目说明、许可与反馈入口。"
     },
     {
       "id": "about_w",
       "name": "关于",
-      "x": 4080,
-      "y": 7000,
+      "x": 0,
+      "y": 9000,
       "note": "关于：版本、项目说明、许可与反馈入口。",
       "w": 1280,
       "h": 800
@@ -278,14 +294,14 @@
     {
       "id": "storage",
       "name": "数据与存储",
-      "x": 0,
+      "x": 1360,
       "y": 8000,
       "note": "数据与存储：缓存与下载位置、自动清理、自动备份、创建与恢复备份。"
     },
     {
       "id": "storage_w",
       "name": "数据与存储",
-      "x": 0,
+      "x": 1360,
       "y": 9000,
       "note": "数据与存储：缓存与下载位置、自动清理、自动备份、创建与恢复备份。",
       "w": 1280,
@@ -1892,13 +1908,25 @@
       ]
     },
     {
-      "id": "g130",
+      "id": "g131",
       "x": 4096,
       "y": 526,
       "axis": "y",
       "items": [
         {
           "id": "i128",
+          "kind": "listItem",
+          "label": "插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "3 个已信任仓库 · 刷新索引",
+          "action": {
+            "to": "repositories",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i129",
           "kind": "listItem",
           "label": "站点插件",
           "icon": "extension",
@@ -1910,7 +1938,7 @@
           }
         },
         {
-          "id": "i129",
+          "id": "i130",
           "kind": "listItem",
           "label": "管理数据源与插件",
           "icon": "tune",
@@ -1925,13 +1953,13 @@
       ]
     },
     {
-      "id": "g132",
+      "id": "g133",
       "x": 4080,
       "y": 1000,
       "axis": "x",
       "items": [
         {
-          "id": "i131",
+          "id": "i132",
           "kind": "navRail",
           "label": "",
           "icon": null,
@@ -1982,13 +2010,13 @@
       ]
     },
     {
-      "id": "g134",
+      "id": "g135",
       "x": 4160,
       "y": 1000,
       "axis": "x",
       "items": [
         {
-          "id": "i133",
+          "id": "i134",
           "kind": "topAppBar",
           "label": "浏览",
           "icon": null,
@@ -1999,13 +2027,13 @@
       ]
     },
     {
-      "id": "g136",
+      "id": "g137",
       "x": 4192,
       "y": 1064,
       "axis": "x",
       "items": [
         {
-          "id": "i135",
+          "id": "i136",
           "kind": "tabs",
           "label": "",
           "icon": null,
@@ -2030,13 +2058,13 @@
       ]
     },
     {
-      "id": "g138",
+      "id": "g139",
       "x": 4192,
       "y": 1128,
       "axis": "x",
       "items": [
         {
-          "id": "i137",
+          "id": "i138",
           "kind": "searchBar",
           "label": "搜索站点、数据源与插件",
           "icon": null,
@@ -2047,13 +2075,13 @@
       ]
     },
     {
-      "id": "g140",
+      "id": "g141",
       "x": 4192,
       "y": 1200,
       "axis": "x",
       "items": [
         {
-          "id": "i139",
+          "id": "i140",
           "kind": "text",
           "label": "已订阅数据源",
           "icon": null,
@@ -2064,13 +2092,13 @@
       ]
     },
     {
-      "id": "g144",
+      "id": "g145",
       "x": 4192,
       "y": 1235,
       "axis": "y",
       "items": [
         {
-          "id": "i141",
+          "id": "i142",
           "kind": "listItem",
           "label": "漫岛",
           "icon": "public",
@@ -2084,7 +2112,7 @@
           "size": 1136
         },
         {
-          "id": "i142",
+          "id": "i143",
           "kind": "listItem",
           "label": "轻文阁",
           "icon": "public",
@@ -2097,7 +2125,7 @@
           "size": 1136
         },
         {
-          "id": "i143",
+          "id": "i144",
           "kind": "listItem",
           "label": "影库",
           "icon": "public",
@@ -2112,13 +2140,13 @@
       ]
     },
     {
-      "id": "g146",
+      "id": "g147",
       "x": 4192,
       "y": 1467,
       "axis": "x",
       "items": [
         {
-          "id": "i145",
+          "id": "i146",
           "kind": "text",
           "label": "插件订阅",
           "icon": null,
@@ -2129,13 +2157,26 @@
       ]
     },
     {
-      "id": "g149",
+      "id": "g151",
       "x": 4192,
       "y": 1502,
       "axis": "y",
       "items": [
         {
-          "id": "i147",
+          "id": "i148",
+          "kind": "listItem",
+          "label": "插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "3 个已信任仓库 · 刷新索引",
+          "action": {
+            "to": "repositories_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i149",
           "kind": "listItem",
           "label": "站点插件",
           "icon": "extension",
@@ -2148,7 +2189,7 @@
           "size": 1136
         },
         {
-          "id": "i148",
+          "id": "i150",
           "kind": "listItem",
           "label": "管理数据源与插件",
           "icon": "tune",
@@ -2164,13 +2205,13 @@
       ]
     },
     {
-      "id": "g151",
+      "id": "g153",
       "x": 0,
       "y": 2788,
       "axis": "x",
       "items": [
         {
-          "id": "i150",
+          "id": "i152",
           "kind": "bottomNav",
           "label": "",
           "icon": null,
@@ -2220,13 +2261,13 @@
       ]
     },
     {
-      "id": "g153",
+      "id": "g155",
       "x": 0,
       "y": 2000,
       "axis": "x",
       "items": [
         {
-          "id": "i152",
+          "id": "i154",
           "kind": "topAppBar",
           "label": "更多",
           "icon": null,
@@ -2235,13 +2276,13 @@
       ]
     },
     {
-      "id": "g155",
+      "id": "g157",
       "x": 16,
       "y": 2088,
       "axis": "x",
       "items": [
         {
-          "id": "i154",
+          "id": "i156",
           "kind": "text",
           "label": "内容管理",
           "icon": null,
@@ -2252,13 +2293,13 @@
       ]
     },
     {
-      "id": "g159",
+      "id": "g161",
       "x": 16,
       "y": 2123,
       "axis": "y",
       "items": [
         {
-          "id": "i156",
+          "id": "i158",
           "kind": "listItem",
           "label": "下载",
           "icon": "download",
@@ -2270,7 +2311,7 @@
           }
         },
         {
-          "id": "i157",
+          "id": "i159",
           "kind": "listItem",
           "label": "分类",
           "icon": "category",
@@ -2282,7 +2323,7 @@
           }
         },
         {
-          "id": "i158",
+          "id": "i160",
           "kind": "listItem",
           "label": "统计",
           "icon": "bar_chart",
@@ -2296,13 +2337,13 @@
       ]
     },
     {
-      "id": "g161",
+      "id": "g163",
       "x": 16,
       "y": 2355,
       "axis": "x",
       "items": [
         {
-          "id": "i160",
+          "id": "i162",
           "kind": "text",
           "label": "扩展与系统",
           "icon": null,
@@ -2313,25 +2354,38 @@
       ]
     },
     {
-      "id": "g166",
+      "id": "g169",
       "x": 16,
       "y": 2390,
       "axis": "y",
       "items": [
         {
-          "id": "i162",
+          "id": "i164",
+          "kind": "listItem",
+          "label": "插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "3 个已信任仓库 · 添加、识别、刷新",
+          "note": "先添加仓库索引链接，系统识别并确认信任后，才能在插件商店按需安装。",
+          "action": {
+            "to": "repositories",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i165",
           "kind": "listItem",
           "label": "插件商店",
           "icon": "extension",
           "variant": "filled",
-          "supporting": "12 个可用插件",
+          "supporting": "按仓库浏览 · 按需安装与更新",
           "action": {
             "to": "extensions",
             "transition": "slide"
           }
         },
         {
-          "id": "i163",
+          "id": "i166",
           "kind": "listItem",
           "label": "设置",
           "icon": "settings",
@@ -2343,7 +2397,7 @@
           }
         },
         {
-          "id": "i164",
+          "id": "i167",
           "kind": "listItem",
           "label": "数据与存储",
           "icon": "storage",
@@ -2355,7 +2409,7 @@
           }
         },
         {
-          "id": "i165",
+          "id": "i168",
           "kind": "listItem",
           "label": "关于",
           "icon": "info",
@@ -2369,13 +2423,13 @@
       ]
     },
     {
-      "id": "g168",
+      "id": "g171",
       "x": 0,
       "y": 3000,
       "axis": "x",
       "items": [
         {
-          "id": "i167",
+          "id": "i170",
           "kind": "navRail",
           "label": "",
           "icon": null,
@@ -2426,13 +2480,13 @@
       ]
     },
     {
-      "id": "g170",
+      "id": "g173",
       "x": 80,
       "y": 3000,
       "axis": "x",
       "items": [
         {
-          "id": "i169",
+          "id": "i172",
           "kind": "topAppBar",
           "label": "更多",
           "icon": null,
@@ -2442,13 +2496,13 @@
       ]
     },
     {
-      "id": "g172",
+      "id": "g175",
       "x": 112,
       "y": 3064,
       "axis": "x",
       "items": [
         {
-          "id": "i171",
+          "id": "i174",
           "kind": "text",
           "label": "内容管理",
           "icon": null,
@@ -2459,13 +2513,13 @@
       ]
     },
     {
-      "id": "g176",
+      "id": "g179",
       "x": 112,
       "y": 3099,
       "axis": "y",
       "items": [
         {
-          "id": "i173",
+          "id": "i176",
           "kind": "listItem",
           "label": "下载",
           "icon": "download",
@@ -2478,7 +2532,7 @@
           "size": 1136
         },
         {
-          "id": "i174",
+          "id": "i177",
           "kind": "listItem",
           "label": "分类",
           "icon": "category",
@@ -2491,7 +2545,7 @@
           "size": 1136
         },
         {
-          "id": "i175",
+          "id": "i178",
           "kind": "listItem",
           "label": "统计",
           "icon": "bar_chart",
@@ -2506,13 +2560,13 @@
       ]
     },
     {
-      "id": "g178",
+      "id": "g181",
       "x": 112,
       "y": 3331,
       "axis": "x",
       "items": [
         {
-          "id": "i177",
+          "id": "i180",
           "kind": "text",
           "label": "扩展与系统",
           "icon": null,
@@ -2523,18 +2577,32 @@
       ]
     },
     {
-      "id": "g183",
+      "id": "g187",
       "x": 112,
       "y": 3366,
       "axis": "y",
       "items": [
         {
-          "id": "i179",
+          "id": "i182",
+          "kind": "listItem",
+          "label": "插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "3 个已信任仓库 · 添加、识别、刷新",
+          "note": "先添加仓库索引链接，系统识别并确认信任后，才能在插件商店按需安装。",
+          "action": {
+            "to": "repositories_w",
+            "transition": "slide"
+          },
+          "size": 1136
+        },
+        {
+          "id": "i183",
           "kind": "listItem",
           "label": "插件商店",
           "icon": "extension",
           "variant": "filled",
-          "supporting": "12 个可用插件",
+          "supporting": "按仓库浏览 · 按需安装与更新",
           "action": {
             "to": "extensions_w",
             "transition": "slide"
@@ -2542,7 +2610,7 @@
           "size": 1136
         },
         {
-          "id": "i180",
+          "id": "i184",
           "kind": "listItem",
           "label": "设置",
           "icon": "settings",
@@ -2555,7 +2623,7 @@
           "size": 1136
         },
         {
-          "id": "i181",
+          "id": "i185",
           "kind": "listItem",
           "label": "数据与存储",
           "icon": "storage",
@@ -2568,7 +2636,7 @@
           "size": 1136
         },
         {
-          "id": "i182",
+          "id": "i186",
           "kind": "listItem",
           "label": "关于",
           "icon": "info",
@@ -2583,13 +2651,13 @@
       ]
     },
     {
-      "id": "g185",
+      "id": "g189",
       "x": 1360,
       "y": 2000,
       "axis": "x",
       "items": [
         {
-          "id": "i184",
+          "id": "i188",
           "kind": "topAppBar",
           "label": "作品详情",
           "icon": "arrow_back",
@@ -2606,13 +2674,13 @@
       ]
     },
     {
-      "id": "g187",
+      "id": "g191",
       "x": 1376,
       "y": 2104,
       "axis": "x",
       "items": [
         {
-          "id": "i186",
+          "id": "i190",
           "kind": "image",
           "label": "",
           "icon": null,
@@ -2624,13 +2692,13 @@
       ]
     },
     {
-      "id": "g189",
+      "id": "g193",
       "x": 1572,
       "y": 2112,
       "axis": "x",
       "items": [
         {
-          "id": "i188",
+          "id": "i192",
           "kind": "text",
           "label": "《长夜余火》",
           "icon": null,
@@ -2641,13 +2709,13 @@
       ]
     },
     {
-      "id": "g191",
+      "id": "g195",
       "x": 1572,
       "y": 2152,
       "axis": "x",
       "items": [
         {
-          "id": "i190",
+          "id": "i194",
           "kind": "text",
           "label": "漫画 · 连载中",
           "icon": null,
@@ -2658,13 +2726,13 @@
       ]
     },
     {
-      "id": "g193",
+      "id": "g197",
       "x": 1572,
       "y": 2192,
       "axis": "x",
       "items": [
         {
-          "id": "i192",
+          "id": "i196",
           "kind": "chip",
           "label": "已追更",
           "icon": "notifications",
@@ -2674,27 +2742,27 @@
       ]
     },
     {
-      "id": "g197",
+      "id": "g201",
       "x": 1376,
       "y": 2380,
       "axis": "x",
       "items": [
         {
-          "id": "i194",
+          "id": "i198",
           "kind": "chip",
           "label": "奇幻",
           "icon": null,
           "variant": "filled"
         },
         {
-          "id": "i195",
+          "id": "i199",
           "kind": "chip",
           "label": "悬疑",
           "icon": null,
           "variant": "filled"
         },
         {
-          "id": "i196",
+          "id": "i200",
           "kind": "chip",
           "label": "每周更新",
           "icon": null,
@@ -2703,13 +2771,13 @@
       ]
     },
     {
-      "id": "g199",
+      "id": "g203",
       "x": 1376,
       "y": 2428,
       "axis": "x",
       "items": [
         {
-          "id": "i198",
+          "id": "i202",
           "kind": "text",
           "label": "简介",
           "icon": null,
@@ -2720,13 +2788,13 @@
       ]
     },
     {
-      "id": "g201",
+      "id": "g205",
       "x": 1376,
       "y": 2464,
       "axis": "x",
       "items": [
         {
-          "id": "i200",
+          "id": "i204",
           "kind": "text",
           "label": "永夜之城里，没有人记得上一次日出。",
           "icon": null,
@@ -2737,13 +2805,13 @@
       ]
     },
     {
-      "id": "g204",
+      "id": "g208",
       "x": 1376,
       "y": 2512,
       "axis": "x",
       "items": [
         {
-          "id": "i202",
+          "id": "i206",
           "kind": "button",
           "label": "开始阅读",
           "icon": "auto_stories",
@@ -2756,7 +2824,7 @@
           "note": "从上次阅读进度打开阅读器；漫画为竖向卷轴，小说为可调字号的分页文本。"
         },
         {
-          "id": "i203",
+          "id": "i207",
           "kind": "button",
           "label": "加入书架",
           "icon": "bookmark_add",
@@ -2767,13 +2835,13 @@
       ]
     },
     {
-      "id": "g206",
+      "id": "g210",
       "x": 1376,
       "y": 2584,
       "axis": "x",
       "items": [
         {
-          "id": "i205",
+          "id": "i209",
           "kind": "text",
           "label": "目录 · 共 24 话",
           "icon": null,
@@ -2784,13 +2852,13 @@
       ]
     },
     {
-      "id": "g210",
+      "id": "g214",
       "x": 1376,
       "y": 2624,
       "axis": "y",
       "items": [
         {
-          "id": "i207",
+          "id": "i211",
           "kind": "listItem",
           "label": "第 12 话 · 回声",
           "icon": "auto_stories",
@@ -2802,7 +2870,7 @@
           }
         },
         {
-          "id": "i208",
+          "id": "i212",
           "kind": "listItem",
           "label": "第 13 话 · 空楼",
           "icon": "auto_stories",
@@ -2814,7 +2882,7 @@
           }
         },
         {
-          "id": "i209",
+          "id": "i213",
           "kind": "listItem",
           "label": "第 14 话 · 钟声",
           "icon": "auto_stories",
@@ -2828,13 +2896,13 @@
       ]
     },
     {
-      "id": "g212",
+      "id": "g216",
       "x": 1360,
       "y": 3000,
       "axis": "x",
       "items": [
         {
-          "id": "i211",
+          "id": "i215",
           "kind": "topAppBar",
           "label": "作品详情",
           "icon": "arrow_back",
@@ -2852,13 +2920,13 @@
       ]
     },
     {
-      "id": "g214",
+      "id": "g218",
       "x": 1392,
       "y": 3088,
       "axis": "x",
       "items": [
         {
-          "id": "i213",
+          "id": "i217",
           "kind": "image",
           "label": "",
           "icon": null,
@@ -2870,13 +2938,13 @@
       ]
     },
     {
-      "id": "g216",
+      "id": "g220",
       "x": 1704,
       "y": 3112,
       "axis": "x",
       "items": [
         {
-          "id": "i215",
+          "id": "i219",
           "kind": "text",
           "label": "《长夜余火》",
           "icon": null,
@@ -2887,13 +2955,13 @@
       ]
     },
     {
-      "id": "g218",
+      "id": "g222",
       "x": 1704,
       "y": 3164,
       "axis": "x",
       "items": [
         {
-          "id": "i217",
+          "id": "i221",
           "kind": "text",
           "label": "漫画 · 连载中 · 每周五更新",
           "icon": null,
@@ -2904,27 +2972,27 @@
       ]
     },
     {
-      "id": "g222",
+      "id": "g226",
       "x": 1704,
       "y": 3204,
       "axis": "x",
       "items": [
         {
-          "id": "i219",
+          "id": "i223",
           "kind": "chip",
           "label": "奇幻",
           "icon": null,
           "variant": "filled"
         },
         {
-          "id": "i220",
+          "id": "i224",
           "kind": "chip",
           "label": "悬疑",
           "icon": null,
           "variant": "filled"
         },
         {
-          "id": "i221",
+          "id": "i225",
           "kind": "chip",
           "label": "已追更",
           "icon": "notifications",
@@ -2934,13 +3002,13 @@
       ]
     },
     {
-      "id": "g224",
+      "id": "g228",
       "x": 1704,
       "y": 3256,
       "axis": "x",
       "items": [
         {
-          "id": "i223",
+          "id": "i227",
           "kind": "text",
           "label": "简介",
           "icon": null,
@@ -2951,13 +3019,13 @@
       ]
     },
     {
-      "id": "g226",
+      "id": "g230",
       "x": 1704,
       "y": 3296,
       "axis": "x",
       "items": [
         {
-          "id": "i225",
+          "id": "i229",
           "kind": "text",
           "label": "永夜之城里，没有人记得上一次日出是什么时候。",
           "icon": null,
@@ -2968,13 +3036,13 @@
       ]
     },
     {
-      "id": "g229",
+      "id": "g233",
       "x": 1704,
       "y": 3352,
       "axis": "x",
       "items": [
         {
-          "id": "i227",
+          "id": "i231",
           "kind": "button",
           "label": "开始阅读",
           "icon": "auto_stories",
@@ -2987,7 +3055,7 @@
           "note": "从上次阅读进度打开阅读器；漫画为竖向卷轴，小说为可调字号的分页文本。"
         },
         {
-          "id": "i228",
+          "id": "i232",
           "kind": "button",
           "label": "加入书架",
           "icon": "bookmark_add",
@@ -2998,13 +3066,13 @@
       ]
     },
     {
-      "id": "g231",
+      "id": "g235",
       "x": 1392,
       "y": 3512,
       "axis": "x",
       "items": [
         {
-          "id": "i230",
+          "id": "i234",
           "kind": "text",
           "label": "目录 · 共 24 话",
           "icon": null,
@@ -3015,13 +3083,13 @@
       ]
     },
     {
-      "id": "g235",
+      "id": "g239",
       "x": 1392,
       "y": 3552,
       "axis": "y",
       "items": [
         {
-          "id": "i232",
+          "id": "i236",
           "kind": "listItem",
           "label": "第 12 话 · 回声",
           "icon": "auto_stories",
@@ -3034,7 +3102,7 @@
           }
         },
         {
-          "id": "i233",
+          "id": "i237",
           "kind": "listItem",
           "label": "第 13 话 · 空楼",
           "icon": "auto_stories",
@@ -3047,7 +3115,7 @@
           }
         },
         {
-          "id": "i234",
+          "id": "i238",
           "kind": "listItem",
           "label": "第 14 话 · 钟声",
           "icon": "auto_stories",
@@ -3062,13 +3130,13 @@
       ]
     },
     {
-      "id": "g237",
+      "id": "g241",
       "x": 2720,
       "y": 2000,
       "axis": "x",
       "items": [
         {
-          "id": "i236",
+          "id": "i240",
           "kind": "topAppBar",
           "label": "第 12 话 · 长夜余火",
           "icon": "arrow_back",
@@ -3084,13 +3152,13 @@
       ]
     },
     {
-      "id": "g239",
+      "id": "g243",
       "x": 2736,
       "y": 2112,
       "axis": "x",
       "items": [
         {
-          "id": "i238",
+          "id": "i242",
           "kind": "box",
           "label": "",
           "icon": null,
@@ -3103,13 +3171,13 @@
       ]
     },
     {
-      "id": "g241",
+      "id": "g245",
       "x": 2752,
       "y": 2144,
       "axis": "x",
       "items": [
         {
-          "id": "i240",
+          "id": "i244",
           "kind": "text",
           "label": "第十二话 · 永夜之城",
           "icon": null,
@@ -3120,13 +3188,13 @@
       ]
     },
     {
-      "id": "g243",
+      "id": "g247",
       "x": 2752,
       "y": 2192,
       "axis": "x",
       "items": [
         {
-          "id": "i242",
+          "id": "i246",
           "kind": "text",
           "label": "夜色像潮水一样漫过街道。",
           "icon": null,
@@ -3137,13 +3205,13 @@
       ]
     },
     {
-      "id": "g245",
+      "id": "g249",
       "x": 2752,
       "y": 2224,
       "axis": "x",
       "items": [
         {
-          "id": "i244",
+          "id": "i248",
           "kind": "text",
           "label": "他把灯熄灭，等第三声钟响。",
           "icon": null,
@@ -3154,13 +3222,13 @@
       ]
     },
     {
-      "id": "g247",
+      "id": "g251",
       "x": 2752,
       "y": 2256,
       "axis": "x",
       "items": [
         {
-          "id": "i246",
+          "id": "i250",
           "kind": "text",
           "label": "窗外，有人正沿着屋檐往北走。",
           "icon": null,
@@ -3171,13 +3239,13 @@
       ]
     },
     {
-      "id": "g249",
+      "id": "g253",
       "x": 2736,
       "y": 2664,
       "axis": "x",
       "items": [
         {
-          "id": "i248",
+          "id": "i252",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -3190,13 +3258,13 @@
       ]
     },
     {
-      "id": "g251",
+      "id": "g255",
       "x": 2816,
       "y": 2724,
       "axis": "x",
       "items": [
         {
-          "id": "i250",
+          "id": "i254",
           "kind": "toolbar",
           "label": "",
           "icon": null,
@@ -3224,13 +3292,13 @@
       ]
     },
     {
-      "id": "g253",
+      "id": "g257",
       "x": 2720,
       "y": 3000,
       "axis": "x",
       "items": [
         {
-          "id": "i252",
+          "id": "i256",
           "kind": "topAppBar",
           "label": "第 12 话 · 长夜余火",
           "icon": "arrow_back",
@@ -3247,13 +3315,13 @@
       ]
     },
     {
-      "id": "g255",
+      "id": "g259",
       "x": 3000,
       "y": 3088,
       "axis": "x",
       "items": [
         {
-          "id": "i254",
+          "id": "i258",
           "kind": "box",
           "label": "",
           "icon": null,
@@ -3266,13 +3334,13 @@
       ]
     },
     {
-      "id": "g257",
+      "id": "g261",
       "x": 3032,
       "y": 3128,
       "axis": "x",
       "items": [
         {
-          "id": "i256",
+          "id": "i260",
           "kind": "text",
           "label": "第十二话 · 永夜之城",
           "icon": null,
@@ -3283,13 +3351,13 @@
       ]
     },
     {
-      "id": "g259",
+      "id": "g263",
       "x": 3032,
       "y": 3184,
       "axis": "x",
       "items": [
         {
-          "id": "i258",
+          "id": "i262",
           "kind": "text",
           "label": "夜色像潮水一样漫过街道。",
           "icon": null,
@@ -3300,13 +3368,13 @@
       ]
     },
     {
-      "id": "g261",
+      "id": "g265",
       "x": 3032,
       "y": 3220,
       "axis": "x",
       "items": [
         {
-          "id": "i260",
+          "id": "i264",
           "kind": "text",
           "label": "他把灯熄灭，等第三声钟响。",
           "icon": null,
@@ -3317,13 +3385,13 @@
       ]
     },
     {
-      "id": "g263",
+      "id": "g267",
       "x": 3032,
       "y": 3256,
       "axis": "x",
       "items": [
         {
-          "id": "i262",
+          "id": "i266",
           "kind": "text",
           "label": "窗外，有人正沿着屋檐往北走。",
           "icon": null,
@@ -3334,13 +3402,13 @@
       ]
     },
     {
-      "id": "g265",
+      "id": "g269",
       "x": 3000,
       "y": 3632,
       "axis": "x",
       "items": [
         {
-          "id": "i264",
+          "id": "i268",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -3353,13 +3421,13 @@
       ]
     },
     {
-      "id": "g267",
+      "id": "g271",
       "x": 3280,
       "y": 3688,
       "axis": "x",
       "items": [
         {
-          "id": "i266",
+          "id": "i270",
           "kind": "toolbar",
           "label": "",
           "icon": null,
@@ -3387,13 +3455,13 @@
       ]
     },
     {
-      "id": "g269",
+      "id": "g273",
       "x": 4080,
       "y": 2000,
       "axis": "x",
       "items": [
         {
-          "id": "i268",
+          "id": "i272",
           "kind": "topAppBar",
           "label": "黎明之前 · EP06",
           "icon": "arrow_back",
@@ -3408,13 +3476,13 @@
       ]
     },
     {
-      "id": "g271",
+      "id": "g275",
       "x": 4096,
       "y": 2104,
       "axis": "x",
       "items": [
         {
-          "id": "i270",
+          "id": "i274",
           "kind": "box",
           "label": "",
           "icon": null,
@@ -3427,13 +3495,13 @@
       ]
     },
     {
-      "id": "g273",
+      "id": "g277",
       "x": 4096,
       "y": 2330,
       "axis": "x",
       "items": [
         {
-          "id": "i272",
+          "id": "i276",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -3446,13 +3514,13 @@
       ]
     },
     {
-      "id": "g275",
+      "id": "g279",
       "x": 4176,
       "y": 2366,
       "axis": "x",
       "items": [
         {
-          "id": "i274",
+          "id": "i278",
           "kind": "toolbar",
           "label": "",
           "icon": null,
@@ -3484,13 +3552,13 @@
       ]
     },
     {
-      "id": "g277",
+      "id": "g281",
       "x": 4096,
       "y": 2440,
       "axis": "x",
       "items": [
         {
-          "id": "i276",
+          "id": "i280",
           "kind": "text",
           "label": "选集",
           "icon": null,
@@ -3501,13 +3569,13 @@
       ]
     },
     {
-      "id": "g281",
+      "id": "g285",
       "x": 4096,
       "y": 2480,
       "axis": "y",
       "items": [
         {
-          "id": "i278",
+          "id": "i282",
           "kind": "listItem",
           "label": "EP06 · 回声",
           "icon": "play_circle",
@@ -3515,7 +3583,7 @@
           "supporting": "32:18 · 正在播放"
         },
         {
-          "id": "i279",
+          "id": "i283",
           "kind": "listItem",
           "label": "EP07 · 空白来信",
           "icon": "movie",
@@ -3523,7 +3591,7 @@
           "supporting": "29:44"
         },
         {
-          "id": "i280",
+          "id": "i284",
           "kind": "listItem",
           "label": "EP08 · 天亮之前",
           "icon": "movie",
@@ -3533,13 +3601,13 @@
       ]
     },
     {
-      "id": "g283",
+      "id": "g287",
       "x": 4096,
       "y": 2712,
       "axis": "x",
       "items": [
         {
-          "id": "i282",
+          "id": "i286",
           "kind": "text",
           "label": "简介",
           "icon": null,
@@ -3550,13 +3618,13 @@
       ]
     },
     {
-      "id": "g285",
+      "id": "g289",
       "x": 4096,
       "y": 2748,
       "axis": "x",
       "items": [
         {
-          "id": "i284",
+          "id": "i288",
           "kind": "text",
           "label": "天亮之前，最后一台放映机还在转动。",
           "icon": null,
@@ -3567,13 +3635,13 @@
       ]
     },
     {
-      "id": "g287",
+      "id": "g291",
       "x": 4080,
       "y": 3000,
       "axis": "x",
       "items": [
         {
-          "id": "i286",
+          "id": "i290",
           "kind": "topAppBar",
           "label": "黎明之前 · EP06",
           "icon": "arrow_back",
@@ -3589,13 +3657,13 @@
       ]
     },
     {
-      "id": "g289",
+      "id": "g293",
       "x": 4144,
       "y": 3088,
       "axis": "x",
       "items": [
         {
-          "id": "i288",
+          "id": "i292",
           "kind": "box",
           "label": "",
           "icon": null,
@@ -3608,13 +3676,13 @@
       ]
     },
     {
-      "id": "g291",
+      "id": "g295",
       "x": 4144,
       "y": 3527,
       "axis": "x",
       "items": [
         {
-          "id": "i290",
+          "id": "i294",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -3627,13 +3695,13 @@
       ]
     },
     {
-      "id": "g293",
+      "id": "g297",
       "x": 4416,
       "y": 3560,
       "axis": "x",
       "items": [
         {
-          "id": "i292",
+          "id": "i296",
           "kind": "toolbar",
           "label": "",
           "icon": null,
@@ -3665,13 +3733,13 @@
       ]
     },
     {
-      "id": "g295",
+      "id": "g299",
       "x": 4928,
       "y": 3096,
       "axis": "x",
       "items": [
         {
-          "id": "i294",
+          "id": "i298",
           "kind": "text",
           "label": "选集",
           "icon": null,
@@ -3682,13 +3750,13 @@
       ]
     },
     {
-      "id": "g299",
+      "id": "g303",
       "x": 4928,
       "y": 3136,
       "axis": "y",
       "items": [
         {
-          "id": "i296",
+          "id": "i300",
           "kind": "listItem",
           "label": "EP06 · 回声",
           "icon": "play_circle",
@@ -3697,7 +3765,7 @@
           "size": 368
         },
         {
-          "id": "i297",
+          "id": "i301",
           "kind": "listItem",
           "label": "EP07 · 空白来信",
           "icon": "movie",
@@ -3706,7 +3774,7 @@
           "size": 368
         },
         {
-          "id": "i298",
+          "id": "i302",
           "kind": "listItem",
           "label": "EP08 · 天亮之前",
           "icon": "movie",
@@ -3717,13 +3785,13 @@
       ]
     },
     {
-      "id": "g301",
+      "id": "g305",
       "x": 4144,
       "y": 3632,
       "axis": "x",
       "items": [
         {
-          "id": "i300",
+          "id": "i304",
           "kind": "text",
           "label": "简介",
           "icon": null,
@@ -3734,13 +3802,13 @@
       ]
     },
     {
-      "id": "g303",
+      "id": "g307",
       "x": 4144,
       "y": 3672,
       "axis": "x",
       "items": [
         {
-          "id": "i302",
+          "id": "i306",
           "kind": "text",
           "label": "天亮之前，城市里最后一台放映机还在转动。",
           "icon": null,
@@ -3751,13 +3819,13 @@
       ]
     },
     {
-      "id": "g305",
+      "id": "g309",
       "x": 0,
       "y": 4000,
       "axis": "x",
       "items": [
         {
-          "id": "i304",
+          "id": "i308",
           "kind": "topAppBar",
           "label": "数据源",
           "icon": "arrow_back",
@@ -3773,13 +3841,13 @@
       ]
     },
     {
-      "id": "g307",
+      "id": "g311",
       "x": 0,
       "y": 4088,
       "axis": "x",
       "items": [
         {
-          "id": "i306",
+          "id": "i310",
           "kind": "tabs",
           "label": "",
           "icon": null,
@@ -3799,13 +3867,13 @@
       ]
     },
     {
-      "id": "g309",
+      "id": "g313",
       "x": 16,
       "y": 4152,
       "axis": "x",
       "items": [
         {
-          "id": "i308",
+          "id": "i312",
           "kind": "text",
           "label": "已订阅",
           "icon": null,
@@ -3816,13 +3884,13 @@
       ]
     },
     {
-      "id": "g313",
+      "id": "g317",
       "x": 16,
       "y": 4187,
       "axis": "y",
       "items": [
         {
-          "id": "i310",
+          "id": "i314",
           "kind": "listItem",
           "label": "漫岛",
           "icon": "public",
@@ -3833,7 +3901,7 @@
           "note": "开关控制该来源是否参与全局搜索与追更检查。"
         },
         {
-          "id": "i311",
+          "id": "i315",
           "kind": "listItem",
           "label": "轻文阁",
           "icon": "public",
@@ -3843,7 +3911,7 @@
           "checked": true
         },
         {
-          "id": "i312",
+          "id": "i316",
           "kind": "listItem",
           "label": "影库",
           "icon": "public",
@@ -3855,13 +3923,13 @@
       ]
     },
     {
-      "id": "g315",
+      "id": "g319",
       "x": 16,
       "y": 4419,
       "axis": "x",
       "items": [
         {
-          "id": "i314",
+          "id": "i318",
           "kind": "text",
           "label": "可用来源",
           "icon": null,
@@ -3872,13 +3940,13 @@
       ]
     },
     {
-      "id": "g318",
+      "id": "g323",
       "x": 16,
       "y": 4454,
       "axis": "y",
       "items": [
         {
-          "id": "i316",
+          "id": "i320",
           "kind": "listItem",
           "label": "插件提供的来源",
           "icon": "extension",
@@ -3890,7 +3958,7 @@
           }
         },
         {
-          "id": "i317",
+          "id": "i321",
           "kind": "listItem",
           "label": "检查来源更新",
           "icon": "update",
@@ -3900,17 +3968,29 @@
             "to": "extensions",
             "transition": "slide"
           }
+        },
+        {
+          "id": "i322",
+          "kind": "listItem",
+          "label": "插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "添加与管理插件来源仓库",
+          "action": {
+            "to": "repositories",
+            "transition": "slide"
+          }
         }
       ]
     },
     {
-      "id": "g320",
+      "id": "g325",
       "x": 16,
-      "y": 4614,
+      "y": 4686,
       "axis": "x",
       "items": [
         {
-          "id": "i319",
+          "id": "i324",
           "kind": "button",
           "label": "添加数据源",
           "icon": "add",
@@ -3925,13 +4005,13 @@
       ]
     },
     {
-      "id": "g322",
+      "id": "g327",
       "x": 0,
       "y": 5000,
       "axis": "x",
       "items": [
         {
-          "id": "i321",
+          "id": "i326",
           "kind": "topAppBar",
           "label": "数据源",
           "icon": "arrow_back",
@@ -3948,13 +4028,13 @@
       ]
     },
     {
-      "id": "g324",
+      "id": "g329",
       "x": 32,
       "y": 5064,
       "axis": "x",
       "items": [
         {
-          "id": "i323",
+          "id": "i328",
           "kind": "tabs",
           "label": "",
           "icon": null,
@@ -3975,13 +4055,13 @@
       ]
     },
     {
-      "id": "g326",
+      "id": "g331",
       "x": 32,
       "y": 5128,
       "axis": "x",
       "items": [
         {
-          "id": "i325",
+          "id": "i330",
           "kind": "text",
           "label": "已订阅",
           "icon": null,
@@ -3992,13 +4072,13 @@
       ]
     },
     {
-      "id": "g330",
+      "id": "g335",
       "x": 32,
       "y": 5163,
       "axis": "y",
       "items": [
         {
-          "id": "i327",
+          "id": "i332",
           "kind": "listItem",
           "label": "漫岛",
           "icon": "public",
@@ -4010,7 +4090,7 @@
           "size": 1216
         },
         {
-          "id": "i328",
+          "id": "i333",
           "kind": "listItem",
           "label": "轻文阁",
           "icon": "public",
@@ -4021,7 +4101,7 @@
           "size": 1216
         },
         {
-          "id": "i329",
+          "id": "i334",
           "kind": "listItem",
           "label": "影库",
           "icon": "public",
@@ -4034,13 +4114,13 @@
       ]
     },
     {
-      "id": "g332",
+      "id": "g337",
       "x": 32,
       "y": 5395,
       "axis": "x",
       "items": [
         {
-          "id": "i331",
+          "id": "i336",
           "kind": "text",
           "label": "可用来源",
           "icon": null,
@@ -4051,13 +4131,13 @@
       ]
     },
     {
-      "id": "g335",
+      "id": "g341",
       "x": 32,
       "y": 5430,
       "axis": "y",
       "items": [
         {
-          "id": "i333",
+          "id": "i338",
           "kind": "listItem",
           "label": "插件提供的来源",
           "icon": "extension",
@@ -4070,7 +4150,7 @@
           "size": 1216
         },
         {
-          "id": "i334",
+          "id": "i339",
           "kind": "listItem",
           "label": "检查来源更新",
           "icon": "update",
@@ -4081,17 +4161,30 @@
             "transition": "slide"
           },
           "size": 1216
+        },
+        {
+          "id": "i340",
+          "kind": "listItem",
+          "label": "插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "添加与管理插件来源仓库",
+          "action": {
+            "to": "repositories_w",
+            "transition": "slide"
+          },
+          "size": 1216
         }
       ]
     },
     {
-      "id": "g337",
+      "id": "g343",
       "x": 32,
-      "y": 5590,
+      "y": 5662,
       "axis": "x",
       "items": [
         {
-          "id": "i336",
+          "id": "i342",
           "kind": "button",
           "label": "添加数据源",
           "icon": "add",
@@ -4106,13 +4199,13 @@
       ]
     },
     {
-      "id": "g339",
+      "id": "g345",
       "x": 1360,
       "y": 4000,
       "axis": "x",
       "items": [
         {
-          "id": "i338",
+          "id": "i344",
           "kind": "topAppBar",
           "label": "漫岛",
           "icon": "arrow_back",
@@ -4128,13 +4221,13 @@
       ]
     },
     {
-      "id": "g341",
+      "id": "g347",
       "x": 1376,
       "y": 4088,
       "axis": "x",
       "items": [
         {
-          "id": "i340",
+          "id": "i346",
           "kind": "searchBar",
           "label": "搜索站内作品",
           "icon": null,
@@ -4144,13 +4237,13 @@
       ]
     },
     {
-      "id": "g348",
+      "id": "g354",
       "x": 1376,
       "y": 4160,
       "axis": "x",
       "items": [
         {
-          "id": "i342",
+          "id": "i348",
           "kind": "chip",
           "label": "全部",
           "icon": null,
@@ -4158,7 +4251,7 @@
           "checked": true
         },
         {
-          "id": "i343",
+          "id": "i349",
           "kind": "chip",
           "label": "漫画",
           "icon": null,
@@ -4166,7 +4259,7 @@
           "checked": false
         },
         {
-          "id": "i344",
+          "id": "i350",
           "kind": "chip",
           "label": "小说",
           "icon": null,
@@ -4174,7 +4267,7 @@
           "checked": false
         },
         {
-          "id": "i345",
+          "id": "i351",
           "kind": "chip",
           "label": "视频",
           "icon": null,
@@ -4184,13 +4277,13 @@
       ]
     },
     {
-      "id": "g349",
+      "id": "g355",
       "x": 1376,
       "y": 4200,
       "axis": "x",
       "items": [
         {
-          "id": "i346",
+          "id": "i352",
           "kind": "chip",
           "label": "最新",
           "icon": null,
@@ -4198,7 +4291,7 @@
           "checked": false
         },
         {
-          "id": "i347",
+          "id": "i353",
           "kind": "chip",
           "label": "热门",
           "icon": null,
@@ -4208,84 +4301,18 @@
       ]
     },
     {
-      "id": "g351",
-      "x": 1376,
-      "y": 4248,
-      "axis": "x",
-      "items": [
-        {
-          "id": "i350",
-          "kind": "card",
-          "label": "《长夜余火》",
-          "icon": "auto_stories",
-          "variant": "filled",
-          "supporting": "漫画 · 连载中",
-          "action": {
-            "to": "detail",
-            "transition": "slide"
-          },
-          "size": 182,
-          "size2": 250
-        }
-      ]
-    },
-    {
-      "id": "g353",
-      "x": 1574,
-      "y": 4248,
-      "axis": "x",
-      "items": [
-        {
-          "id": "i352",
-          "kind": "card",
-          "label": "《雾中列车》",
-          "icon": "auto_stories",
-          "variant": "filled",
-          "supporting": "漫画 · 完结",
-          "action": {
-            "to": "detail",
-            "transition": "slide"
-          },
-          "size": 182,
-          "size2": 250
-        }
-      ]
-    },
-    {
-      "id": "g355",
-      "x": 1376,
-      "y": 4514,
-      "axis": "x",
-      "items": [
-        {
-          "id": "i354",
-          "kind": "card",
-          "label": "《北街七号》",
-          "icon": "auto_stories",
-          "variant": "filled",
-          "supporting": "漫画 · 连载中",
-          "action": {
-            "to": "detail",
-            "transition": "slide"
-          },
-          "size": 182,
-          "size2": 250
-        }
-      ]
-    },
-    {
       "id": "g357",
-      "x": 1574,
-      "y": 4514,
+      "x": 1376,
+      "y": 4248,
       "axis": "x",
       "items": [
         {
           "id": "i356",
           "kind": "card",
-          "label": "《白昼尽头》",
+          "label": "《长夜余火》",
           "icon": "auto_stories",
           "variant": "filled",
-          "supporting": "漫画 · 完结",
+          "supporting": "漫画 · 连载中",
           "action": {
             "to": "detail",
             "transition": "slide"
@@ -4297,12 +4324,78 @@
     },
     {
       "id": "g359",
+      "x": 1574,
+      "y": 4248,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i358",
+          "kind": "card",
+          "label": "《雾中列车》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 完结",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g361",
+      "x": 1376,
+      "y": 4514,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i360",
+          "kind": "card",
+          "label": "《北街七号》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 连载中",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g363",
+      "x": 1574,
+      "y": 4514,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i362",
+          "kind": "card",
+          "label": "《白昼尽头》",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "漫画 · 完结",
+          "action": {
+            "to": "detail",
+            "transition": "slide"
+          },
+          "size": 182,
+          "size2": 250
+        }
+      ]
+    },
+    {
+      "id": "g365",
       "x": 1360,
       "y": 5000,
       "axis": "x",
       "items": [
         {
-          "id": "i358",
+          "id": "i364",
           "kind": "topAppBar",
           "label": "漫岛",
           "icon": "arrow_back",
@@ -4319,13 +4412,13 @@
       ]
     },
     {
-      "id": "g361",
+      "id": "g367",
       "x": 1392,
       "y": 5064,
       "axis": "x",
       "items": [
         {
-          "id": "i360",
+          "id": "i366",
           "kind": "searchBar",
           "label": "搜索站内作品",
           "icon": null,
@@ -4336,13 +4429,13 @@
       ]
     },
     {
-      "id": "g368",
+      "id": "g374",
       "x": 1392,
       "y": 5136,
       "axis": "x",
       "items": [
         {
-          "id": "i362",
+          "id": "i368",
           "kind": "chip",
           "label": "全部",
           "icon": null,
@@ -4350,7 +4443,7 @@
           "checked": true
         },
         {
-          "id": "i363",
+          "id": "i369",
           "kind": "chip",
           "label": "漫画",
           "icon": null,
@@ -4358,7 +4451,7 @@
           "checked": false
         },
         {
-          "id": "i364",
+          "id": "i370",
           "kind": "chip",
           "label": "小说",
           "icon": null,
@@ -4366,7 +4459,7 @@
           "checked": false
         },
         {
-          "id": "i365",
+          "id": "i371",
           "kind": "chip",
           "label": "视频",
           "icon": null,
@@ -4374,7 +4467,7 @@
           "checked": false
         },
         {
-          "id": "i366",
+          "id": "i372",
           "kind": "chip",
           "label": "最新",
           "icon": null,
@@ -4382,7 +4475,7 @@
           "checked": false
         },
         {
-          "id": "i367",
+          "id": "i373",
           "kind": "chip",
           "label": "热门",
           "icon": null,
@@ -4392,13 +4485,13 @@
       ]
     },
     {
-      "id": "g370",
+      "id": "g376",
       "x": 1392,
       "y": 5184,
       "axis": "x",
       "items": [
         {
-          "id": "i369",
+          "id": "i375",
           "kind": "card",
           "label": "《长夜余火》",
           "icon": "auto_stories",
@@ -4414,13 +4507,13 @@
       ]
     },
     {
-      "id": "g372",
+      "id": "g378",
       "x": 1700,
       "y": 5184,
       "axis": "x",
       "items": [
         {
-          "id": "i371",
+          "id": "i377",
           "kind": "card",
           "label": "《雾中列车》",
           "icon": "auto_stories",
@@ -4436,13 +4529,13 @@
       ]
     },
     {
-      "id": "g374",
+      "id": "g380",
       "x": 2008,
       "y": 5184,
       "axis": "x",
       "items": [
         {
-          "id": "i373",
+          "id": "i379",
           "kind": "card",
           "label": "《北街七号》",
           "icon": "auto_stories",
@@ -4458,13 +4551,13 @@
       ]
     },
     {
-      "id": "g376",
+      "id": "g382",
       "x": 2316,
       "y": 5184,
       "axis": "x",
       "items": [
         {
-          "id": "i375",
+          "id": "i381",
           "kind": "card",
           "label": "《白昼尽头》",
           "icon": "auto_stories",
@@ -4480,13 +4573,13 @@
       ]
     },
     {
-      "id": "g378",
+      "id": "g384",
       "x": 2720,
       "y": 4000,
       "axis": "x",
       "items": [
         {
-          "id": "i377",
+          "id": "i383",
           "kind": "topAppBar",
           "label": "下载",
           "icon": "arrow_back",
@@ -4501,13 +4594,13 @@
       ]
     },
     {
-      "id": "g380",
+      "id": "g386",
       "x": 2720,
       "y": 4088,
       "axis": "x",
       "items": [
         {
-          "id": "i379",
+          "id": "i385",
           "kind": "tabs",
           "label": "",
           "icon": null,
@@ -4527,13 +4620,13 @@
       ]
     },
     {
-      "id": "g385",
+      "id": "g391",
       "x": 2736,
       "y": 4152,
       "axis": "y",
       "items": [
         {
-          "id": "i381",
+          "id": "i387",
           "kind": "listItem",
           "label": "《长夜余火》 第 12 话",
           "icon": "download_done",
@@ -4541,7 +4634,7 @@
           "supporting": "18 页 · 42 MB · 已完成"
         },
         {
-          "id": "i382",
+          "id": "i388",
           "kind": "listItem",
           "label": "《黎明之前》 EP06",
           "icon": "download_done",
@@ -4549,7 +4642,7 @@
           "supporting": "720p · 286 MB · 已完成"
         },
         {
-          "id": "i383",
+          "id": "i389",
           "kind": "listItem",
           "label": "《山海拾遗》 第 3 卷",
           "icon": "download",
@@ -4557,7 +4650,7 @@
           "supporting": "12 章 · 下载中 68%"
         },
         {
-          "id": "i384",
+          "id": "i390",
           "kind": "listItem",
           "label": "《雾中列车》 第 08 话",
           "icon": "download",
@@ -4567,13 +4660,13 @@
       ]
     },
     {
-      "id": "g387",
+      "id": "g393",
       "x": 2736,
       "y": 4456,
       "axis": "x",
       "items": [
         {
-          "id": "i386",
+          "id": "i392",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -4585,13 +4678,13 @@
       ]
     },
     {
-      "id": "g389",
+      "id": "g395",
       "x": 2736,
       "y": 4496,
       "axis": "x",
       "items": [
         {
-          "id": "i388",
+          "id": "i394",
           "kind": "text",
           "label": "批量操作",
           "icon": null,
@@ -4602,13 +4695,13 @@
       ]
     },
     {
-      "id": "g392",
+      "id": "g398",
       "x": 2736,
       "y": 4531,
       "axis": "x",
       "items": [
         {
-          "id": "i390",
+          "id": "i396",
           "kind": "button",
           "label": "全部暂停",
           "icon": "pause",
@@ -4616,7 +4709,7 @@
           "size": 182
         },
         {
-          "id": "i391",
+          "id": "i397",
           "kind": "button",
           "label": "清理已完成",
           "icon": "cleaning_services",
@@ -4626,13 +4719,13 @@
       ]
     },
     {
-      "id": "g394",
+      "id": "g400",
       "x": 2720,
       "y": 5000,
       "axis": "x",
       "items": [
         {
-          "id": "i393",
+          "id": "i399",
           "kind": "topAppBar",
           "label": "下载",
           "icon": "arrow_back",
@@ -4648,13 +4741,13 @@
       ]
     },
     {
-      "id": "g396",
+      "id": "g402",
       "x": 2752,
       "y": 5064,
       "axis": "x",
       "items": [
         {
-          "id": "i395",
+          "id": "i401",
           "kind": "tabs",
           "label": "",
           "icon": null,
@@ -4675,13 +4768,13 @@
       ]
     },
     {
-      "id": "g401",
+      "id": "g407",
       "x": 2752,
       "y": 5128,
       "axis": "y",
       "items": [
         {
-          "id": "i397",
+          "id": "i403",
           "kind": "listItem",
           "label": "《长夜余火》 第 12 话",
           "icon": "download_done",
@@ -4690,7 +4783,7 @@
           "size": 1216
         },
         {
-          "id": "i398",
+          "id": "i404",
           "kind": "listItem",
           "label": "《黎明之前》 EP06",
           "icon": "download_done",
@@ -4699,7 +4792,7 @@
           "size": 1216
         },
         {
-          "id": "i399",
+          "id": "i405",
           "kind": "listItem",
           "label": "《山海拾遗》 第 3 卷",
           "icon": "download",
@@ -4708,7 +4801,7 @@
           "size": 1216
         },
         {
-          "id": "i400",
+          "id": "i406",
           "kind": "listItem",
           "label": "《雾中列车》 第 08 话",
           "icon": "download",
@@ -4719,13 +4812,13 @@
       ]
     },
     {
-      "id": "g403",
+      "id": "g409",
       "x": 2752,
       "y": 5432,
       "axis": "x",
       "items": [
         {
-          "id": "i402",
+          "id": "i408",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -4738,13 +4831,13 @@
       ]
     },
     {
-      "id": "g405",
+      "id": "g411",
       "x": 2752,
       "y": 5472,
       "axis": "x",
       "items": [
         {
-          "id": "i404",
+          "id": "i410",
           "kind": "text",
           "label": "批量操作",
           "icon": null,
@@ -4755,13 +4848,13 @@
       ]
     },
     {
-      "id": "g408",
+      "id": "g414",
       "x": 2752,
       "y": 5507,
       "axis": "x",
       "items": [
         {
-          "id": "i406",
+          "id": "i412",
           "kind": "button",
           "label": "全部暂停",
           "icon": "pause",
@@ -4769,7 +4862,7 @@
           "size": 240
         },
         {
-          "id": "i407",
+          "id": "i413",
           "kind": "button",
           "label": "清理已完成",
           "icon": "cleaning_services",
@@ -4779,13 +4872,13 @@
       ]
     },
     {
-      "id": "g410",
+      "id": "g416",
       "x": 4080,
       "y": 4000,
       "axis": "x",
       "items": [
         {
-          "id": "i409",
+          "id": "i415",
           "kind": "topAppBar",
           "label": "分类",
           "icon": "arrow_back",
@@ -4801,13 +4894,13 @@
       ]
     },
     {
-      "id": "g416",
+      "id": "g422",
       "x": 4096,
       "y": 4088,
       "axis": "y",
       "items": [
         {
-          "id": "i411",
+          "id": "i417",
           "kind": "listItem",
           "label": "正在追",
           "icon": "category",
@@ -4819,7 +4912,7 @@
           }
         },
         {
-          "id": "i412",
+          "id": "i418",
           "kind": "listItem",
           "label": "周末读",
           "icon": "category",
@@ -4831,7 +4924,7 @@
           }
         },
         {
-          "id": "i413",
+          "id": "i419",
           "kind": "listItem",
           "label": "已完结",
           "icon": "category",
@@ -4843,7 +4936,7 @@
           }
         },
         {
-          "id": "i414",
+          "id": "i420",
           "kind": "listItem",
           "label": "漫画",
           "icon": "auto_stories",
@@ -4855,7 +4948,7 @@
           }
         },
         {
-          "id": "i415",
+          "id": "i421",
           "kind": "listItem",
           "label": "待看片单",
           "icon": "movie",
@@ -4869,13 +4962,13 @@
       ]
     },
     {
-      "id": "g418",
+      "id": "g424",
       "x": 4096,
       "y": 4464,
       "axis": "x",
       "items": [
         {
-          "id": "i417",
+          "id": "i423",
           "kind": "button",
           "label": "新建分类",
           "icon": "add",
@@ -4886,130 +4979,19 @@
       ]
     },
     {
-      "id": "g420",
+      "id": "g426",
       "x": 4080,
       "y": 5000,
       "axis": "x",
       "items": [
         {
-          "id": "i419",
+          "id": "i425",
           "kind": "topAppBar",
           "label": "分类",
           "icon": "arrow_back",
           "variant": "filled",
           "icon2": "add",
           "size": 1280,
-          "actions": {
-            "icon": {
-              "to": "back",
-              "transition": "slideLeft"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": "g426",
-      "x": 4112,
-      "y": 5064,
-      "axis": "y",
-      "items": [
-        {
-          "id": "i421",
-          "kind": "listItem",
-          "label": "正在追",
-          "icon": "category",
-          "variant": "filled",
-          "supporting": "8 部作品",
-          "action": {
-            "to": "library_w",
-            "transition": "slide"
-          },
-          "size": 1216
-        },
-        {
-          "id": "i422",
-          "kind": "listItem",
-          "label": "周末读",
-          "icon": "category",
-          "variant": "filled",
-          "supporting": "5 部作品",
-          "action": {
-            "to": "library_w",
-            "transition": "slide"
-          },
-          "size": 1216
-        },
-        {
-          "id": "i423",
-          "kind": "listItem",
-          "label": "已完结",
-          "icon": "category",
-          "variant": "filled",
-          "supporting": "12 部作品",
-          "action": {
-            "to": "library_w",
-            "transition": "slide"
-          },
-          "size": 1216
-        },
-        {
-          "id": "i424",
-          "kind": "listItem",
-          "label": "漫画",
-          "icon": "auto_stories",
-          "variant": "filled",
-          "supporting": "14 部作品",
-          "action": {
-            "to": "library_w",
-            "transition": "slide"
-          },
-          "size": 1216
-        },
-        {
-          "id": "i425",
-          "kind": "listItem",
-          "label": "待看片单",
-          "icon": "movie",
-          "variant": "filled",
-          "supporting": "6 部作品",
-          "action": {
-            "to": "library_w",
-            "transition": "slide"
-          },
-          "size": 1216
-        }
-      ]
-    },
-    {
-      "id": "g428",
-      "x": 4112,
-      "y": 5440,
-      "axis": "x",
-      "items": [
-        {
-          "id": "i427",
-          "kind": "button",
-          "label": "新建分类",
-          "icon": "add",
-          "variant": "tonal",
-          "note": "创建后可给作品打多个分类标签，书架按分类筛选或分组显示。",
-          "size": 240
-        }
-      ]
-    },
-    {
-      "id": "g430",
-      "x": 0,
-      "y": 6000,
-      "axis": "x",
-      "items": [
-        {
-          "id": "i429",
-          "kind": "topAppBar",
-          "label": "统计",
-          "icon": "arrow_back",
-          "variant": "filled",
           "actions": {
             "icon": {
               "to": "back",
@@ -5021,12 +5003,123 @@
     },
     {
       "id": "g432",
+      "x": 4112,
+      "y": 5064,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i427",
+          "kind": "listItem",
+          "label": "正在追",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "8 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i428",
+          "kind": "listItem",
+          "label": "周末读",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "5 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i429",
+          "kind": "listItem",
+          "label": "已完结",
+          "icon": "category",
+          "variant": "filled",
+          "supporting": "12 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i430",
+          "kind": "listItem",
+          "label": "漫画",
+          "icon": "auto_stories",
+          "variant": "filled",
+          "supporting": "14 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i431",
+          "kind": "listItem",
+          "label": "待看片单",
+          "icon": "movie",
+          "variant": "filled",
+          "supporting": "6 部作品",
+          "action": {
+            "to": "library_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g434",
+      "x": 4112,
+      "y": 5440,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i433",
+          "kind": "button",
+          "label": "新建分类",
+          "icon": "add",
+          "variant": "tonal",
+          "note": "创建后可给作品打多个分类标签，书架按分类筛选或分组显示。",
+          "size": 240
+        }
+      ]
+    },
+    {
+      "id": "g436",
+      "x": 0,
+      "y": 6000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i435",
+          "kind": "topAppBar",
+          "label": "统计",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g438",
       "x": 16,
       "y": 6088,
       "axis": "x",
       "items": [
         {
-          "id": "i431",
+          "id": "i437",
           "kind": "text",
           "label": "本月概览",
           "icon": null,
@@ -5037,13 +5130,13 @@
       ]
     },
     {
-      "id": "g434",
+      "id": "g440",
       "x": 16,
       "y": 6126,
       "axis": "x",
       "items": [
         {
-          "id": "i433",
+          "id": "i439",
           "kind": "card",
           "label": "42 小时 18 分",
           "icon": "schedule",
@@ -5056,13 +5149,13 @@
       ]
     },
     {
-      "id": "g436",
+      "id": "g442",
       "x": 214,
       "y": 6126,
       "axis": "x",
       "items": [
         {
-          "id": "i435",
+          "id": "i441",
           "kind": "card",
           "label": "24 话",
           "icon": "auto_stories",
@@ -5075,13 +5168,13 @@
       ]
     },
     {
-      "id": "g438",
+      "id": "g444",
       "x": 16,
       "y": 6262,
       "axis": "x",
       "items": [
         {
-          "id": "i437",
+          "id": "i443",
           "kind": "card",
           "label": "12 章",
           "icon": "article",
@@ -5094,13 +5187,13 @@
       ]
     },
     {
-      "id": "g440",
+      "id": "g446",
       "x": 214,
       "y": 6262,
       "axis": "x",
       "items": [
         {
-          "id": "i439",
+          "id": "i445",
           "kind": "card",
           "label": "8 集",
           "icon": "movie",
@@ -5113,13 +5206,13 @@
       ]
     },
     {
-      "id": "g442",
+      "id": "g448",
       "x": 16,
       "y": 6398,
       "axis": "x",
       "items": [
         {
-          "id": "i441",
+          "id": "i447",
           "kind": "text",
           "label": "内容分布",
           "icon": null,
@@ -5130,13 +5223,13 @@
       ]
     },
     {
-      "id": "g446",
+      "id": "g452",
       "x": 16,
       "y": 6433,
       "axis": "y",
       "items": [
         {
-          "id": "i443",
+          "id": "i449",
           "kind": "listItem",
           "label": "漫画",
           "icon": "auto_stories",
@@ -5148,7 +5241,7 @@
           }
         },
         {
-          "id": "i444",
+          "id": "i450",
           "kind": "listItem",
           "label": "小说",
           "icon": "article",
@@ -5160,7 +5253,7 @@
           }
         },
         {
-          "id": "i445",
+          "id": "i451",
           "kind": "listItem",
           "label": "视频",
           "icon": "movie",
@@ -5174,13 +5267,13 @@
       ]
     },
     {
-      "id": "g448",
+      "id": "g454",
       "x": 0,
       "y": 7000,
       "axis": "x",
       "items": [
         {
-          "id": "i447",
+          "id": "i453",
           "kind": "topAppBar",
           "label": "统计",
           "icon": "arrow_back",
@@ -5196,13 +5289,13 @@
       ]
     },
     {
-      "id": "g450",
+      "id": "g456",
       "x": 32,
       "y": 7064,
       "axis": "x",
       "items": [
         {
-          "id": "i449",
+          "id": "i455",
           "kind": "text",
           "label": "本月概览",
           "icon": null,
@@ -5213,13 +5306,13 @@
       ]
     },
     {
-      "id": "g452",
+      "id": "g458",
       "x": 32,
       "y": 7102,
       "axis": "x",
       "items": [
         {
-          "id": "i451",
+          "id": "i457",
           "kind": "card",
           "label": "42 小时 18 分",
           "icon": "schedule",
@@ -5232,13 +5325,13 @@
       ]
     },
     {
-      "id": "g454",
+      "id": "g460",
       "x": 340,
       "y": 7102,
       "axis": "x",
       "items": [
         {
-          "id": "i453",
+          "id": "i459",
           "kind": "card",
           "label": "24 话",
           "icon": "auto_stories",
@@ -5251,13 +5344,13 @@
       ]
     },
     {
-      "id": "g456",
+      "id": "g462",
       "x": 648,
       "y": 7102,
       "axis": "x",
       "items": [
         {
-          "id": "i455",
+          "id": "i461",
           "kind": "card",
           "label": "12 章",
           "icon": "article",
@@ -5270,13 +5363,13 @@
       ]
     },
     {
-      "id": "g458",
+      "id": "g464",
       "x": 956,
       "y": 7102,
       "axis": "x",
       "items": [
         {
-          "id": "i457",
+          "id": "i463",
           "kind": "card",
           "label": "8 集",
           "icon": "movie",
@@ -5289,13 +5382,13 @@
       ]
     },
     {
-      "id": "g460",
+      "id": "g466",
       "x": 32,
       "y": 7258,
       "axis": "x",
       "items": [
         {
-          "id": "i459",
+          "id": "i465",
           "kind": "text",
           "label": "内容分布",
           "icon": null,
@@ -5306,13 +5399,13 @@
       ]
     },
     {
-      "id": "g464",
+      "id": "g470",
       "x": 32,
       "y": 7293,
       "axis": "y",
       "items": [
         {
-          "id": "i461",
+          "id": "i467",
           "kind": "listItem",
           "label": "漫画",
           "icon": "auto_stories",
@@ -5325,7 +5418,7 @@
           "size": 1216
         },
         {
-          "id": "i462",
+          "id": "i468",
           "kind": "listItem",
           "label": "小说",
           "icon": "article",
@@ -5338,7 +5431,7 @@
           "size": 1216
         },
         {
-          "id": "i463",
+          "id": "i469",
           "kind": "listItem",
           "label": "视频",
           "icon": "movie",
@@ -5353,18 +5446,18 @@
       ]
     },
     {
-      "id": "g466",
+      "id": "g472",
       "x": 1360,
       "y": 6000,
       "axis": "x",
       "items": [
         {
-          "id": "i465",
+          "id": "i471",
           "kind": "topAppBar",
-          "label": "插件商店",
+          "label": "插件仓库",
           "icon": "arrow_back",
           "variant": "filled",
-          "icon2": "search",
+          "icon2": "add",
           "actions": {
             "icon": {
               "to": "back",
@@ -5375,129 +5468,178 @@
       ]
     },
     {
-      "id": "g468",
-      "x": 1360,
+      "id": "g474",
+      "x": 1376,
       "y": 6088,
       "axis": "x",
       "items": [
         {
-          "id": "i467",
-          "kind": "tabs",
-          "label": "",
-          "icon": null,
-          "variant": "filled",
-          "selected": 0,
-          "tabs": [
-            {
-              "icon": "",
-              "label": "已安装"
-            },
-            {
-              "icon": "",
-              "label": "可用"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "g470",
-      "x": 1376,
-      "y": 6152,
-      "axis": "x",
-      "items": [
-        {
-          "id": "i469",
-          "kind": "searchBar",
-          "label": "搜索插件与数据源",
-          "icon": null,
-          "variant": "filled",
-          "icon2": "search"
-        }
-      ]
-    },
-    {
-      "id": "g476",
-      "x": 1376,
-      "y": 6224,
-      "axis": "y",
-      "items": [
-        {
-          "id": "i471",
-          "kind": "listItem",
-          "label": "站点插件",
-          "icon": "extension",
-          "variant": "filled",
-          "supporting": "v1.4.2 · 已安装 · 3 个来源",
-          "action": {
-            "to": "sources",
-            "transition": "slide"
-          }
-        },
-        {
-          "id": "i472",
-          "kind": "listItem",
-          "label": "漫画源扩展",
-          "icon": "extension",
-          "variant": "filled",
-          "supporting": "v2.1.0 · 有更新",
-          "action": {
-            "to": "sources",
-            "transition": "slide"
-          }
-        },
-        {
           "id": "i473",
-          "kind": "listItem",
-          "label": "轻小说源",
-          "icon": "extension",
+          "kind": "text",
+          "label": "已添加的仓库",
+          "icon": null,
           "variant": "filled",
-          "supporting": "v0.9.3 · 可用",
-          "action": {
-            "to": "sources",
-            "transition": "slide"
-          }
-        },
-        {
-          "id": "i474",
-          "kind": "listItem",
-          "label": "视频源扩展",
-          "icon": "extension",
-          "variant": "filled",
-          "supporting": "v1.2.1 · 可用",
-          "action": {
-            "to": "sources",
-            "transition": "slide"
-          }
-        },
-        {
-          "id": "i475",
-          "kind": "listItem",
-          "label": "元数据插件",
-          "icon": "extension",
-          "variant": "filled",
-          "supporting": "v0.6.0 · 可用 · 实验性",
-          "note": "插件只提供数据源与元数据；安装后可回到数据源管理页逐个启用。",
-          "action": {
-            "to": "sources",
-            "transition": "slide"
-          }
+          "size": 18,
+          "bold": true
         }
       ]
     },
     {
       "id": "g478",
+      "x": 1376,
+      "y": 6123,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i475",
+          "kind": "listItem",
+          "label": "社区漫画源仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "42 个插件 · 指纹 8f3a2c1d · 已启用",
+          "switch": true,
+          "checked": true,
+          "note": "应用不内置任何仓库。用户粘贴仓库索引链接，系统识别（名称、插件数、身份指纹）后由用户确认信任才生效。"
+        },
+        {
+          "id": "i476",
+          "kind": "listItem",
+          "label": "小说源合集",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "18 个插件 · 身份指纹 c91b7e04 · 已启用",
+          "switch": true,
+          "checked": true
+        },
+        {
+          "id": "i477",
+          "kind": "listItem",
+          "label": "实验性视频源",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "6 个插件 · 上次刷新失败 · 已停用",
+          "switch": true,
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "g480",
+      "x": 1376,
+      "y": 6355,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i479",
+          "kind": "text",
+          "label": "仓库操作",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g484",
+      "x": 1376,
+      "y": 6390,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i481",
+          "kind": "listItem",
+          "label": "添加仓库",
+          "icon": "add",
+          "variant": "filled",
+          "supporting": "粘贴 HTTPS 索引链接 → 识别 → 信任并添加",
+          "note": "识别阶段不落库；确认页展示仓库信息、插件数与身份指纹，并提示第三方代码风险。"
+        },
+        {
+          "id": "i482",
+          "kind": "listItem",
+          "label": "刷新全部仓库",
+          "icon": "update",
+          "variant": "filled",
+          "supporting": "重新拉取并校验索引；失败保留上次缓存"
+        },
+        {
+          "id": "i483",
+          "kind": "listItem",
+          "label": "移除仓库",
+          "icon": "delete_sweep",
+          "variant": "filled",
+          "supporting": "提示该仓库下已安装插件数，可选仅移除或同时卸载"
+        }
+      ]
+    },
+    {
+      "id": "g486",
+      "x": 1376,
+      "y": 6622,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i485",
+          "kind": "text",
+          "label": "安全提示",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g488",
+      "x": 1376,
+      "y": 6657,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i487",
+          "kind": "listItem",
+          "label": "第三方代码与身份指纹信任",
+          "icon": "info",
+          "variant": "filled",
+          "supporting": "仓库 ID、链接或发布者公钥变化需重新确认；插件只能从来源仓库更新"
+        }
+      ]
+    },
+    {
+      "id": "g490",
+      "x": 1376,
+      "y": 6745,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i489",
+          "kind": "button",
+          "label": "前往插件商店",
+          "icon": "extension",
+          "variant": "tonal",
+          "note": "仓库确认后，在插件商店按仓库分组浏览，逐个按需安装。",
+          "action": {
+            "to": "extensions",
+            "transition": "slide"
+          },
+          "size": 380
+        }
+      ]
+    },
+    {
+      "id": "g492",
       "x": 1360,
       "y": 7000,
       "axis": "x",
       "items": [
         {
-          "id": "i477",
+          "id": "i491",
           "kind": "topAppBar",
-          "label": "插件商店",
+          "label": "插件仓库",
           "icon": "arrow_back",
           "variant": "filled",
-          "icon2": "search",
+          "icon2": "add",
           "size": 1280,
           "actions": {
             "icon": {
@@ -5509,13 +5651,468 @@
       ]
     },
     {
-      "id": "g480",
+      "id": "g494",
       "x": 1392,
       "y": 7064,
       "axis": "x",
       "items": [
         {
-          "id": "i479",
+          "id": "i493",
+          "kind": "text",
+          "label": "已添加的仓库",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g498",
+      "x": 1392,
+      "y": 7099,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i495",
+          "kind": "listItem",
+          "label": "社区漫画源仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "42 个插件 · 指纹 8f3a2c1d · 已启用",
+          "switch": true,
+          "checked": true,
+          "note": "应用不内置任何仓库。用户粘贴仓库索引链接，系统识别（名称、插件数、身份指纹）后由用户确认信任才生效。",
+          "size": 1216
+        },
+        {
+          "id": "i496",
+          "kind": "listItem",
+          "label": "小说源合集",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "18 个插件 · 身份指纹 c91b7e04 · 已启用",
+          "switch": true,
+          "checked": true,
+          "size": 1216
+        },
+        {
+          "id": "i497",
+          "kind": "listItem",
+          "label": "实验性视频源",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "6 个插件 · 上次刷新失败 · 已停用",
+          "switch": true,
+          "checked": false,
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g500",
+      "x": 1392,
+      "y": 7331,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i499",
+          "kind": "text",
+          "label": "仓库操作",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g504",
+      "x": 1392,
+      "y": 7366,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i501",
+          "kind": "listItem",
+          "label": "添加仓库",
+          "icon": "add",
+          "variant": "filled",
+          "supporting": "粘贴 HTTPS 索引链接 → 识别 → 信任并添加",
+          "note": "识别阶段不落库；确认页展示仓库信息、插件数与身份指纹，并提示第三方代码风险。",
+          "size": 1216
+        },
+        {
+          "id": "i502",
+          "kind": "listItem",
+          "label": "刷新全部仓库",
+          "icon": "update",
+          "variant": "filled",
+          "supporting": "重新拉取并校验索引；失败保留上次缓存",
+          "size": 1216
+        },
+        {
+          "id": "i503",
+          "kind": "listItem",
+          "label": "移除仓库",
+          "icon": "delete_sweep",
+          "variant": "filled",
+          "supporting": "提示该仓库下已安装插件数，可选仅移除或同时卸载",
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g506",
+      "x": 1392,
+      "y": 7598,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i505",
+          "kind": "text",
+          "label": "安全提示",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g508",
+      "x": 1392,
+      "y": 7633,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i507",
+          "kind": "listItem",
+          "label": "第三方代码与身份指纹信任",
+          "icon": "info",
+          "variant": "filled",
+          "supporting": "仓库 ID、链接或发布者公钥变化需重新确认；插件只能从来源仓库更新",
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g510",
+      "x": 1392,
+      "y": 7721,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i509",
+          "kind": "button",
+          "label": "前往插件商店",
+          "icon": "extension",
+          "variant": "tonal",
+          "note": "仓库确认后，在插件商店按仓库分组浏览，逐个按需安装。",
+          "action": {
+            "to": "extensions_w",
+            "transition": "slide"
+          },
+          "size": 240
+        }
+      ]
+    },
+    {
+      "id": "g512",
+      "x": 2720,
+      "y": 6000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i511",
+          "kind": "topAppBar",
+          "label": "插件商店",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "update",
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g514",
+      "x": 2720,
+      "y": 6088,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i513",
+          "kind": "tabs",
+          "label": "",
+          "icon": null,
+          "variant": "filled",
+          "selected": 0,
+          "tabs": [
+            {
+              "icon": "",
+              "label": "可安装"
+            },
+            {
+              "icon": "",
+              "label": "有更新"
+            },
+            {
+              "icon": "",
+              "label": "已安装"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g516",
+      "x": 2736,
+      "y": 6152,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i515",
+          "kind": "searchBar",
+          "label": "搜索仓库内的插件",
+          "icon": null,
+          "variant": "filled",
+          "icon2": "search"
+        }
+      ]
+    },
+    {
+      "id": "g518",
+      "x": 2736,
+      "y": 6224,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i517",
+          "kind": "text",
+          "label": "社区漫画源仓库",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g522",
+      "x": 2736,
+      "y": 6259,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i519",
+          "kind": "listItem",
+          "label": "漫画源扩展",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v2.1.0 · 漫画 · 可安装",
+          "note": "安装前展示申请域名、媒体类型与能力；确认后从该仓库下载 ZIP，校验整包哈希再安装。",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i520",
+          "kind": "listItem",
+          "label": "视频源扩展",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.2.1 · 视频 · 可安装",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i521",
+          "kind": "listItem",
+          "label": "元数据插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v0.6.0 · 实验性 · 需新版应用",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g524",
+      "x": 2736,
+      "y": 6491,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i523",
+          "kind": "text",
+          "label": "小说源合集",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g527",
+      "x": 2736,
+      "y": 6526,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i525",
+          "kind": "listItem",
+          "label": "轻小说源",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v0.9.3 · 小说 · 可安装",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i526",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 → v1.5.0 · 有更新",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g529",
+      "x": 2736,
+      "y": 6686,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i528",
+          "kind": "text",
+          "label": "已安装",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g531",
+      "x": 2736,
+      "y": 6721,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i530",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 · 来自社区漫画源仓库",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g533",
+      "x": 2736,
+      "y": 6809,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i532",
+          "kind": "text",
+          "label": "来源管理",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g536",
+      "x": 2736,
+      "y": 6844,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i534",
+          "kind": "listItem",
+          "label": "管理插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "添加仓库、识别信任、刷新索引与移除",
+          "action": {
+            "to": "repositories",
+            "transition": "slide"
+          }
+        },
+        {
+          "id": "i535",
+          "kind": "listItem",
+          "label": "数据源管理",
+          "icon": "tune",
+          "variant": "filled",
+          "supporting": "安装后回到此处启用",
+          "action": {
+            "to": "sources",
+            "transition": "slide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g538",
+      "x": 2720,
+      "y": 7000,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i537",
+          "kind": "topAppBar",
+          "label": "插件商店",
+          "icon": "arrow_back",
+          "variant": "filled",
+          "icon2": "update",
+          "size": 1280,
+          "actions": {
+            "icon": {
+              "to": "back",
+              "transition": "slideLeft"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "g540",
+      "x": 2752,
+      "y": 7064,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i539",
           "kind": "tabs",
           "label": "",
           "icon": null,
@@ -5525,26 +6122,30 @@
           "tabs": [
             {
               "icon": "",
-              "label": "已安装"
+              "label": "可安装"
             },
             {
               "icon": "",
-              "label": "可用"
+              "label": "有更新"
+            },
+            {
+              "icon": "",
+              "label": "已安装"
             }
           ]
         }
       ]
     },
     {
-      "id": "g482",
-      "x": 1392,
+      "id": "g542",
+      "x": 2752,
       "y": 7128,
       "axis": "x",
       "items": [
         {
-          "id": "i481",
+          "id": "i541",
           "kind": "searchBar",
-          "label": "搜索插件与数据源",
+          "label": "搜索仓库内的插件",
           "icon": null,
           "variant": "filled",
           "icon2": "search",
@@ -5553,31 +6154,36 @@
       ]
     },
     {
-      "id": "g488",
-      "x": 1392,
+      "id": "g544",
+      "x": 2752,
       "y": 7200,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i543",
+          "kind": "text",
+          "label": "社区漫画源仓库",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g548",
+      "x": 2752,
+      "y": 7235,
       "axis": "y",
       "items": [
         {
-          "id": "i483",
-          "kind": "listItem",
-          "label": "站点插件",
-          "icon": "extension",
-          "variant": "filled",
-          "supporting": "v1.4.2 · 已安装 · 3 个来源",
-          "action": {
-            "to": "sources_w",
-            "transition": "slide"
-          },
-          "size": 1216
-        },
-        {
-          "id": "i484",
+          "id": "i545",
           "kind": "listItem",
           "label": "漫画源扩展",
           "icon": "extension",
           "variant": "filled",
-          "supporting": "v2.1.0 · 有更新",
+          "supporting": "v2.1.0 · 漫画 · 可安装",
+          "note": "安装前展示申请域名、媒体类型与能力；确认后从该仓库下载 ZIP，校验整包哈希再安装。",
           "action": {
             "to": "sources_w",
             "transition": "slide"
@@ -5585,25 +6191,12 @@
           "size": 1216
         },
         {
-          "id": "i485",
-          "kind": "listItem",
-          "label": "轻小说源",
-          "icon": "extension",
-          "variant": "filled",
-          "supporting": "v0.9.3 · 可用",
-          "action": {
-            "to": "sources_w",
-            "transition": "slide"
-          },
-          "size": 1216
-        },
-        {
-          "id": "i486",
+          "id": "i546",
           "kind": "listItem",
           "label": "视频源扩展",
           "icon": "extension",
           "variant": "filled",
-          "supporting": "v1.2.1 · 可用",
+          "supporting": "v1.2.1 · 视频 · 可安装",
           "action": {
             "to": "sources_w",
             "transition": "slide"
@@ -5611,13 +6204,12 @@
           "size": 1216
         },
         {
-          "id": "i487",
+          "id": "i547",
           "kind": "listItem",
           "label": "元数据插件",
           "icon": "extension",
           "variant": "filled",
-          "supporting": "v0.6.0 · 可用 · 实验性",
-          "note": "插件只提供数据源与元数据；安装后可回到数据源管理页逐个启用。",
+          "supporting": "v0.6.0 · 实验性 · 需新版应用",
           "action": {
             "to": "sources_w",
             "transition": "slide"
@@ -5627,13 +6219,153 @@
       ]
     },
     {
-      "id": "g490",
-      "x": 2720,
+      "id": "g550",
+      "x": 2752,
+      "y": 7467,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i549",
+          "kind": "text",
+          "label": "小说源合集",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g553",
+      "x": 2752,
+      "y": 7502,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i551",
+          "kind": "listItem",
+          "label": "轻小说源",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v0.9.3 · 小说 · 可安装",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i552",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 → v1.5.0 · 有更新",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g555",
+      "x": 2752,
+      "y": 7662,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i554",
+          "kind": "text",
+          "label": "已安装",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g557",
+      "x": 2752,
+      "y": 7697,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i556",
+          "kind": "listItem",
+          "label": "站点插件",
+          "icon": "extension",
+          "variant": "filled",
+          "supporting": "v1.4.2 · 来自社区漫画源仓库",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g559",
+      "x": 2752,
+      "y": 7785,
+      "axis": "x",
+      "items": [
+        {
+          "id": "i558",
+          "kind": "text",
+          "label": "来源管理",
+          "icon": null,
+          "variant": "filled",
+          "size": 18,
+          "bold": true
+        }
+      ]
+    },
+    {
+      "id": "g562",
+      "x": 2752,
+      "y": 7820,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i560",
+          "kind": "listItem",
+          "label": "管理插件仓库",
+          "icon": "public",
+          "variant": "filled",
+          "supporting": "添加仓库、识别信任、刷新索引与移除",
+          "action": {
+            "to": "repositories_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        },
+        {
+          "id": "i561",
+          "kind": "listItem",
+          "label": "数据源管理",
+          "icon": "tune",
+          "variant": "filled",
+          "supporting": "安装后回到此处启用",
+          "action": {
+            "to": "sources_w",
+            "transition": "slide"
+          },
+          "size": 1216
+        }
+      ]
+    },
+    {
+      "id": "g564",
+      "x": 4080,
       "y": 6000,
       "axis": "x",
       "items": [
         {
-          "id": "i489",
+          "id": "i563",
           "kind": "topAppBar",
           "label": "设置",
           "icon": "arrow_back",
@@ -5648,13 +6380,13 @@
       ]
     },
     {
-      "id": "g492",
-      "x": 2736,
+      "id": "g566",
+      "x": 4096,
       "y": 6088,
       "axis": "x",
       "items": [
         {
-          "id": "i491",
+          "id": "i565",
           "kind": "text",
           "label": "外观",
           "icon": null,
@@ -5665,13 +6397,13 @@
       ]
     },
     {
-      "id": "g496",
-      "x": 2736,
+      "id": "g570",
+      "x": 4096,
       "y": 6123,
       "axis": "y",
       "items": [
         {
-          "id": "i493",
+          "id": "i567",
           "kind": "listItem",
           "label": "深色模式",
           "icon": "dark_mode",
@@ -5681,7 +6413,7 @@
           "checked": true
         },
         {
-          "id": "i494",
+          "id": "i568",
           "kind": "listItem",
           "label": "封面动态取色",
           "icon": "palette",
@@ -5691,7 +6423,7 @@
           "checked": true
         },
         {
-          "id": "i495",
+          "id": "i569",
           "kind": "listItem",
           "label": "界面语言",
           "icon": "translate",
@@ -5701,13 +6433,13 @@
       ]
     },
     {
-      "id": "g498",
-      "x": 2736,
+      "id": "g572",
+      "x": 4096,
       "y": 6355,
       "axis": "x",
       "items": [
         {
-          "id": "i497",
+          "id": "i571",
           "kind": "text",
           "label": "阅读与播放",
           "icon": null,
@@ -5718,13 +6450,13 @@
       ]
     },
     {
-      "id": "g502",
-      "x": 2736,
+      "id": "g576",
+      "x": 4096,
       "y": 6390,
       "axis": "y",
       "items": [
         {
-          "id": "i499",
+          "id": "i573",
           "kind": "listItem",
           "label": "默认阅读方向",
           "icon": "swap_vert",
@@ -5732,7 +6464,7 @@
           "supporting": "竖向卷轴 / 左右翻页"
         },
         {
-          "id": "i500",
+          "id": "i574",
           "kind": "listItem",
           "label": "自动续播",
           "icon": "play_circle",
@@ -5742,7 +6474,7 @@
           "checked": true
         },
         {
-          "id": "i501",
+          "id": "i575",
           "kind": "listItem",
           "label": "默认画质",
           "icon": "tune",
@@ -5752,13 +6484,13 @@
       ]
     },
     {
-      "id": "g504",
-      "x": 2736,
+      "id": "g578",
+      "x": 4096,
       "y": 6622,
       "axis": "x",
       "items": [
         {
-          "id": "i503",
+          "id": "i577",
           "kind": "text",
           "label": "通知",
           "icon": null,
@@ -5769,13 +6501,13 @@
       ]
     },
     {
-      "id": "g506",
-      "x": 2736,
+      "id": "g580",
+      "x": 4096,
       "y": 6657,
       "axis": "y",
       "items": [
         {
-          "id": "i505",
+          "id": "i579",
           "kind": "listItem",
           "label": "追更提醒",
           "icon": "notifications",
@@ -5787,13 +6519,13 @@
       ]
     },
     {
-      "id": "g508",
-      "x": 2720,
+      "id": "g582",
+      "x": 4080,
       "y": 7000,
       "axis": "x",
       "items": [
         {
-          "id": "i507",
+          "id": "i581",
           "kind": "topAppBar",
           "label": "设置",
           "icon": "arrow_back",
@@ -5809,13 +6541,13 @@
       ]
     },
     {
-      "id": "g510",
-      "x": 2752,
+      "id": "g584",
+      "x": 4112,
       "y": 7064,
       "axis": "x",
       "items": [
         {
-          "id": "i509",
+          "id": "i583",
           "kind": "text",
           "label": "外观",
           "icon": null,
@@ -5826,13 +6558,13 @@
       ]
     },
     {
-      "id": "g514",
-      "x": 2752,
+      "id": "g588",
+      "x": 4112,
       "y": 7099,
       "axis": "y",
       "items": [
         {
-          "id": "i511",
+          "id": "i585",
           "kind": "listItem",
           "label": "深色模式",
           "icon": "dark_mode",
@@ -5843,7 +6575,7 @@
           "size": 1216
         },
         {
-          "id": "i512",
+          "id": "i586",
           "kind": "listItem",
           "label": "封面动态取色",
           "icon": "palette",
@@ -5854,7 +6586,7 @@
           "size": 1216
         },
         {
-          "id": "i513",
+          "id": "i587",
           "kind": "listItem",
           "label": "界面语言",
           "icon": "translate",
@@ -5865,13 +6597,13 @@
       ]
     },
     {
-      "id": "g516",
-      "x": 2752,
+      "id": "g590",
+      "x": 4112,
       "y": 7331,
       "axis": "x",
       "items": [
         {
-          "id": "i515",
+          "id": "i589",
           "kind": "text",
           "label": "阅读与播放",
           "icon": null,
@@ -5882,13 +6614,13 @@
       ]
     },
     {
-      "id": "g520",
-      "x": 2752,
+      "id": "g594",
+      "x": 4112,
       "y": 7366,
       "axis": "y",
       "items": [
         {
-          "id": "i517",
+          "id": "i591",
           "kind": "listItem",
           "label": "默认阅读方向",
           "icon": "swap_vert",
@@ -5897,7 +6629,7 @@
           "size": 1216
         },
         {
-          "id": "i518",
+          "id": "i592",
           "kind": "listItem",
           "label": "自动续播",
           "icon": "play_circle",
@@ -5908,7 +6640,7 @@
           "size": 1216
         },
         {
-          "id": "i519",
+          "id": "i593",
           "kind": "listItem",
           "label": "默认画质",
           "icon": "tune",
@@ -5919,13 +6651,13 @@
       ]
     },
     {
-      "id": "g522",
-      "x": 2752,
+      "id": "g596",
+      "x": 4112,
       "y": 7598,
       "axis": "x",
       "items": [
         {
-          "id": "i521",
+          "id": "i595",
           "kind": "text",
           "label": "通知",
           "icon": null,
@@ -5936,13 +6668,13 @@
       ]
     },
     {
-      "id": "g524",
-      "x": 2752,
+      "id": "g598",
+      "x": 4112,
       "y": 7633,
       "axis": "y",
       "items": [
         {
-          "id": "i523",
+          "id": "i597",
           "kind": "listItem",
           "label": "追更提醒",
           "icon": "notifications",
@@ -5955,13 +6687,13 @@
       ]
     },
     {
-      "id": "g526",
-      "x": 4080,
-      "y": 6000,
+      "id": "g600",
+      "x": 0,
+      "y": 8000,
       "axis": "x",
       "items": [
         {
-          "id": "i525",
+          "id": "i599",
           "kind": "topAppBar",
           "label": "关于",
           "icon": "arrow_back",
@@ -5976,13 +6708,13 @@
       ]
     },
     {
-      "id": "g528",
-      "x": 4096,
-      "y": 6088,
+      "id": "g602",
+      "x": 16,
+      "y": 8088,
       "axis": "x",
       "items": [
         {
-          "id": "i527",
+          "id": "i601",
           "kind": "text",
           "label": "内容库",
           "icon": null,
@@ -5993,13 +6725,13 @@
       ]
     },
     {
-      "id": "g530",
-      "x": 4096,
-      "y": 6136,
+      "id": "g604",
+      "x": 16,
+      "y": 8136,
       "axis": "x",
       "items": [
         {
-          "id": "i529",
+          "id": "i603",
           "kind": "text",
           "label": "版本 0.1.0 · MIT 开源",
           "icon": null,
@@ -6010,13 +6742,13 @@
       ]
     },
     {
-      "id": "g532",
-      "x": 4096,
-      "y": 6166,
+      "id": "g606",
+      "x": 16,
+      "y": 8166,
       "axis": "x",
       "items": [
         {
-          "id": "i531",
+          "id": "i605",
           "kind": "card",
           "label": "一个书架，三种内容",
           "icon": null,
@@ -6028,13 +6760,13 @@
       ]
     },
     {
-      "id": "g534",
-      "x": 4096,
-      "y": 6292,
+      "id": "g608",
+      "x": 16,
+      "y": 8292,
       "axis": "x",
       "items": [
         {
-          "id": "i533",
+          "id": "i607",
           "kind": "text",
           "label": "项目",
           "icon": null,
@@ -6045,13 +6777,13 @@
       ]
     },
     {
-      "id": "g539",
-      "x": 4096,
-      "y": 6327,
+      "id": "g613",
+      "x": 16,
+      "y": 8327,
       "axis": "y",
       "items": [
         {
-          "id": "i535",
+          "id": "i609",
           "kind": "listItem",
           "label": "开源许可",
           "icon": "gavel",
@@ -6063,7 +6795,7 @@
           }
         },
         {
-          "id": "i536",
+          "id": "i610",
           "kind": "listItem",
           "label": "更新日志",
           "icon": "description",
@@ -6075,7 +6807,7 @@
           }
         },
         {
-          "id": "i537",
+          "id": "i611",
           "kind": "listItem",
           "label": "反馈问题",
           "icon": "bug_report",
@@ -6087,7 +6819,7 @@
           }
         },
         {
-          "id": "i538",
+          "id": "i612",
           "kind": "listItem",
           "label": "数据与存储",
           "icon": "storage",
@@ -6101,13 +6833,13 @@
       ]
     },
     {
-      "id": "g541",
-      "x": 4096,
-      "y": 6631,
+      "id": "g615",
+      "x": 16,
+      "y": 8631,
       "axis": "x",
       "items": [
         {
-          "id": "i540",
+          "id": "i614",
           "kind": "text",
           "label": "产品名称待定，此处为中性占位名",
           "icon": null,
@@ -6118,13 +6850,13 @@
       ]
     },
     {
-      "id": "g543",
-      "x": 4080,
-      "y": 7000,
+      "id": "g617",
+      "x": 0,
+      "y": 9000,
       "axis": "x",
       "items": [
         {
-          "id": "i542",
+          "id": "i616",
           "kind": "topAppBar",
           "label": "关于",
           "icon": "arrow_back",
@@ -6140,13 +6872,13 @@
       ]
     },
     {
-      "id": "g545",
-      "x": 4112,
-      "y": 7064,
+      "id": "g619",
+      "x": 32,
+      "y": 9064,
       "axis": "x",
       "items": [
         {
-          "id": "i544",
+          "id": "i618",
           "kind": "text",
           "label": "内容库",
           "icon": null,
@@ -6157,13 +6889,13 @@
       ]
     },
     {
-      "id": "g547",
-      "x": 4112,
-      "y": 7112,
+      "id": "g621",
+      "x": 32,
+      "y": 9112,
       "axis": "x",
       "items": [
         {
-          "id": "i546",
+          "id": "i620",
           "kind": "text",
           "label": "版本 0.1.0 · MIT 开源",
           "icon": null,
@@ -6174,13 +6906,13 @@
       ]
     },
     {
-      "id": "g549",
-      "x": 4112,
-      "y": 7142,
+      "id": "g623",
+      "x": 32,
+      "y": 9142,
       "axis": "x",
       "items": [
         {
-          "id": "i548",
+          "id": "i622",
           "kind": "card",
           "label": "一个书架，三种内容",
           "icon": null,
@@ -6193,13 +6925,13 @@
       ]
     },
     {
-      "id": "g551",
-      "x": 4112,
-      "y": 7278,
+      "id": "g625",
+      "x": 32,
+      "y": 9278,
       "axis": "x",
       "items": [
         {
-          "id": "i550",
+          "id": "i624",
           "kind": "text",
           "label": "项目",
           "icon": null,
@@ -6210,13 +6942,13 @@
       ]
     },
     {
-      "id": "g556",
-      "x": 4112,
-      "y": 7313,
+      "id": "g630",
+      "x": 32,
+      "y": 9313,
       "axis": "y",
       "items": [
         {
-          "id": "i552",
+          "id": "i626",
           "kind": "listItem",
           "label": "开源许可",
           "icon": "gavel",
@@ -6229,7 +6961,7 @@
           "size": 1216
         },
         {
-          "id": "i553",
+          "id": "i627",
           "kind": "listItem",
           "label": "更新日志",
           "icon": "description",
@@ -6242,7 +6974,7 @@
           "size": 1216
         },
         {
-          "id": "i554",
+          "id": "i628",
           "kind": "listItem",
           "label": "反馈问题",
           "icon": "bug_report",
@@ -6255,7 +6987,7 @@
           "size": 1216
         },
         {
-          "id": "i555",
+          "id": "i629",
           "kind": "listItem",
           "label": "数据与存储",
           "icon": "storage",
@@ -6270,13 +7002,13 @@
       ]
     },
     {
-      "id": "g558",
-      "x": 4112,
-      "y": 7617,
+      "id": "g632",
+      "x": 32,
+      "y": 9617,
       "axis": "x",
       "items": [
         {
-          "id": "i557",
+          "id": "i631",
           "kind": "text",
           "label": "产品名称待定，此处为中性占位名",
           "icon": null,
@@ -6287,13 +7019,13 @@
       ]
     },
     {
-      "id": "g560",
-      "x": 0,
+      "id": "g634",
+      "x": 1360,
       "y": 8000,
       "axis": "x",
       "items": [
         {
-          "id": "i559",
+          "id": "i633",
           "kind": "topAppBar",
           "label": "数据与存储",
           "icon": "arrow_back",
@@ -6308,13 +7040,13 @@
       ]
     },
     {
-      "id": "g562",
-      "x": 16,
+      "id": "g636",
+      "x": 1376,
       "y": 8088,
       "axis": "x",
       "items": [
         {
-          "id": "i561",
+          "id": "i635",
           "kind": "text",
           "label": "存储",
           "icon": null,
@@ -6325,13 +7057,13 @@
       ]
     },
     {
-      "id": "g566",
-      "x": 16,
+      "id": "g640",
+      "x": 1376,
       "y": 8123,
       "axis": "y",
       "items": [
         {
-          "id": "i563",
+          "id": "i637",
           "kind": "listItem",
           "label": "图片缓存",
           "icon": "image",
@@ -6341,7 +7073,7 @@
           "checked": true
         },
         {
-          "id": "i564",
+          "id": "i638",
           "kind": "listItem",
           "label": "下载位置",
           "icon": "folder",
@@ -6349,7 +7081,7 @@
           "supporting": "内部存储 / ContentLibrary"
         },
         {
-          "id": "i565",
+          "id": "i639",
           "kind": "listItem",
           "label": "自动清理",
           "icon": "cleaning_services",
@@ -6361,13 +7093,13 @@
       ]
     },
     {
-      "id": "g568",
-      "x": 16,
+      "id": "g642",
+      "x": 1376,
       "y": 8355,
       "axis": "x",
       "items": [
         {
-          "id": "i567",
+          "id": "i641",
           "kind": "text",
           "label": "备份",
           "icon": null,
@@ -6378,13 +7110,13 @@
       ]
     },
     {
-      "id": "g572",
-      "x": 16,
+      "id": "g646",
+      "x": 1376,
       "y": 8390,
       "axis": "y",
       "items": [
         {
-          "id": "i569",
+          "id": "i643",
           "kind": "listItem",
           "label": "自动备份",
           "icon": "backup",
@@ -6394,7 +7126,7 @@
           "checked": true
         },
         {
-          "id": "i570",
+          "id": "i644",
           "kind": "listItem",
           "label": "创建备份",
           "icon": "cloud_upload",
@@ -6406,7 +7138,7 @@
           }
         },
         {
-          "id": "i571",
+          "id": "i645",
           "kind": "listItem",
           "label": "恢复备份",
           "icon": "settings_backup_restore",
@@ -6420,13 +7152,13 @@
       ]
     },
     {
-      "id": "g574",
-      "x": 16,
+      "id": "g648",
+      "x": 1376,
       "y": 8622,
       "axis": "x",
       "items": [
         {
-          "id": "i573",
+          "id": "i647",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -6438,13 +7170,13 @@
       ]
     },
     {
-      "id": "g576",
-      "x": 16,
+      "id": "g650",
+      "x": 1376,
       "y": 8662,
       "axis": "x",
       "items": [
         {
-          "id": "i575",
+          "id": "i649",
           "kind": "button",
           "label": "清除缓存",
           "icon": "cleaning_services",
@@ -6455,13 +7187,13 @@
       ]
     },
     {
-      "id": "g578",
-      "x": 0,
+      "id": "g652",
+      "x": 1360,
       "y": 9000,
       "axis": "x",
       "items": [
         {
-          "id": "i577",
+          "id": "i651",
           "kind": "topAppBar",
           "label": "数据与存储",
           "icon": "arrow_back",
@@ -6477,13 +7209,13 @@
       ]
     },
     {
-      "id": "g580",
-      "x": 32,
+      "id": "g654",
+      "x": 1392,
       "y": 9064,
       "axis": "x",
       "items": [
         {
-          "id": "i579",
+          "id": "i653",
           "kind": "text",
           "label": "存储",
           "icon": null,
@@ -6494,13 +7226,13 @@
       ]
     },
     {
-      "id": "g584",
-      "x": 32,
+      "id": "g658",
+      "x": 1392,
       "y": 9099,
       "axis": "y",
       "items": [
         {
-          "id": "i581",
+          "id": "i655",
           "kind": "listItem",
           "label": "图片缓存",
           "icon": "image",
@@ -6511,7 +7243,7 @@
           "size": 1216
         },
         {
-          "id": "i582",
+          "id": "i656",
           "kind": "listItem",
           "label": "下载位置",
           "icon": "folder",
@@ -6520,7 +7252,7 @@
           "size": 1216
         },
         {
-          "id": "i583",
+          "id": "i657",
           "kind": "listItem",
           "label": "自动清理",
           "icon": "cleaning_services",
@@ -6533,13 +7265,13 @@
       ]
     },
     {
-      "id": "g586",
-      "x": 32,
+      "id": "g660",
+      "x": 1392,
       "y": 9331,
       "axis": "x",
       "items": [
         {
-          "id": "i585",
+          "id": "i659",
           "kind": "text",
           "label": "备份",
           "icon": null,
@@ -6550,13 +7282,13 @@
       ]
     },
     {
-      "id": "g590",
-      "x": 32,
+      "id": "g664",
+      "x": 1392,
       "y": 9366,
       "axis": "y",
       "items": [
         {
-          "id": "i587",
+          "id": "i661",
           "kind": "listItem",
           "label": "自动备份",
           "icon": "backup",
@@ -6567,7 +7299,7 @@
           "size": 1216
         },
         {
-          "id": "i588",
+          "id": "i662",
           "kind": "listItem",
           "label": "创建备份",
           "icon": "cloud_upload",
@@ -6580,7 +7312,7 @@
           "size": 1216
         },
         {
-          "id": "i589",
+          "id": "i663",
           "kind": "listItem",
           "label": "恢复备份",
           "icon": "settings_backup_restore",
@@ -6595,13 +7327,13 @@
       ]
     },
     {
-      "id": "g592",
-      "x": 32,
+      "id": "g666",
+      "x": 1392,
       "y": 9598,
       "axis": "x",
       "items": [
         {
-          "id": "i591",
+          "id": "i665",
           "kind": "linearProgress",
           "label": "",
           "icon": null,
@@ -6614,13 +7346,13 @@
       ]
     },
     {
-      "id": "g594",
-      "x": 32,
+      "id": "g668",
+      "x": 1392,
       "y": 9638,
       "axis": "x",
       "items": [
         {
-          "id": "i593",
+          "id": "i667",
           "kind": "button",
           "label": "清除缓存",
           "icon": "cleaning_services",

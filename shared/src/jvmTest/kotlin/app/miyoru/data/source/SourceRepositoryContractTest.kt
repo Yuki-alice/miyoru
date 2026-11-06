@@ -38,7 +38,12 @@ class SourceRepositoryContractTest {
         val (bundle, manifest) = fixturePackage()
         runBlocking {
             app.miyoru.data.plugin.PluginRepositoryImpl(db, facade)
-                .install(PluginPackageSource("test.zip", zipBytes("manifest.json" to manifest, "bundle.js" to bundle)), false)
+                .installFromRepository(
+                    PluginPackageSource("test.zip", zipBytes("manifest.json" to manifest, "bundle.js" to bundle)),
+                    repositoryId = "fixture.repository",
+                    expectedPluginId = "test.source",
+                    enforceSignature = false,
+                )
         }
         val provider = RuntimeSessionProvider(fs, PluginEngineConfig(timeoutMs = 5_000))
         return SourceRepositoryImpl(db, provider, SourceSnapshotStore(db))

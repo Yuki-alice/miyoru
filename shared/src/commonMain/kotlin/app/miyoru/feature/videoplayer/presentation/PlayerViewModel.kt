@@ -7,6 +7,7 @@ import app.miyoru.core.model.MediaKey
 import app.miyoru.core.model.RemoteId
 import app.miyoru.domain.library.model.MediaProgress
 import app.miyoru.domain.library.usecase.UpdateProgress
+import app.miyoru.domain.source.model.ContentUnit
 import app.miyoru.domain.source.model.ResolvedContent
 import app.miyoru.domain.source.repository.SourceRepository
 import app.miyoru.platform.player.PlayerFacade
@@ -24,6 +25,10 @@ data class PlayerUiState(
     val isPlaying: Boolean = false,
     val positionMs: Long = 0,
     val durationMs: Long = 0,
+    /** 选集列表，对应原型播放器右侧/下方的“选集”。 */
+    val units: List<ContentUnit> = emptyList(),
+    val currentUnitId: String? = null,
+    val intro: String? = null,
     val errorMessage: String? = null,
 )
 
@@ -40,8 +45,17 @@ class PlayerViewModel(
 
     init {
         viewModelScope.launch {
-            runCatching { load() }.onFailure {
-                _uiState.value = PlayerUiState(isLoading = false, errorMessage = it.message)
+            runCatching { load(unitId?.value) }.onFailure { fail(it) }
+        }
+        // 播放状态只订阅一次；切集复用同一条订阅，避免重复收集。
+        viewModelScope.launch {
+            player.state.collect { ps ->
+                _uiState.value = _uiState.value.copy(
+                    isPlaying = ps.isPlaying, positionMs = ps.positionMillis,
+                    durationMs = ps.durationMillis,
+                    // 解析阶段的失败提示不能被播放器初始的空状态覆盖
+                    errorMessage = ps.errorMessage ?: _uiState.value.errorMessage,
+                )
             }
         }
         // 定时快照用真实时间调度器，避免与 runTest 虚拟时间互锁；
@@ -68,12 +82,20 @@ class PlayerViewModel(
         player.seekTo(positionMs)
     }
 
+    /** 切集：先保存当前进度，再解析目标集。 */
+    fun selectUnit(id: String) {
+        if (_uiState.value.currentUnitId == id) return
+        viewModelScope.launch {
+            runCatching { snapshot() }
+            _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = null)
+            runCatching { load(id) }.onFailure { fail(it) }
+        }
+    }
+
     fun retry() {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = null)
-            runCatching { load() }.onFailure {
-                _uiState.value = _uiState.value.copy(isLoading = false, errorMessage = it.message)
-            }
+            runCatching { load(unitId?.value) }.onFailure { fail(it) }
         }
     }
 
@@ -83,28 +105,26 @@ class PlayerViewModel(
         super.onCleared()
     }
 
-    private suspend fun load() {
+    private fun fail(error: Throwable) {
+        _uiState.value = _uiState.value.copy(isLoading = false, errorMessage = error.message)
+    }
+
+    private suspend fun load(targetUnitId: String?) {
         val detail = sources.detail(key)
         val units = sources.contentUnits(key)
-        val target = unitId?.value?.let { id -> units.firstOrNull { it.unitId == id } } ?: units.firstOrNull()
+        val target = targetUnitId?.let { id -> units.firstOrNull { it.unitId == id } } ?: units.firstOrNull()
             ?: throw IllegalStateException("no episodes")
         val resolved = sources.resolve(key, RemoteId(target.unitId))
         val stream = (resolved as? ResolvedContent.Video)?.streams?.firstOrNull()
             ?: throw IllegalStateException("no streams")
         player.prepare(stream.url, stream.headers, stream.mimeType)
         _uiState.value = PlayerUiState(
-            isLoading = false, title = detail.summary.title,
-            isPlaying = false, positionMs = 0, durationMs = 0,
+            isLoading = false,
+            title = detail.summary.title,
+            units = units,
+            currentUnitId = target.unitId,
+            intro = detail.attributes["intro"] ?: detail.attributes["description"] ?: detail.attributes["summary"],
         )
-        viewModelScope.launch {
-            player.state.collect { ps ->
-                _uiState.value = _uiState.value.copy(
-                    isPlaying = ps.isPlaying, positionMs = ps.positionMillis,
-                    durationMs = ps.durationMillis, errorMessage = ps.errorMessage,
-                    isLoading = false,
-                )
-            }
-        }
         player.play()
     }
 
@@ -114,8 +134,11 @@ class PlayerViewModel(
         try {
             updateProgress(
                 MediaProgress(
-                    key, (unitId?.value ?: "e0"), s.positionMs,
-                    s.durationMs, kotlin.time.Clock.System.now().toEpochMilliseconds(),
+                    key = key,
+                    unitId = s.currentUnitId ?: "e0",
+                    position = s.positionMs,
+                    total = s.durationMs,
+                    updatedAt = kotlin.time.Clock.System.now().toEpochMilliseconds(),
                 ),
             )
         } catch (_: Exception) {

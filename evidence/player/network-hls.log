@@ -1,0 +1,346 @@
+Starting a Gradle Daemon, 15 busy and 3 incompatible and 6 stopped Daemons could not be reused, use --status for details
+Calculating task graph as configuration cache cannot be reused because Gradle property 'player.url' has changed.
+
+> Configure project :androidApp
+WARNING: API 'applicationVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling applicationVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+WARNING: API 'testVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling testVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+WARNING: API 'unitTestVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling unitTestVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+w: Deprecated 'org.jetbrains.kotlin.android' plugin usage
+The 'org.jetbrains.kotlin.android' plugin in project ':androidApp' is no longer required for Kotlin support since AGP 9.0.
+Solution: Remove both `android.builtInKotlin=true` and `android.newDsl=false` from `gradle.properties`, then migrate to built-in Kotlin.
+See https://kotl.in/gradle/agp-built-in-kotlin for more details.
+
+
+> Configure project :shared
+WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+w: Native task 'iosSimulatorArm64Test' is disabled
+Task 'iosSimulatorArm64Test' for target 'ios_simulator_arm64' cannot run on the current host (windows-x86_64).
+Reason: simulator tests require macOS
+Solution: To suppress this warning, add 'kotlin.native.ignoreDisabledTargets=true' to gradle.properties.
+
+w: The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :plugin:api
+w: The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :plugin:runtime
+w: The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :plugin:runtime:jvmProcessResources NO-SOURCE
+> Task :shared:copyNonXmlValueResourcesForJvmMain NO-SOURCE
+> Task :plugin:api:jvmProcessResources NO-SOURCE
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :plugin:api:processJvmMainResources SKIPPED
+> Task :shared:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :shared:convertXmlValueResourcesForJvmMain NO-SOURCE
+> Task :plugin:runtime:processJvmMainResources SKIPPED
+> Task :shared:prepareComposeResourcesTaskForJvmMain NO-SOURCE
+> Task :shared:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :shared:generateResourceAccessorsForCommonMain NO-SOURCE
+> Task :shared:generateResourceAccessorsForJvmMain NO-SOURCE
+> Task :plugin:api:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:checkJvmMainComposeLibrariesCompatibility
+> Task :plugin:runtime:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :plugin:api:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :plugin:runtime:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:generateActualResourceCollectorsForJvmMain UP-TO-DATE
+> Task :shared:generateExpectResourceCollectorsForCommonMain UP-TO-DATE
+> Task :shared:generateComposeResClass UP-TO-DATE
+> Task :shared:assembleJvmMainResources UP-TO-DATE
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :shared:generateCommonMainMiyoruDatabaseInterface UP-TO-DATE
+> Task :shared:jvmProcessResources UP-TO-DATE
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :plugin:api:compileKotlinJvm UP-TO-DATE
+> Task :plugin:api:compileJvmMainJava NO-SOURCE
+> Task :plugin:api:jvmMainClasses UP-TO-DATE
+> Task :plugin:api:jvmJar UP-TO-DATE
+> Task :plugin:runtime:compileKotlinJvm UP-TO-DATE
+> Task :plugin:runtime:compileJvmMainJava NO-SOURCE
+> Task :plugin:runtime:jvmMainClasses UP-TO-DATE
+> Task :plugin:runtime:jvmJar UP-TO-DATE
+> Task :shared:compileKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses UP-TO-DATE
+> Task :shared:jvmJar UP-TO-DATE
+> Task :desktopApp:compileKotlin UP-TO-DATE
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+
+> Task :desktopApp:playerVerify
+[mpv/mediampv] [event_loop] started
+[mpv/cplayer] mpv v0.41.0 Copyright ? 2000-2025 mpv/MPlayer/mplayer2 projects
+[mpv/cplayer] libplacebo version: v7.360.1
+[mpv/cplayer] FFmpeg version: 8.0.1
+[mpv/cplayer] FFmpeg library versions:
+[mpv/cplayer]    libavcodec      62.11.100
+[mpv/cplayer]    libavdevice     62.1.100
+[mpv/cplayer]    libavfilter     11.4.100
+[mpv/cplayer]    libavformat     62.3.101
+[mpv/cplayer]    libavutil       60.8.100
+[mpv/cplayer]    libswresample   6.1.100
+[mpv/cplayer]    libswscale      9.1.100
+[mpv/cplayer] Configuration: -Dbuildtype=release -Dprefix=D:/a/mediamp/mediamp/mediamp-mpv/build/mpv/WindowsX64/install -Dlibdir=lib -Dlibmpv=true -Dcplayer=false -Dtests=false -Dfuzzers=false -Dbuild-date=false -Ddefault_library=shared -Dlua=disabled -Djavascript=disabled -Dcplugins=disabled -Dcdda=disabled -Ddvbin=disabled -Ddvdnav=disabled -Djpeg=disabled -Dlcms2=disabled -Dlibarchive=disabled -Dlibavdevice=enabled -Dlibbluray=disabled -Drubberband=disabled -Dsdl2-audio=disabled -Dsdl2-video=disabled -Dsdl2-gamepad=disabled -Duchardet=disabled -Dvapoursynth=disabled -Dzimg=disabled -Dhtml-build=disabled -Dmanpage-build=disabled -Dpdf-build=disabled -Dvulkan=disabled -Dshaderc=enabled -Dspirv-cross=enabled -Dcuda-hwaccel=disabled -Dcuda-interop=disabled -Dd3d9-hwaccel=disabled -Dvaapi=disabled -Dvaapi-drm=disabled -Dvaapi-wayland=disabled -Dvaapi-win32=disabled -Dvaapi-x11=disabled -Dvdpau=disabled -Dvdpau-gl-x11=disabled -Dxv=disabled -Dwayland=disabled -Ddrm=disabled -Dgbm=disabled -Dsixel=disabled -Dcaca=disabled -Dplain-gl=enabled -Dzlib=enabled -Dgpl=false -Dgl=enabled -Dgl-win32=enabled -Degl=disabled -Degl-x11=disabled -Degl-android=disabled -Dd3d-hwaccel=enabled -Dd3d11=enabled -Ddirect3d=disabled -Dwasapi=enabled -Dwin32-smtc=disabled -Dx11=disabled -Daudiotrack=disabled -Dopensles=disabled -Daaudio=disabled
+[mpv/cplayer] List of enabled features: d3d-hwaccel d3d11 dos-paths dxgi-debug-d3d11 ffmpeg gl gl-dxinterop gl-win32 glob glob-win32 iconv libass libavdevice libplacebo shaderc spirv-cross vector wasapi win32 win32-desktop win32-threads zlib
+[mpv/clipboard] Initialized win32 clipboard backend.
+[verify] source=https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+[mpv/mediampv] D3D11 device on adapter 'NVIDIA GeForce RTX 3060 Laptop GPU' (luid 00000000:00014ac5)
+[mpv/libmpv_render] Initializing SPIR-V compiler 'shaderc'
+[mpv/libmpv_render] Using Direct3D 11.1 runtime
+[mpv/libmpv_render] Maximum Texture2D size: 16384x16384
+[mpv/libmpv_render] D3DCompiler version: 10.0.22621.2506
+[mpv/libmpv_render] Testing FBO format rgba16hf
+[mpv/libmpv_render] Using FBO format rgba16hf.
+[mpv/libmpv_render] Loading hwdec driver 'd3d11va'
+[mpv/mediamp] rendering 944x561 via D3D12 surface
+[mpv/mediamp] DirectContext not initialized yet
+[mpv/mediampv] Skia D3D12 device on adapter 'NVIDIA GeForce RTX 3060 Laptop GPU'
+[mpv/mediampv] D3D11: buffer ring allocated 944x561 gen=1 readback=0
+[mpv/cplayer] Set property: pause=true -> 1
+[mpv/stream_callback] Opening https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+[mpv/ffmpeg] Opening https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+[mpv/ffmpeg] Mime-type: 'audio/mpegurl'
+[mpv/demux] Trying demuxers for level=normal.
+[mpv/lavf] Found 'hls' at score=100 size=752.
+[mpv/lavf] Option extension_picky=0 was set due to known FFmpeg bugs
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_0/193039199_mp4_h264_aac_hd_7.m3u8' for reading
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8' for reading
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_4/193039199_mp4_h264_aac_7.m3u8' for reading
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_6/193039199_mp4_h264_aac_hq_7.m3u8' for reading
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/193039199_mp4_h264_aac_fhd_7.m3u8' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_0/url_462/193039199_mp4_h264_aac_hd_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_0/url_463/193039199_mp4_h264_aac_hd_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_2/url_526/193039199_mp4_h264_aac_ld_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_2/url_527/193039199_mp4_h264_aac_ld_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_4/url_718/193039199_mp4_h264_aac_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_4/url_719/193039199_mp4_h264_aac_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_6/url_846/193039199_mp4_h264_aac_hq_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_6/url_847/193039199_mp4_h264_aac_hq_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_590/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[mpv/ffmpeg/demuxer] hls: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_591/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[mpv/lavf] avformat_find_stream_info() finished after 0 bytes.
+[mpv/demux] Detected file format: hls (libavformat)
+[mpv/cplayer] Opening done: https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+[mpv/mediampv] [event_loop] unhandled event: 18
+[mpv/mediampv] [event_loop] unhandled event: 18
+[mpv/mediampv] [event_loop] unhandled event: 8
+[mpv/mediampv] [event_loop] unhandled event: 18
+[mpv/mediampv] [event_loop] unhandled event: 17
+[mpv/mediampv] [event_loop] unhandled event: 17
+[mpv/mediampv] [event_loop] unhandled event: 21
+[mpv/lavf] select track 9
+[mpv/lavf] select track 8
+[mpv/cplayer] �� Video  --vid=1  (h264 1280x720 60 fps 2149 kbps)
+[mpv/cplayer] �� Video  --vid=2  (h264 320x184 30 fps 246 kbps)
+[mpv/cplayer] �� Video  --vid=3  (h264 512x288 30 fps 461 kbps)
+[mpv/cplayer] �� Video  --vid=4  (h264 848x480 60 fps 836 kbps)
+[mpv/cplayer] �� Video  --vid=5  (h264 1920x1080 60 fps 6222 kbps)
+[mpv/cplayer] �� Audio  --aid=1  (aac 2ch 44100 Hz 2149 kbps)
+[mpv/cplayer] �� Audio  --aid=2  (aac 2ch 44100 Hz 246 kbps)
+[mpv/cplayer] �� Audio  --aid=3  (aac 2ch 44100 Hz 461 kbps)
+[mpv/cplayer] �� Audio  --aid=4  (aac 2ch 44100 Hz 836 kbps)
+[mpv/cplayer] �� Audio  --aid=5  (aac 2ch 44100 Hz 6222 kbps)
+[mpv/vd] Container reported FPS: 60.000000
+[mpv/vd] Codec list:
+[mpv/vd]     h264 - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+[mpv/vd] Opening decoder h264
+[mpv/vd] Looking at hwdec h264-d3d11va...
+[mpv/vd] Trying hardware decoding via h264-d3d11va.
+[mpv/vd] Requesting 4 threads for decoding.
+[mpv/vd] Selected decoder: h264 - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+[mpv/vf] User filter list:
+[mpv/vf]   (empty)
+[mpv/ad] Codec list:
+[mpv/ad]     aac - AAC (Advanced Audio Coding)
+[mpv/ad] Opening decoder aac
+[mpv/ad] Requesting 1 threads for decoding.
+[mpv/ad] Selected decoder: aac - AAC (Advanced Audio Coding)
+[mpv/af] User filter list:
+[mpv/af]   (empty)
+[mpv/cplayer] Starting playback...
+[mpv/vd] Pixel formats supported by decoder: d3d11va_vld d3d11 yuv420p
+[mpv/vd] Codec profile: High (0x64)
+[mpv/ffmpeg/demuxer] mpegts: PES packet size mismatch
+[mpv/ffmpeg/demuxer] mpegts: Packet corrupt (stream = 0, dts = 967783).
+[mpv/ffmpeg/demuxer] hls: Packet corrupt (stream = 0, dts = 967783).
+[mpv/vd] Requesting pixfmt 'd3d11' from decoder.
+[mpv/ffmpeg/demuxer] mpegts: PES packet size mismatch
+[mpv/ffmpeg/demuxer] mpegts: Packet corrupt (stream = 0, dts = 966873).
+[mpv/ffmpeg/demuxer] hls: Packet corrupt (stream = 4, dts = 966873).
+[mpv/ffmpeg/demuxer] mpegts: PES packet size mismatch
+[mpv/ffmpeg/demuxer] mpegts: Packet corrupt (stream = 0, dts = 1001220).
+[mpv/ffmpeg/demuxer] hls: Packet corrupt (stream = 6, dts = 1001220).
+[mpv/ffmpeg/demuxer] mpegts: PES packet size mismatch
+[mpv/ffmpeg/demuxer] mpegts: Packet corrupt (stream = 0, dts = 1167493).
+[mpv/ffmpeg/demuxer] hls: Packet corrupt (stream = 2, dts = 1167493).
+[mpv/vd] Using hardware decoding (d3d11va).
+[mpv/vd] Decoder format: 1920x1080 d3d11[nv12] auto/auto/auto/auto/auto CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/vf] [in] 1920x1080 d3d11[nv12] bt.709/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/vf] [userdeint] 1920x1080 d3d11[nv12] bt.709/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/vf] [userdeint] (disabled)
+[mpv/vf] [autovflip] 1920x1080 d3d11[nv12] bt.709/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/vf] [autovflip] (disabled)
+[mpv/vf] [autorotate] 1920x1080 d3d11[nv12] bt.709/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/vf] [autorotate] (disabled)
+[mpv/vf] [convert] 1920x1080 d3d11[nv12] bt.709/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/vf] [out] 1920x1080 d3d11[nv12] bt.709/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/af] [in] 44100Hz stereo 2ch floatp
+[mpv/af] [userspeed] 44100Hz stereo 2ch floatp
+[mpv/af] [userspeed] (disabled)
+[mpv/af] [convert] 44100Hz stereo 2ch floatp
+[mpv/ao] Trying audio driver 'wasapi'
+[mpv/ao/wasapi] requested format: 44100 Hz, stereo channels, floatp
+[mpv/ao/wasapi] No device specified. Selecting default.
+[mpv/ao/wasapi] Selecting device '{11052894-51cb-40c8-9085-6cc0d09c620b}' (���� (Realtek(R) Audio))
+[mpv/ao/wasapi] Monitoring changes in device {0.0.0.00000000}.{11052894-51cb-40c8-9085-6cc0d09c620b}
+[mpv/ao/wasapi] Trying stereo float (32/32 bits) @ 48000hz (shared) -> ok
+[mpv/ao/wasapi] Accepted as stereo float @ 48000hz -> stereo float (32/32 bits) @ 48000hz (shared)
+[mpv/ao/wasapi] Device period: default 10000 us, minimum 3000 us
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_592/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_593/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_594/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_595/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[mpv/ao/wasapi] Buffer frame count: 1056 (22000 us)
+[mpv/ao/wasapi] IAudioClock::GetFrequency gave a frequency of 384000.
+[mpv/ao/wasapi] device buffer: 1056 samples.
+[mpv/ao/wasapi] using soft-buffer of 9600 samples.
+[mpv/cplayer] AO: [wasapi] 48000Hz stereo 2ch float
+[mpv/cplayer] AO: Description: Windows WASAPI audio output (event mode)
+[mpv/autoconvert] inserting resampler
+[mpv/swresample] format change, reinitializing resampler
+[mpv/swresample] 44100Hz stereo floatp -> 48000Hz stereo float
+[mpv/af] [out] 48000Hz stereo 2ch float
+[mpv/cplayer] VO: [libmpv] 1920x1080 d3d11[nv12]
+[mpv/cplayer] VO: Description: render API for libmpv
+[mpv/vo/libmpv] reconfig to 1920x1080 d3d11[nv12] bt.709/bt.709/bt.1886/limited/display CL=mpeg2/4/h264 crop=1920x1080+0+0 A=none
+[mpv/libmpv_render] Window size: 944x561 (Borders: l=0 t=0 r=0 b=0)
+[mpv/libmpv_render] Video source: 1920x1080 (1:1)
+[mpv/libmpv_render] Video display: (0, 0) 1920x1080 -> (0, 15) 944x531
+[mpv/libmpv_render] Video scale: 0.491667/0.491667
+[mpv/libmpv_render] OSD borders: l=0 t=15 r=0 b=15
+[mpv/libmpv_render] Video borders: l=0 t=15 r=0 b=15
+[mpv/libmpv_render] Testing FBO format rgba16hf
+[mpv/libmpv_render] Using FBO format rgba16hf.
+[mpv/cplayer] first video frame after restart shown
+[mpv/cplayer] audio ready
+[mpv/cplayer] starting audio playback
+[mpv/cplayer] playback restart complete @ 0.033322, audio=playing, video=playing (paused)
+[mpv/cplayer] Set property: pause=false -> 1
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_596/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[mpv/libmpv_render] Compiled a vertex shader in 119777200ns
+[mpv/libmpv_render] shaderc: 116959300ns, SPIRV-Cross: 962600ns, D3DCompile: 1855300ns
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[mpv/libmpv_render] Compiled a fragment shader in 6756400ns
+[mpv/libmpv_render] shaderc: 2694600ns, SPIRV-Cross: 329400ns, D3DCompile: 3732400ns
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[mpv/libmpv_render] Compiled a vertex shader in 5401400ns
+[mpv/libmpv_render] shaderc: 2576000ns, SPIRV-Cross: 174400ns, D3DCompile: 2651000ns
+[mpv/libmpv_render] shaderc compile status 'success' (0 errors, 0 warnings)
+[mpv/libmpv_render] Compiled a fragment shader in 6434400ns
+[mpv/libmpv_render] shaderc: 3497000ns, SPIRV-Cross: 207900ns, D3DCompile: 2729500ns
+[verify] t=7122ms playing=true pos=233 dur=634584 err=null
+[verify] t=7330ms playing=true pos=450 dur=634584 err=null
+[verify] t=7532ms playing=true pos=650 dur=634584 err=null
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_597/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[verify] t=7735ms playing=true pos=866 dur=634584 err=null
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_598/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[verify] t=7942ms playing=true pos=1066 dur=634584 err=null
+[mpv/ffmpeg] https: Opening 'https://test-streams.mux.dev/x36xhzz/url_8/url_599/193039199_mp4_h264_aac_fhd_7.ts' for reading
+[verify] screenshot saved: F:/miyoru/build/evidence/player/network-hls.png
+[verify] t=8531ms playing=true pos=1650 dur=634584 err=null
+[verify] t=8733ms playing=true pos=1866 dur=634584 err=null
+[verify] t=8938ms playing=true pos=2050 dur=634584 err=null
+[verify] t=9139ms playing=true pos=2266 dur=634584 err=null
+[verify] t=9345ms playing=true pos=2466 dur=634584 err=null
+[verify] t=9552ms playing=true pos=2683 dur=634584 err=null
+[verify] t=9753ms playing=true pos=2883 dur=634584 err=null
+[verify] t=9956ms playing=true pos=3083 dur=634584 err=null
+[verify] t=10157ms playing=true pos=3283 dur=634584 err=null
+[verify] t=10357ms playing=true pos=3483 dur=634584 err=null
+[verify] t=10558ms playing=true pos=3683 dur=634584 err=null
+[verify] t=10759ms playing=true pos=3883 dur=634584 err=null
+[verify] t=10959ms playing=true pos=4083 dur=634584 err=null
+[verify] t=11161ms playing=true pos=4283 dur=634584 err=null
+[verify] t=11371ms playing=true pos=4483 dur=634584 err=null
+[verify] t=11572ms playing=true pos=4700 dur=634584 err=null
+[verify] t=11773ms playing=true pos=4900 dur=634584 err=null
+[verify] t=11974ms playing=true pos=5100 dur=634584 err=null
+[verify] t=12175ms playing=true pos=5300 dur=634584 err=null
+[verify] t=12376ms playing=true pos=5500 dur=634584 err=null
+[verify] t=12576ms playing=true pos=5700 dur=634584 err=null
+[verify] t=12777ms playing=true pos=5900 dur=634584 err=null
+[verify] t=12978ms playing=true pos=6100 dur=634584 err=null
+[verify] t=13180ms playing=true pos=6300 dur=634584 err=null
+[verify] t=13381ms playing=true pos=6500 dur=634584 err=null
+[verify] t=13581ms playing=true pos=6700 dur=634584 err=null
+[verify] t=13782ms playing=true pos=6900 dur=634584 err=null
+[verify] t=13991ms playing=true pos=7100 dur=634584 err=null
+[verify] t=14193ms playing=true pos=7316 dur=634584 err=null
+[verify] RESULT ok=true maxPosition=7316 maxDuration=634584
+
+[Incubating] Problems report is available at: file:///F:/miyoru/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 35s
+20 actionable tasks: 5 executed, 15 up-to-date
+Configuration cache entry stored.

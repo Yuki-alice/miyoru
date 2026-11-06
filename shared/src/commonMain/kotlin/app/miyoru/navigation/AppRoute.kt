@@ -25,6 +25,7 @@ import kotlinx.serialization.Serializable
 @Serializable data object Categories
 @Serializable data object Statistics
 @Serializable data object Extensions
+@Serializable data object Repositories
 @Serializable data object Settings
 @Serializable data object About
 @Serializable data object Storage
@@ -51,6 +52,7 @@ fun routeLabel(route: Any): String = when (route) {
     is Categories -> "分类"
     is Statistics -> "统计"
     is Extensions -> "插件商店"
+    is Repositories -> "插件仓库"
     is Settings -> "设置"
     is About -> "关于"
     is Storage -> "数据与存储"

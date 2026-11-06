@@ -1,0 +1,48 @@
+miyoru 跨平台视频播放验证记录
+====================================
+
+日期: 2026-11-06
+平台: Windows (x86_64), JDK 21.0.12
+方案: 参考 animeko —— mediamp 0.5.3 抽象 + 平台后端
+  - Android: Media3 ExoPlayer 1.11.1
+  - Desktop: mediamp-mpv 0.5.3 / mpv v0.41.0 / FFmpeg 8.0.1 / libplacebo 7.360.1
+  - iOS: AVFoundation AVPlayer
+
+验证入口: ./gradlew :desktopApp:playerVerify -Pplayer.url=... -Pplayer.shot=... -Pplayer.wait=...
+(使用与 App 相同的 PlayerFacade + VideoSurface，窗口截图由 java.awt.Robot 生成)
+
+关键修复
+--------
+- 桌面端不再使用占位实现：JvmPlayer.kt 接入 mediamp-mpv，状态/进度/时长/错误全部回传 PlayerFacade。
+- 渲染上下文竞态：mpv 若在 surface 挂载前起播会以 vo=null 无节流跑完。现在 PlayerScreen 在加载态也先挂载
+  VideoSurface，且 nativePlayer 在组合阶段就创建播放器，保证“先挂 surface 再 prepare”。
+- Android 数据源改为 DefaultDataSource（此前 DefaultHttpDataSource 无法读 file:// 本地文件），
+  同时补充 HLS 判定、READY 等待、错误上报与 PlayerView 更新回调。
+- iOS 补齐裸文件路径、AVPlayerItem 失败状态与就绪等待、timeObserver 释放。
+- Compose 升级到 1.12.2（mediamp 0.5.3 的依赖要求），主界面回归截图正常。
+
+用例与结果
+----------
+1) 本地文件: local-sample.mp4 (FFmpeg testsrc2 640x360/30fps/15s + AAC)
+   [verify] RESULT ok=true maxPosition=5466 maxDuration=15000
+   证据: local-mp4.png / local-mp4.log
+
+2) 网络 MP4: https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4
+   [verify] RESULT ok=true maxPosition=10000 maxDuration=10000
+   证据: network-mp4.png / network-mp4.log
+
+3) 网络 HLS: https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+   [verify] RESULT ok=true maxPosition=7316 maxDuration=634584
+   证据: network-hls.png / network-hls.log
+   注: 日志中个别 HLS 分片有 "Packet corrupt" 警告（测试源本身），播放与渲染正常。
+
+4) Compose 1.12.2 升级回归（demo 模式主界面渲染）
+   证据: app-home.png
+
+构建/测试
+----------
+./gradlew :desktopApp:compileKotlin :shared:compileDebugKotlinAndroid :shared:jvmTest
+结果: BUILD SUCCESSFUL，JVM 单测通过。
+./gradlew :shared:compileKotlinIosArm64 / :shared:compileKotlinIosSimulatorArm64
+结果: BUILD SUCCESSFUL（仅编译，未在 iOS 设备/模拟器运行；需 macOS + Xcode）。
+Android 无已连接设备/模拟器，仅完成编译验证。
